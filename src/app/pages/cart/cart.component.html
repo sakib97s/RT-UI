@@ -1,0 +1,172 @@
+<div class="checkout-page container fade-in">
+  <div class="checkout-header">
+    <a routerLink="/" class="back-link"><i class="fa-solid fa-arrow-left"></i> Continue Shopping</a>
+    <h1>My Cart</h1>
+  </div>
+
+  <!-- Empty Cart -->
+  @if (isHydrated && !isLoading && carts.length === 0) {
+    <div class="empty-cart">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <h2>Your cart is empty</h2>
+      <p>Add tours to your cart to get started.</p>
+      <a routerLink="/" class="btn btn-primary">Browse Tours</a>
+    </div>
+  }
+
+  @if (carts.length > 0) {
+    <div class="checkout-grid">
+      <!-- LEFT: Form -->
+      <div class="checkout-form">
+        <div class="form-section">
+          <h2 class="form-title"><span>1</span> Lead Traveler Details</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" [(ngModel)]="form.firstName" placeholder="John">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" [(ngModel)]="form.lastName" placeholder="Doe">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" [(ngModel)]="form.email" placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label>WhatsApp / Phone</label>
+            <div class="phone-input">
+              <select [(ngModel)]="form.phoneCode">
+                <option>🇮🇹 +39</option>
+                <option>🇺🇸 +1</option>
+                <option>🇬🇧 +44</option>
+                <option>🇧🇩 +880</option>
+              </select>
+              <input type="tel" [(ngModel)]="form.phone" placeholder="000 000 0000">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2 class="form-title"><span>2</span> Payment Method</h2>
+          <div class="payment-options">
+            <label class="pay-option" [class.selected]="payMethod === 'card'" (click)="payMethod = 'card'">
+              <input type="radio" [checked]="payMethod === 'card'">
+              <div class="pay-body">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Credit / Debit Card</span>
+              </div>
+              <div class="pay-logos">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+              </div>
+            </label>
+            <label class="pay-option" [class.selected]="payMethod === 'apple'" (click)="payMethod = 'apple'">
+              <input type="radio" [checked]="payMethod === 'apple'">
+              <div class="pay-body">
+                <i class="fa-brands fa-apple-pay"></i>
+                <span>Apple Pay</span>
+              </div>
+            </label>
+            <label class="pay-option" [class.selected]="payMethod === 'google'" (click)="payMethod = 'google'">
+              <input type="radio" [checked]="payMethod === 'google'">
+              <div class="pay-body">
+                <i class="fa-brands fa-google-pay"></i>
+                <span>Google Pay</span>
+              </div>
+            </label>
+          </div>
+
+          @if (payMethod === 'card') {
+            <div class="card-fields">
+              <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" placeholder="1234 5678 9012 3456">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Expiry Date</label>
+                  <input type="text" placeholder="MM / YY">
+                </div>
+                <div class="form-group">
+                  <label>CVV</label>
+                  <input type="text" placeholder="123">
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="form-section terms-section">
+          <label class="terms-check">
+            <input type="checkbox" [(ngModel)]="form.terms">
+            <span>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Cancellation Policy</a>. Bookings are <strong>non-refundable 24 hours</strong> before the tour.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- RIGHT: Order Summary -->
+      <div class="order-summary">
+        <div class="summary-card">
+          <h3>Order Summary</h3>
+          <div class="order-items">
+            @for (item of carts; track item._id; let i = $index) {
+              <div class="order-item">
+                <img [src]="getProductImage(item)" [alt]="item.product?.name">
+                <div class="item-info">
+                  <h4>{{item.product?.name}}</h4>
+                  @if (item.customFields?.size) {
+                    <p>📅 {{item.customFields.size}}</p>
+                  }
+                  @if (item.customFields?.name) {
+                    <p>👥 {{item.customFields.name}}</p>
+                  } @else {
+                    <p>👥 {{item.selectedQty}} Travelers</p>
+                  }
+                </div>
+                <div class="item-right">
+                  <strong>{{currencyService.format(item.product?.salePrice * item.selectedQty)}}</strong>
+                  <button class="remove-btn" (click)="onDeleteSingleCartItem(item)">✕</button>
+                </div>
+              </div>
+            }
+          </div>
+          <div class="summary-footer">
+            <div class="summary-line">
+              <span>Subtotal</span>
+              <span>{{currencyService.format(cartSaleSubTotal)}}</span>
+            </div>
+            <div class="summary-line">
+              <span>Booking Fee</span>
+              <span>Free</span>
+            </div>
+            <div class="summary-total">
+              <span>Total</span>
+              <span>{{currencyService.format(cartSaleSubTotal)}}</span>
+            </div>
+          </div>
+        </div>
+
+        @if (!isLoading) {
+          <button class="checkout-btn"
+            [disabled]="!form.terms || !form.firstName || !form.email"
+            [class.disabled]="!form.terms || !form.firstName || !form.email"
+            (click)="placeOrder()">
+            <i class="fa-solid fa-lock"></i> Complete Booking — {{currencyService.format(cartSaleSubTotal)}}
+          </button>
+        }
+        @if (isLoading) {
+          <button class="checkout-btn disabled" disabled>
+            Please Wait...
+          </button>
+        }
+
+        <div class="secure-note">
+          <i class="fa-solid fa-shield-halved"></i>
+          256-bit SSL encrypted & secured by Stripe
+        </div>
+      </div>
+    </div>
+  }
+</div>

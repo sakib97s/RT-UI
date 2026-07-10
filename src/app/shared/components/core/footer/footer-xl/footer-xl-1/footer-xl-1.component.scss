@@ -1,0 +1,189 @@
+/* =============================================
+   FOOTER XL-1 — Responsive, All Devices
+   Dark navy background, gold accents
+   ============================================= */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.footer {
+  background: #0F172A;
+  color: #fff;
+  padding: 64px 0 0;
+  margin-top: 60px;
+}
+
+/* ---- Grid Layout ---- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  padding-bottom: 48px;
+}
+
+/* ---- Brand column ---- */
+.footer-brand {
+  .logo {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: #fff !important;
+    letter-spacing: -0.3px;
+
+    span { color: #D8AB2A; }
+  }
+  p {
+    color: #94A3B8;
+    margin: 14px 0;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .social-links {
+    display: flex;
+    gap: 12px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      color: #64748B;
+      font-size: 1rem;
+      transition: all 0.22s ease;
+      text-decoration: none;
+
+      &:hover {
+        background: #D8AB2A;
+        color: #0F172A;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+/* ---- Link columns ---- */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h4 {
+    margin-bottom: 6px;
+    color: #D8AB2A;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  a {
+    color: #94A3B8;
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.22s ease, padding-left 0.22s ease;
+    padding-left: 0;
+
+    &:hover {
+      color: #fff;
+      padding-left: 4px;
+    }
+  }
+}
+
+/* ---- Contact column ---- */
+.footer-contact {
+  h4 {
+    margin-bottom: 12px;
+    color: #D8AB2A;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  p {
+    color: #94A3B8;
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    i {
+      color: #D8AB2A;
+      font-size: 0.8rem;
+      width: 16px;
+    }
+  }
+}
+
+/* ---- Bottom bar ---- */
+.footer-bottom {
+  margin-top: 0;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  p {
+    color: #475569;
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  .footer-bottom-links {
+    display: flex;
+    gap: 16px;
+    a {
+      color: #475569;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+      &:hover { color: #94A3B8; }
+    }
+  }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+/* Tablet: 2-column */
+@media (max-width: 900px) {
+  .footer {
+    padding: 48px 0 0;
+    margin-top: 40px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1; /* full width on first row */
+  }
+}
+
+/* Mobile: single column */
+@media (max-width: 540px) {
+  .footer {
+    padding: 40px 0 0;
+    margin-top: 32px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-brand { grid-column: auto; }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+}

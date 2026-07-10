@@ -1,0 +1,78 @@
+@import "common/headers/header-serach";
+@import "variables";
+
+// Animated Search text - Same as small screen
+.search-text {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(100% - 60px);
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+
+  span {
+    display: block;
+    height: 100%;
+    padding-left: 0;
+    color: darken($color-white, 45%);
+    animation: spin_words 6s infinite;
+    font-weight: 500;
+    font-size: calc($font-readable + 1px);
+    line-height: 40px;
+  }
+
+  .words {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  @keyframes spin_words {
+    10% {
+      transform: translateY(-112%);
+    }
+    25% {
+      transform: translateY(-100%);
+    }
+    35% {
+      transform: translateY(-212%);
+    }
+    50% {
+      transform: translateY(-200%);
+    }
+    60% {
+      transform: translateY(-312%);
+    }
+    75% {
+      transform: translateY(-300%);
+    }
+    85% {
+      transform: translateY(-412%);
+    }
+    100% {
+      transform: translateY(-400%);
+    }
+  }
+}
+
+// Ensure input is above the hints
+.search-field {
+  position: relative;
+
+  form {
+    position: relative;
+  }
+
+  input {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+  }
+}

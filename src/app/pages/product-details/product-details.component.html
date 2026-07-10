@@ -1,0 +1,147 @@
+@if (product && !isLoading) {
+  <div class="fade-in">
+
+    <!-- Gallery Section -->
+    <div class="gallery-section">
+      <div class="main-img">
+        <img [src]="selectedImage || product.image || 'images/colosseum.png'" [alt]="product.name">
+        <div class="img-badge"><i class="fa-solid fa-camera"></i> {{product.images?.length || 1}} Photos</div>
+        <a routerLink="/products" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+      </div>
+      @if (product.images && product.images.length > 1) {
+        <div class="thumb-strip">
+          @for (img of product.images; let i = $index; track img) {
+            <img [src]="img" [class.active]="img === selectedImage"
+                 (click)="selectedImage = img" [alt]="'Photo ' + (i+1)">
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="container details-layout">
+
+      <!-- LEFT: Content -->
+      <div class="content-col">
+        <nav class="breadcrumb">
+          <a routerLink="/">Home</a> / <a routerLink="/products">Tours</a> / <span>{{product.name}}</span>
+        </nav>
+
+        <h1 class="title">{{product.name}}</h1>
+
+        <div class="meta-row">
+          <span class="stars"><i class="fa-solid fa-star"></i> {{product.ratingAvr || 4.8}} ({{reviewsCount}} reviews)</span>
+          <span><i class="fa-solid fa-clock"></i> 3 Hours</span>
+          <span><i class="fa-solid fa-user-group"></i> Max 20</span>
+          <span><i class="fa-solid fa-language"></i> English</span>
+        </div>
+
+        @if (product.specifications && product.specifications.length > 0) {
+          <div class="highlights-box">
+            @for (spec of product.specifications; track spec.name) {
+              <div class="hl-item">
+                <i class="fa-solid fa-circle-check"></i> {{spec.name}}: {{spec.value}}
+              </div>
+            }
+          </div>
+        }
+
+        <div class="desc-section">
+          <h2>About This Tour</h2>
+          <div [innerHTML]="product.description"></div>
+        </div>
+
+        <div class="itinerary-section">
+          <h2>What to Expect</h2>
+          <div class="timeline">
+            @for (step of steps; let i = $index; track step.time) {
+              <div class="tl-item">
+                <div class="tl-dot">{{i+1}}</div>
+                <div class="tl-body"><strong>{{step.time}}</strong><p>{{step.desc}}</p></div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Booking Widget -->
+      <div class="summary-col">
+        <div class="booking-widget sticky-box">
+
+          <div class="widget-header">
+            <div class="header-top">
+              <div>
+                <span class="widget-label">From</span>
+                <div class="widget-price">{{currencyService.format(product.salePrice)}} <span>/person</span></div>
+              </div>
+              <div class="header-rating">
+                <i class="fa-solid fa-star"></i> {{product.ratingAvr || 4.8}} <span>({{reviewsCount}})</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget-body">
+            <div class="widget-section">
+              <div class="ws-label"><i class="fa-solid fa-calendar"></i> Date</div>
+              <input type="date" class="date-picker" [value]="selectedDate()" (change)="selectedDate.set($any($event.target).value)">
+            </div>
+
+            <div class="widget-section">
+              <div class="ws-label"><i class="fa-solid fa-users"></i> Participants</div>
+              
+              <div class="participant-row">
+                <div class="p-info">
+                  <span class="p-label">Adults</span>
+                  <span class="p-age">Age 18-99</span>
+                </div>
+                <div class="p-controls">
+                  <button class="ctrl-btn" (click)="updateCount('adults', -1)" [class.disabled]="adultsCount() === 1" [disabled]="adultsCount() === 1"><i class="fa-solid fa-minus"></i></button>
+                  <span class="p-count">{{adultsCount()}}</span>
+                  <button class="ctrl-btn active" (click)="updateCount('adults', 1)"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="participant-row">
+                <div class="p-info">
+                  <span class="p-label">Children</span>
+                  <span class="p-age">Age 6-17 (30% Off)</span>
+                </div>
+                <div class="p-controls">
+                  <button class="ctrl-btn" (click)="updateCount('children', -1)" [class.disabled]="childrenCount() === 0" [disabled]="childrenCount() === 0"><i class="fa-solid fa-minus"></i></button>
+                  <span class="p-count">{{childrenCount()}}</span>
+                  <button class="ctrl-btn active" (click)="updateCount('children', 1)"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <div class="participant-row">
+                <div class="p-info">
+                  <span class="p-label">Infants</span>
+                  <span class="p-age">Age 0-5 (Free)</span>
+                </div>
+                <div class="p-controls">
+                  <button class="ctrl-btn" (click)="updateCount('infants', -1)" [class.disabled]="infantsCount() === 0" [disabled]="infantsCount() === 0"><i class="fa-solid fa-minus"></i></button>
+                  <span class="p-count">{{infantsCount()}}</span>
+                  <button class="ctrl-btn active" (click)="updateCount('infants', 1)"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget-footer">
+            <div class="total-row">
+              <span>Total Price</span>
+              <strong>{{currencyService.format(totalPrice())}}</strong>
+            </div>
+            <div class="action-buttons">
+              <button class="btn btn-outline" (click)="onAddToCart('addToCart')">Add to Cart</button>
+              <button class="btn btn-primary" (click)="onAddToCart('buyNow')">Book Now</button>
+            </div>
+            <div class="guarantee"><i class="fa-solid fa-circle-check"></i> Free cancellation up to 24h before</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+}

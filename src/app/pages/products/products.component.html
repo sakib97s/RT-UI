@@ -1,0 +1,225 @@
+@if (categorySlide) {
+  <div
+    class="overlay"
+    (click)="onHideCategory()"
+    (mouseover)="onHideCategoryMouseMove()"
+    (touchmove)="onHideCategoryMouseMove()"
+  ></div>
+}
+
+<div class="container">
+
+  <div class="left-area" [class.open]="categorySlide" [class.sticky-top-hidden]="isHeaderTopHidden">
+    <div class="sidebar" [class.slide-active]="categorySlide" [class.padding-remove]="isHeaderTopHidden">
+      <div class="slide-top">
+        <span (click)="onHideCategory()">X</span>
+      </div>
+      <!--      <app-products-filter-price (dataEmitter)="onPriceRangeChange($event)"></app-products-filter-price>-->
+      @defer (when !isLoading) {
+<!--        @switch (productsCategoryViews) {-->
+
+<!--          @case ('Products Category View 1') {-->
+<!--            &lt;!&ndash; Original Category View &ndash;&gt;-->
+<!--            <app-products-category-filter [activeFilters]="selectedCategories" [data]="categories"-->
+<!--                                          (resetFilters)="resetCategoryFilter()"-->
+<!--                                          (selectedFilters)="onCategoryFilterChange()"></app-products-category-filter>-->
+
+<!--            @if (selectedCategories.length && subCategories.length) {-->
+<!--              <app-filter-sub-category [activeFilters]="selectedSubCategories"-->
+<!--                                       [data]="subCategories"-->
+<!--                                       (resetFilters)="resetSubCategoryFilter()"-->
+<!--                                       (selectedFilters)="onSubCategoryFilterChange()"></app-filter-sub-category>-->
+<!--            }-->
+<!--            @if (selectedSubCategories.length && childCategories.length) {-->
+<!--              <app-filter-child-category [activeFilters]="selectedChildCategories"-->
+<!--                                         [data]="childCategories"-->
+<!--                                         (resetFilters)="resetChildCategoryFilter()"-->
+<!--                                         >-->
+<!--                                        </app-filter-child-category>-->
+<!--            }-->
+<!--          }-->
+<!--          @case ('Products Category View 2') {-->
+<!--            &lt;!&ndash; New Nested Category View &ndash;&gt;-->
+<!--            <app-products-category-view-->
+<!--              [categories]="categories"-->
+<!--              [subCategories]="subCategories"-->
+<!--              [childCategories]="childCategories"-->
+<!--              [selectedCategories]="selectedCategories"-->
+<!--              [selectedSubCategories]="selectedSubCategories"-->
+<!--              [selectedChildCategories]="selectedChildCategories"-->
+<!--              (categorySelectionChange)="onCategorySelectionChange($event)"-->
+<!--              (subCategorySelectionChange)="onSubCategorySelectionChange($event)"-->
+<!--              (childCategorySelectionChange)="onChildCategorySelectionChange($event)"-->
+<!--              (clearAllFilters)="onClearAllFiltersEvent()">-->
+<!--            </app-products-category-view>-->
+<!--          }-->
+<!--          @default {-->
+<!--&lt;!&ndash;            &lt;!&ndash; Original Category View &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <app-products-category-filter [activeFilters]="selectedCategories" [data]="categories"&ndash;&gt;-->
+<!--&lt;!&ndash;                                          (resetFilters)="resetCategoryFilter()"&ndash;&gt;-->
+<!--&lt;!&ndash;                                          (selectedFilters)="onCategoryFilterChange()"></app-products-category-filter>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            @if (selectedCategories.length && subCategories.length) {&ndash;&gt;-->
+<!--&lt;!&ndash;              <app-filter-sub-category [activeFilters]="selectedSubCategories"&ndash;&gt;-->
+<!--&lt;!&ndash;                                       [data]="subCategories"&ndash;&gt;-->
+<!--&lt;!&ndash;                                       (resetFilters)="resetSubCategoryFilter()"&ndash;&gt;-->
+<!--&lt;!&ndash;                                       (selectedFilters)="onSubCategoryFilterChange()"></app-filter-sub-category>&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+<!--&lt;!&ndash;            @if (selectedSubCategories.length && childCategories.length) {&ndash;&gt;-->
+<!--&lt;!&ndash;              <app-filter-child-category [activeFilters]="selectedChildCategories"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         [data]="childCategories"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         (resetFilters)="resetChildCategoryFilter()"&ndash;&gt;-->
+<!--&lt;!&ndash;                                         (selectedFilters)="onChildCategoryFilterChange()">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </app-filter-child-category>&ndash;&gt;-->
+<!--&lt;!&ndash;            }&ndash;&gt;-->
+
+<!--            <app-products-category-view-->
+<!--              [categories]="categories"-->
+<!--              [subCategories]="subCategories"-->
+<!--              [childCategories]="childCategories"-->
+<!--              [selectedCategories]="selectedCategories"-->
+<!--              [selectedSubCategories]="selectedSubCategories"-->
+<!--              [selectedChildCategories]="selectedChildCategories"-->
+<!--              (categorySelectionChange)="onCategorySelectionChange($event)"-->
+<!--              (subCategorySelectionChange)="onSubCategorySelectionChange($event)"-->
+<!--              (childCategorySelectionChange)="onChildCategorySelectionChange($event)"-->
+<!--              (clearAllFilters)="onClearAllFiltersEvent()">-->
+<!--            </app-products-category-view>-->
+<!--          }-->
+<!--        }-->
+
+<!--        <app-products-category-view-->
+<!--          [selectedCategories]="selectedCategories"-->
+<!--          [selectedSubCategories]="selectedSubCategories"-->
+<!--          [selectedChildCategories]="selectedChildCategories"-->
+<!--          (categorySelectionChange)="onCategorySelectionChange($event)"-->
+<!--          (subCategorySelectionChange)="onSubCategorySelectionChange($event)"-->
+<!--          (childCategorySelectionChange)="onChildCategorySelectionChange($event)"-->
+<!--          >-->
+<!--        </app-products-category-view>-->
+
+<!--        @if (brands.length) {-->
+<!--          <app-filter-brand [activeFilters]="selectedBrands" [data]="brands"-->
+<!--                            (resetFilters)="resetBrandFilter()"></app-filter-brand>-->
+<!--        }-->
+      } @placeholder (minimum 50ms) {
+        <app-product-details-category-loader></app-product-details-category-loader>
+      }
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="page-header">
+      <h1>Guided Rome Tours & Tickets</h1>
+      <p>Explore our curated collection of expert-led experiences in the Eternal City.</p>
+    </div>
+
+    <div class="top-header" style="justify-content: flex-end; margin-bottom: 24px;">
+      <div class="category-controls">
+        <div class="filter-mobile web-d-none" (click)="onShowCategory()" appOutSideClick>
+          <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+            <path
+              d="m14.221,13h9.779v1h-10.636l.857-1Zm2.572-3l-.857,1h8.065v-1h-7.207Zm.207-3.315l-6,7v8.315l-5-3.75v-4.565L0,6.685v-2.185c0-1.378,1.122-2.5,2.5-2.5h12c1.378,0,2.5,1.122,2.5,2.5v2.185Zm-1-2.185c0-.827-.673-1.5-1.5-1.5H2.5c-.827,0-1.5.673-1.5,1.5v1.815l6,7v4.435l3,2.25v-6.685l6-7v-1.815Zm-3,15.5h11v-1h-11v1Zm0-3h11v-1h-11v1Z"/>
+          </svg>
+        </div>
+      </div>
+    </div> <!-- END Top Header -->
+
+    <div class="tours-grid">
+      @defer (when !isLoading) {
+        @for (item of products; track item._id) {
+          <div class="tour-card glass-card" [routerLink]="['/product-details', item.slug]">
+            <div class="card-img">
+              <img [src]="item.images && item.images[0] ? item.images[0] : (item.image || 'images/colosseum.png')" [alt]="item.name" loading="lazy">
+              <span class="tag">{{item.name.toLowerCase().includes('ticket') ? 'Ticket' : 'Tour'}}</span>
+              <div class="card-overlay">
+                <span><i class="fa-solid fa-clock"></i> 3 Hours</span>
+                <span><i class="fa-solid fa-user-group"></i> Max 20</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3>{{item.name}}</h3>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+                <span>{{item.ratingAvr || 4.8}}</span>
+              </div>
+              <div class="price-row">
+                <div class="price">From <strong>{{currencyService.format(item.salePrice)}}</strong><span>/person</span></div>
+                <div class="book-btn">Book →</div>
+              </div>
+            </div>
+          </div>
+        }
+      } @placeholder (minimum 50ms) {
+        @for (data of [].constructor(8); track $index) {
+          <app-product-card-loader/>
+        }
+      }
+    </div>
+
+    @if (!products?.length && !isLoading) {
+      <div class="no-data">
+        <app-empty-data
+          [needBorder]="false"
+          [iconWidth]="'150px'"
+          [title]="'No Product Found!'"
+          [titleSize]="'20px'"
+          [desc]="'Try to search another category.'"
+          [filePath]="'/lottie/no-data-1.json'"
+          [btnTitle]="'Continue Shopping'"
+          [btnUrl]="'/products'"
+          (btnClick)="onContinueShopping()"
+        >
+        </app-empty-data>
+      </div>
+    }
+
+    @if (shouldUsePagination) {
+      @if (totalPages > 1) {
+        <div class="pagination-container">
+          <button
+            class="pagination-btn"
+            [class.disabled]="currentPage === 1"
+            (click)="previousPage()"
+            [disabled]="currentPage === 1"
+            aria-label="Previous page">
+            ‹
+          </button>
+
+          @for (page of visiblePages; track $index) {
+            @if (page === '...') {
+              <span class="pagination-ellipsis">...</span>
+            } @else {
+              <button
+                class="pagination-btn"
+                [class.active]="currentPage === page"
+                (click)="onPageClick(page)"
+                [attr.aria-label]="'Go to page ' + page">
+                {{ page }}
+              </button>
+            }
+          }
+
+          <button
+            class="pagination-btn"
+            [class.disabled]="currentPage === totalPages"
+            (click)="nextPage()"
+            [disabled]="currentPage === totalPages"
+            aria-label="Next page">
+            ›
+          </button>
+        </div>
+      }
+    }
+
+    @if (isLoadMore) {
+      <div class="loading1">
+        <div class="abgne-loading-20140104-2">
+          <div class="loading"></div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

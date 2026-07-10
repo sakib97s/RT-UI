@@ -1,0 +1,77 @@
+<footer class="footer" role="contentinfo" aria-label="Site Footer">
+  <div class="container footer-grid">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <a routerLink="/" class="logo" title="Best in Rome Tour Home">
+        BEST IN <span>ROME TOUR</span>
+      </a>
+      <p>{{ shopInfo?.shortDescription || "The Eternal City's most trusted tour provider. Discover history, culture and beauty with expert guides." }}</p>
+      <div class="social-links" aria-label="Social media links">
+        @if (getSocialLink('facebook')) {
+          <a [href]="getSocialLink('facebook')" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+          </a>
+        }
+        @if (getSocialLink('instagram')) {
+          <a [href]="getSocialLink('instagram')" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+        }
+        @if (shopInfo?.whatsappNumber) {
+          <a href="https://wa.me/{{shopInfo.whatsappNumber}}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Explore Links -->
+    <div class="footer-links">
+      <h4>Explore</h4>
+      <a routerLink="/products" [queryParams]="{type: 'tour'}" title="Top Tours in Rome">Top Tours</a>
+      <a routerLink="/products" [queryParams]="{type: 'ticket'}" title="Monument Tickets">Monuments</a>
+      <a routerLink="/pages/about-us" title="About Us">About Us</a>
+      <a routerLink="/" title="Travel Blog">Travel Blog</a>
+    </div>
+
+    <!-- Support Links -->
+    <div class="footer-links">
+      <h4>Support</h4>
+      <a routerLink="/pages/help" title="Help Center">Help Center</a>
+      <a routerLink="/pages/faq" title="FAQ">FAQ</a>
+      @if (shopInfo?.whatsappNumber) {
+        <a href="https://wa.me/{{shopInfo.whatsappNumber}}" target="_blank" rel="noopener noreferrer" title="WhatsApp Support">WhatsApp</a>
+      }
+      <a routerLink="/pages/return-and-refund-policy" title="Refund Policy">Refund Policy</a>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      @if (shopInfo?.emails?.length) {
+        <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ shopInfo.emails[0].value }}</p>
+      } @else {
+        <p><i class="fa-solid fa-envelope" aria-hidden="true"></i> help&#64;rometours.com</p>
+      }
+      @if (shopInfo?.phones?.length) {
+        <p><i class="fa-solid fa-phone" aria-hidden="true"></i> {{ shopInfo.phones[0].value }}</p>
+      } @else {
+        <p><i class="fa-solid fa-phone" aria-hidden="true"></i> +39 388 895 5085</p>
+      }
+      <p><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Rome, Italy 🇮🇹</p>
+    </div>
+
+  </div><!-- /.footer-grid -->
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom container">
+    <p>&copy; {{ currentYear }} Best in Rome Tour. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a routerLink="/pages/privacy-policy" title="Privacy Policy">Privacy</a>
+      <a routerLink="/pages/terms-of-service" title="Terms of Service">Terms</a>
+      <a routerLink="/pages/return-and-refund-policy" title="Refund Policy">Refunds</a>
+    </div>
+  </div>
+
+</footer>

@@ -1,0 +1,433 @@
+.home-page-container {
+  padding-bottom: 80px;
+  background-color: #FAFAFA;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 520px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 40px;
+  border-radius: 0 0 24px 24px;
+  overflow: hidden;
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.65) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 48px;
+  }
+  
+  .hero-content-wrapper {
+    width: 100%;
+  }
+  
+  .hero-headline {
+    color: white;
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.25;
+    max-width: 800px;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+}
+
+/* Intro Section */
+.intro-section {
+  padding: 40px 16px;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  
+  .intro-paragraph {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #4A5568;
+    font-weight: 500;
+  }
+}
+
+/* Tours Section */
+.tours-section {
+  margin-bottom: 80px;
+}
+
+.section-title-wrapper {
+  margin-bottom: 40px;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.section-subheading {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+.tours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.tour-card-item {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .tour-image-box {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: #F7FAFC;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+  }
+
+  &:hover .tour-image-box img {
+    transform: scale(1.03);
+  }
+
+  .tour-details-box {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .tour-title {
+    font-size: 1.05rem;
+    font-weight: 750;
+    line-height: 1.4;
+    color: var(--primary);
+    margin: 0 0 10px;
+    height: 2.8em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tour-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0 0 20px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tour-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #EDF2F7;
+    padding-top: 14px;
+    margin-top: auto;
+  }
+
+  .tour-duration {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tour-price-from {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    
+    strong {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-left: 2px;
+    }
+  }
+}
+
+/* Reviews Section */
+.reviews-section {
+  margin-bottom: 80px;
+  background: white;
+  padding: 60px 24px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.02);
+
+  .section-heading {
+    margin-bottom: 40px;
+  }
+}
+
+.reviews-list {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-card {
+  border-bottom: 1px solid #EDF2F7;
+  padding-bottom: 24px;
+  
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .review-title {
+    font-size: 1.15rem;
+    font-weight: 750;
+    color: var(--primary);
+    margin: 0 0 8px;
+  }
+
+  .review-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .gold-star {
+    color: #FBBF24;
+    font-size: 0.95rem;
+  }
+
+  .review-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-left: 8px;
+    font-weight: 500;
+  }
+
+  .review-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #4A5568;
+    margin: 0 0 12px;
+    font-style: italic;
+  }
+
+  .review-author-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .review-author {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .verified-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #10B981;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #ECFDF5;
+    padding: 2px 8px;
+    border-radius: 9999px;
+  }
+}
+
+.leave-review-cta {
+  background: #FDF2E9;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px dashed #F59E0B;
+
+  .rating-stars-cta {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .gold-star-large {
+    color: #FBBF24;
+    font-size: 1.6rem;
+  }
+
+  .leave-review-link {
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #D97706;
+    text-decoration: none;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #B45309;
+      text-decoration: underline;
+    }
+  }
+
+  .leave-review-subtext {
+    font-size: 0.88rem;
+    color: #78350F;
+    margin: 0;
+    font-weight: 600;
+  }
+}
+
+/* Promo Split Section */
+.promo-split-section {
+  margin-bottom: 40px;
+}
+
+.promo-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.promo-slate-box {
+  background-color: var(--primary);
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+
+  .promo-headline {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 16px;
+  }
+
+  .promo-subheadline {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 32px;
+    font-weight: 500;
+  }
+
+  .promo-btn {
+    align-self: flex-start;
+    background: #FBBF24;
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 800;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(251,191,36,0.3);
+    transition: all 0.2s;
+
+    &:hover {
+      background: #F59E0B;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(245,158,11,0.4);
+    }
+  }
+}
+
+.promo-image-box {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 380px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .tours-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .hero-section {
+    height: 420px;
+    .hero-headline {
+      font-size: 2.2rem;
+    }
+  }
+  .promo-split-grid {
+    grid-template-columns: 1fr;
+  }
+  .promo-slate-box {
+    padding: 40px 24px;
+    .promo-headline {
+      font-size: 1.8rem;
+    }
+  }
+  .promo-image-box {
+    height: 300px;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .tours-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-section {
+    height: 320px;
+    .hero-headline {
+      font-size: 1.6rem;
+    }
+    .hero-overlay {
+      padding-bottom: 24px;
+    }
+  }
+  .intro-section {
+    margin-bottom: 40px;
+    .intro-paragraph {
+      font-size: 1rem;
+    }
+  }
+  .reviews-section {
+    padding: 40px 16px;
+  }
+}

@@ -1,0 +1,104 @@
+{
+    "shop": "696904362f97b639a4d49127",
+    "themeColors": {
+        "primary": "#E31B6C",
+        "secondary": "#F22D07",
+        "tertiary": "#CF0606",
+        "backgroundColor": "#FFF2F9"
+    },
+    "themeViewSettings": [
+        {
+            "type": "headerViews",
+            "value": [
+                "Header 1"
+            ]
+        },
+        {
+            "type": "showcaseViews",
+            "value": [
+                "Showcase 3"
+            ]
+        },
+        {
+            "type": "categoryViews",
+            "value": [
+                "Category 2"
+            ]
+        },
+        {
+            "type": "brandViews",
+            "value": [
+                "Brand 1"
+            ]
+        },
+        {
+            "type": "productViews",
+            "value": [
+                "Tag"
+            ]
+        },
+        {
+            "type": "productCardViews",
+            "value": [
+                "Product Card 1"
+            ]
+        },
+        {
+            "type": "bottomNavViews",
+            "value": [
+                "Bottom Nav 4"
+            ]
+        },
+        {
+            "type": "footerViews",
+            "value": [
+                "Footer 1"
+            ]
+        },
+        {
+            "type": "productDetailsViews",
+            "value": [
+                "ProductDetails 1"
+            ]
+        },
+        {
+            "type": "productsCategoryViews",
+            "value": [
+                "Products Category View 2"
+            ]
+        },
+        {
+            "type": "filterBottomsheetCategoryViews",
+            "value": [
+                "Filter Bottomsheet Category View 1"
+            ]
+        }
+    ],
+    "pageViewSettings": [
+        {
+            "name": "Checkout 2",
+            "type": "checkout",
+            "isLoginRequire": false
+        }
+    ],
+    "searchHints": "lipstick, foundation, face serum, moisturizer, lipstick",
+    "orderLanguage": "en",
+    "productSetting": {
+        "urlType": "website.com/product/test-product",
+        "checkoutType": "easyCheckout",
+        "isEnableDeliveryCharge": true,
+        "isEnableAdvancePayment": true,
+        "productDetailsText": "<p>Test product details text - This will be displayed on product details page</p>"
+    },
+    "analytics": {
+        "tagManagerId": null,
+        "facebookPixelId": "1720511345265467",
+        "IsManageFbPixelByTagManager": false
+    },
+    "currency": {
+        "code": "BDT",
+        "symbol": "৳",
+        "name": "Bangladesh",
+        "countryCode": "880"
+    }
+}

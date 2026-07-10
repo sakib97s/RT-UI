@@ -1,0 +1,373 @@
+@if (isVisible) {
+<!-- Custom Order Modal -->
+<div class="custom-order-overlay">
+  <div class="custom-order-modal">
+    <div class="custom-order-header">
+      <h3>{{ 'submitYourOrder' | translate }}</h3>
+      <button class="close-custom-btn" (click)="closeModal()">×</button>
+    </div>
+
+    <div class="custom-order-content">
+
+
+      <!-- Size Selection -->
+      <!-- @if (product?.customSizeOptions && product.customSizeOptions.length > 0) {
+      <div class="size-selection">
+        <label class="field-label">{{ 'size' | translate }}:</label>
+        <div class="size-buttons">
+          @for (sizeOption of product.customSizeOptions; track sizeOption) {
+          <button
+            type="button"
+            class="size-btn"
+            [class.selected]="selectedCustomSize === sizeOption"
+            (click)="onSelectCustomSize(sizeOption)">
+            {{ sizeOption }}
+          </button>
+          }
+        </div>
+      </div>
+      } -->
+      <div class="product-price-display">
+        <div class="price-label">Total Price:</div>
+        <div class="price-content">
+          @if ((product | productPrice : "discountAmount" : selectedVariationList?._id) > 0) {
+            <div class="price-with-discount">
+              <span class="regular-price">
+                <del>{{ (product | productPrice : "regularPrice" : selectedVariationList?._id) * quantity | currencyCtr }}</del>
+              </span>
+              <span class="sale-price">{{ (product | productPrice : "salePrice" : selectedVariationList?._id) * quantity | currencyCtr }}</span>
+            </div>
+          } @else {
+            <span class="sale-price">{{ (product | productPrice : "salePrice" : selectedVariationList?._id) * quantity | currencyCtr }}</span>
+          }
+        </div>
+      </div>
+
+      <!-- Variation Selection -->
+      @if (product?.variation) {
+      <div class="variation-selection">
+        <label class="field-label">{{ product?.variation }}:</label>
+        <div class="variation-list-area">
+          @for (data of product?.variationOptions; track data) {
+          <div class="color-variant">
+            <button
+              type="button"
+              [class.active]="localSelectedVariation === data"
+              (click)="onSelectVariation(data)">
+              @if (getVariationImage(data)) {
+              <picture>
+                <source [srcset]="getVariationImage(data)" type="image/webp">
+                <img [src]="getVariationImage(data)" alt="{{data}}">
+              </picture>
+              }
+              {{ data }}
+              @if (localSelectedVariation === data) {
+              <span>&#10003;</span>
+              }
+            </button>
+          </div>
+          }
+        </div>
+      </div>
+      }
+
+      @if (product?.variation2) {
+      <div class="variation-selection">
+        <label class="field-label">{{ product?.variation2 }}:</label>
+        <div class="variation-list-area">
+          @for (data of product?.variation2Options; track data) {
+          <div class="color-variant">
+            <button
+              type="button"
+              [class.active]="localSelectedVariation2 === data"
+              (click)="onSelectVariation2(data)">
+              @if (getVariationImage(data)) {
+              <picture>
+                <source [srcset]="getVariationImage(data)" type="image/webp">
+                <img [src]="getVariationImage(data)" alt="{{data}}">
+              </picture>
+              }
+              {{ data }}
+              @if (localSelectedVariation2 === data) {
+              <span>&#10003;</span>
+              }
+            </button>
+          </div>
+          }
+        </div>
+      </div>
+      }
+
+      @if (isAllowedShop1()) {
+        <div class="notice-wrap">
+          <div class="notice-card">
+            <div class="notice-card__bar"></div>
+            <p class="notice-card__text">
+              ⚠সতর্কতা: আপনার Device লোকেশন এবং ip address ট্রেক হয়ে গেছে🌐যদি অন্যের তথ্য(ফোন নম্বর, ঠিকানা) দিয়ে ফেক অর্ডার করে মজা করেন তাহলে আপনার বিরুদ্ধে আইনী ব্যবস্থা নেওয়া হবে‼
+            </p>
+          </div>
+        </div>
+      }
+
+      <!-- Form Fields -->
+      <form [formGroup]="customOrderForm" class="custom-order-form">
+        <!-- Name Field -->
+        <div class="form-field">
+          <label class="field-label">
+            {{ 'name' | translate }} <span class="required-star">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-input"
+            [class.error]="customOrderForm.get('name')?.invalid && customOrderForm.get('name')?.touched"
+            formControlName="name"
+            [placeholder]="'enterYourName' | translate">
+          @if (customOrderForm.get('name')?.invalid && customOrderForm.get('name')?.touched) {
+            <span class="error-message">{{ 'nameIsRequired' | translate }}</span>
+          }
+        </div>
+
+        <!-- Phone Field -->
+        <div class="form-field">
+          <label class="field-label">
+            {{ 'phoneNumber' | translate }} <span class="required-star">*</span>
+          </label>
+          <div class="phone-input-container">
+            <div class="phone-prefix">
+              <img src="https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/BD.svg" alt="BD" class="flag-icon">
+              <span>+88</span>
+            </div>
+            <input
+              type="tel"
+              class="form-input"
+              [class.error]="customOrderForm.get('phoneNo')?.invalid && customOrderForm.get('phoneNo')?.touched"
+              formControlName="phoneNo"
+              placeholder="01xxxxxxxxxx"
+              maxlength="11">
+          </div>
+          @if (customOrderForm.get('phoneNo')?.invalid && customOrderForm.get('phoneNo')?.touched) {
+            <span class="error-message">{{ 'phoneNumberIsRequired' | translate }}</span>
+          }
+          @if (isAllowedShop1()) {
+            <span class="error-message">{{ '১১ ডিজিটের আপনার সঠিক নাম্বার দিবেন📱কারণ (আপনার ফোন নাম্বার এ একটি (OTP)কোড যাবে।'}}</span>
+          }
+        </div>
+
+        <!-- Address Field -->
+        <div class="form-field">
+          <label class="field-label">
+            {{ 'address' | translate }} <span class="required-star">*</span>
+          </label>
+          <textarea
+            class="form-input form-textarea"
+            [class.error]="customOrderForm.get('address')?.invalid && customOrderForm.get('address')?.touched"
+            formControlName="address"
+            [placeholder]="'enterYourFullAddress' | translate"></textarea>
+          @if (customOrderForm.get('address')?.invalid && customOrderForm.get('address')?.touched) {
+            <span class="error-message">{{ 'addressIsRequired' | translate }}</span>
+          }
+        </div>
+
+        <!-- Delivery Area Options -->
+        <div class="form-field">
+          <label class="field-label">{{ 'deliveryArea' | translate }} <span class="required-star">*</span></label>
+
+          @if (deliveryCharge) {
+            <div class="delivery-options-container">
+              <label class="delivery-option">
+                <input
+                  type="radio"
+                  formControlName="deliveryArea"
+                  [value]="deliveryCharge?.city || 'Dhaka'"
+                  (change)="onDeliveryAreaChange()"
+                  class="radio-input"
+                />
+                <div class="radio-content">
+                  <!-- <span class="delivery-option-text">{{ 'inside' | translate }} {{ deliveryCharge?.city || 'Dhaka' }}</span> -->
+                  <span class="delivery-option-text">ঢাকা সিটির ভিতরে</span>
+                  <span class="delivery-option-price">{{ deliveryCharge?.insideCity || 0 }} Tk</span>
+                </div>
+              </label>
+
+              <label class="delivery-option">
+                <input
+                  type="radio"
+                  formControlName="deliveryArea"
+                  value="outside-dhaka"
+                  (change)="onDeliveryAreaChange()"
+                  class="radio-input"
+                />
+                <div class="radio-content">
+                  <!-- <span class="delivery-option-text">{{ 'outside' | translate }} {{ deliveryCharge?.city || 'Dhaka' }}</span> -->
+                  <span class="delivery-option-text">ঢাকা সিটির বাহিরে</span>
+                  <span class="delivery-option-price">{{ deliveryCharge?.outsideCity || 0 }} Tk</span>
+                </div>
+              </label>
+            </div>
+          } @else {
+            <div class="delivery-options-container">
+              <label class="delivery-option">
+                <input
+                  type="radio"
+                  formControlName="deliveryArea"
+                  value="Dhaka"
+                  (change)="onDeliveryAreaChange()"
+                  class="radio-input"
+                />
+                <div class="radio-content">
+                  <span class="delivery-option-text">{{ 'insideDhaka' | translate }}</span>
+                  <span class="delivery-option-price">0 Tk</span>
+                </div>
+              </label>
+
+              <label class="delivery-option">
+                <input
+                  type="radio"
+                  formControlName="deliveryArea"
+                  value="outside-dhaka"
+                  (change)="onDeliveryAreaChange()"
+                  class="radio-input"
+                />
+                <div class="radio-content">
+                  <span class="delivery-option-text">{{ 'outsideDhaka' | translate }}</span>
+                  <span class="delivery-option-price">0 Tk</span>
+                </div>
+              </label>
+            </div>
+          }
+
+          @if (customOrderForm.get('deliveryArea')?.invalid && customOrderForm.get('deliveryArea')?.touched) {
+            <span class="error-message">{{ 'deliveryAreaIsRequired' | translate }}</span>
+          }
+        </div>
+
+        <!-- Order Note -->
+        <!-- @if (isEnableOrderNote) { -->
+        <div class="form-field">
+          <label class="field-label">{{ 'placeHolderNotes' | translate }}</label>
+          <textarea
+            class="form-input form-textarea"
+            formControlName="deliveryNote"
+            placeholder="{{ 'placeHolderNotes' | translate }}"></textarea>
+        </div>
+        <!-- }  -->
+
+        @if (isCustomProduct) {
+        <!-- Image Upload -->
+        <div class="form-field">
+          <label class="field-label">{{ 'image' | translate }}</label>
+          <p class="instruction-text">{{ 'imageInstruction' | translate }}</p>
+          <input
+            type="file"
+            class="file-input"
+            accept="image/*"
+            (change)="onImageSelect($event)"
+            #fileInput>
+        </div>
+    }
+
+        <!-- Coupon Section -->
+        <div style="margin-bottom: 20px;">
+<!--          @if (!isCoupon) {-->
+<!--            <div class="coupon-div">-->
+<!--              <button type="button" class="coupon-btn" (click)="onSelectCouponOpen()">{{ 'haveCoupon' | translate }}</button>-->
+<!--            </div>-->
+<!--          } @else {-->
+            <div class="coupon-item">
+<!--              <div class="coupon-close-div">-->
+<!--                <button type="button" class="coupon-close-btn" (click)="onSelectCouponClose()">×</button>-->
+<!--              </div>-->
+
+              <div class="coupon-input-area">
+                <div class="coupon-input-wrapper">
+                  <input
+                    [readOnly]="coupon"
+                    [(ngModel)]="couponCode"
+                    [ngModelOptions]="{standalone: true}"
+                    type="text"
+                    class="coupon-input-field"
+                    [placeholder]="'haveCouponAnyCodeEnter' | translate"
+                    />
+                </div>
+
+                @if (!coupon) {
+                  <button type="button" class="coupon-apply-btn" (click)="checkCouponAvailability()">{{ 'apply' | translate }}</button>
+                } @else {
+                  <button type="button" class="coupon-remove-btn" (click)="onRemoveCoupon()">{{ 'remove' | translate }}</button>
+                }
+              </div>
+            </div>
+<!--          }-->
+        </div>
+
+        <!-- Product Display -->
+        <div class="product-display-container">
+          <div class="product-image-wrapper">
+            @if (selectedVariationList?.image) {
+              <img [src]="selectedVariationList.image" [alt]="product.name" class="product-img">
+            } @else if (product?.images && product.images.length > 0) {
+              <img [src]="product.images[0]" [alt]="product.name" class="product-img">
+            } @else {
+              <div class="product-placeholder">No Image</div>
+            }
+            <span class="product-quantity-badge">{{ quantity }}</span>
+          </div>
+          <div class="product-info">
+            <div class="product-name">{{ product?.name }}</div>
+            <div class="product-price">{{ ((product | productPrice : "salePrice" : selectedVariationList?._id) * quantity) | currencyCtr }}</div>
+          </div>
+        </div>
+
+        <!-- Order Summary Section -->
+        <div class="order-summary-container">
+          <div class="order-summary">
+            <label class="summary-label">{{ 'subTotal' | translate }}</label>
+            <div class="summary-price">
+              <span class="price-value">{{ ((product | productPrice : "salePrice" : selectedVariationList?._id) * quantity) | currencyCtr }}</span>
+            </div>
+          </div>
+
+          <!-- Coupon Discount -->
+          @if (couponDiscount > 0) {
+            <div class="order-summary">
+              <label class="summary-label">{{ 'couponDiscount' | translate }}</label>
+              <div class="summary-price">
+                <span class="price-value" style="color: #00c153;">- {{ couponDiscount | currencyCtr }}</span>
+              </div>
+            </div>
+          }
+
+          <!-- Delivery Charge -->
+          <div class="order-summary">
+            <label class="summary-label">{{ 'deliveryCharge' | translate }}</label>
+            <div class="summary-price">
+              <span class="price-value">{{ deliveryChargeAmount | currencyCtr }}</span>
+            </div>
+          </div>
+
+          <!-- Grand Total -->
+          <div class="order-summary grand-total">
+            <label class="summary-label">{{ 'total' | translate }}</label>
+            <div class="summary-price">
+              <span class="price-value">{{ ((product | productPrice : "salePrice" : selectedVariationList?._id) * quantity) + deliveryChargeAmount - couponDiscount | currencyCtr }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="submit-order-btn"
+          [disabled]="isSubmittingOrder"
+          (click)="onSubmitCustomOrder($event)">
+          @if (isSubmittingOrder) {
+            {{ 'processing' | translate }}
+          } @else {
+            {{ 'submitOrder' | translate }}
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+}

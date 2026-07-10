@@ -1,0 +1,203 @@
+@import "variables";
+
+.description {
+  position: relative;
+  width: 100%;
+  word-break: break-all !important;
+  
+  p {
+    word-break: break-all;
+    display: block;
+    font-family: $font-en-primary !important;
+  }
+
+  ul, ol {
+    margin: 15px 0 !important;
+    padding-left: 35px !important;
+    
+    li {
+      margin: 8px 0 !important;
+      font-family: $font-en-primary !important;
+      line-height: 1.6 !important;
+      word-break: break-all !important;
+      display: list-item !important;
+    }
+  }
+
+  ul li {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+  }
+
+  ol li {
+    list-style-type: decimal !important;
+    list-style-position: outside !important;
+  }
+  
+  pre {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    font-size: inherit !important;
+    font-family: $font-en-primary !important;
+  }
+}
+
+:host ::ng-deep .description p {
+  word-break: break-all;
+  font-family: $font-en-primary !important;
+}
+
+:host ::ng-deep .description,
+:host ::ng-deep .description *,
+:host ::ng-deep .description .read-more,
+:host ::ng-deep .description .read-more * {
+  ul, ol {
+    margin: 15px 0 !important;
+    padding-left: 35px !important;
+    display: block !important;
+    
+    li {
+      margin: 8px 0 !important;
+      font-family: $font-en-primary !important;
+      line-height: 1.6 !important;
+      word-break: break-all !important;
+      display: list-item !important;
+      list-style-position: outside !important;
+    }
+  }
+
+  ul li {
+    list-style-type: disc !important;
+  }
+
+  ol li {
+    list-style-type: decimal !important;
+  }
+  pre {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    font-size: inherit !important;
+    font-family: $font-en-primary !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .description,
+  :host ::ng-deep .description,
+  :host ::ng-deep .description *,
+  :host ::ng-deep .description .read-more,
+  :host ::ng-deep .description .read-more * {
+    font-size: 15px !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: pre-line !important;
+  }
+  .description ul, 
+  .description ol,
+  :host ::ng-deep .description ul,
+  :host ::ng-deep .description ol {
+    padding-left: 18px !important;
+    margin-left: 0 !important;
+    font-size: 15px !important;
+  }
+  .description li,
+  :host ::ng-deep .description li {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+
+:host ::ng-deep .description .video-container {
+  iframe {
+    width: 100% !important;
+    min-height: 300px !important;
+    padding-block: 15px !important;
+  }
+}
+
+@media (max-width: 599px){
+  :host ::ng-deep .description .video-container {
+    iframe {
+      min-height: 20vw !important;
+
+    }
+  }
+}
+
+.see-more {
+  text-align: center;
+  margin-top: 10px;
+
+  button {
+    background: none;
+    border: none;
+    color: #119744;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 5px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(17, 151, 68, 0.1);
+    }
+  }
+}
+
+.read-more {
+  position: relative;
+  max-height: 600px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+
+  &.expand {
+    max-height: 100%;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  .fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, white);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+}
+
+.read-more-link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  color: blue;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 40px;
+  background-image: linear-gradient(to bottom, transparent, white);
+  cursor: pointer;
+}
+
+.read-more-link.expand {
+  position: relative;
+  background-image: none;
+  padding-top: 10px;
+  height: 20px;
+}

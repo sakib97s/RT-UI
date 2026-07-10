@@ -1,0 +1,112 @@
+<div class="container">
+  @if (products?.length) {
+    <div class="products-header">
+      <div class="flash-title-counter">
+        <h2>{{ tag?.name }}</h2>
+        @if (tag?.startDate) {
+          <app-time-counter [endDate]="tag?.startDate"></app-time-counter>
+        }
+      </div>
+      <div class="more">
+        <a [routerLink]="'/products'" [queryParams]="{ tag: tag?.name }">
+          View All
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="black">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  }
+
+  <div class="products-cards" [class.recent-order]="isEnableHomeRecentOrder">
+
+    @defer (when !isLoading) {
+      @if (products?.length) {
+        @switch (productCardViews) {
+          @case ('Product Card 1') {
+            @for (item of products.slice(0, visibleProducts); track $index) {
+              <app-product-card-1 [isEnableCheckoutOrderModal]="isEnableCheckoutOrderModal" [product]="item"></app-product-card-1>
+            }
+          }
+          @case ('Product Card 2') {
+            @for (item of products.slice(0, visibleProducts); track $index) {
+              <app-product-card-2 [isEnableCheckoutOrderModal]="isEnableCheckoutOrderModal" [product]="item"></app-product-card-2>
+            }
+          }
+          @case ('Product Card 3') {
+            @for (item of products.slice(0, visibleProducts); track $index) {
+              <app-product-card-3 [isEnableCheckoutOrderModal]="isEnableCheckoutOrderModal" [product]="item"></app-product-card-3>
+            }
+          }
+          @case ('Product Card 4') {
+            @for (item of products.slice(0, visibleProducts); track $index) {
+              <app-product-card-4 [isEnableCheckoutOrderModal]="isEnableCheckoutOrderModal" [product]="item"></app-product-card-4>
+            }
+          }
+          @case ('Product Card 5') {
+            @for (item of products.slice(0, visibleProducts); track $index) {
+              <app-product-card-5 [isEnableCheckoutOrderModal]="isEnableCheckoutOrderModal" [product]="item"></app-product-card-5>
+            }
+          }
+        }
+      }
+    } @placeholder (minimum 50ms) {
+      @for (data of [].constructor(10); track $index) {
+        <app-product-card-loader/>
+      }
+    }
+
+  </div>
+
+</div>
+<!--<section class="main-area">-->
+<!--  <section >-->
+<!--    <div class="section-main">-->
+<!--      <div class="image-section">-->
+<!--        <img-->
+<!--          src="https://woodmart.xtemos.com/mega-electronics/wp-content/uploads/sites/9/2022/10/apple-shopping-event-full-img.png.webp"-->
+<!--          alt="Group of Apple devices including MacBook, iPad, iPhone, Mac Mini, Apple Watch, and AirPods"-->
+<!--          loading="lazy"-->
+<!--          width="480"-->
+<!--          height="320"-->
+<!--        />-->
+<!--      </div>-->
+<!--      <div class="content-section">-->
+<!--        <h1>{{ tag?.name }}</h1>-->
+<!--        <p class="description">-->
+<!--          Hurry and get discounts on all Apple devices up to 20%-->
+<!--        </p>-->
+<!--        @if (tag?.startDate) {-->
+<!--          <app-time-counter-one [endDate]="tag?.startDate"></app-time-counter-one>-->
+<!--        }-->
+<!--        <button class="btn-shopping" type="button" [routerLink]="'/products'" [queryParams]="{ tag: tag?.name }">-->
+<!--          Go Shopping <i class="fas fa-chevron-right"></i>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+<!--  <section class="products" aria-label="Apple products">-->
+<!--    @for (item of products.slice(0, visibleProducts); track $index) {-->
+<!--    <article class="product-card">-->
+<!--      <img-->
+<!--        [src]="item?.images[0]"-->
+<!--        alt="Apple MacBook laptop front view with purple wallpaper"-->
+<!--        loading="lazy"-->
+<!--        width="64"-->
+<!--        height="48"-->
+<!--      />-->
+<!--      <div class="product-info">-->
+<!--        <p class="product-name">{{ item?.name }}</p>-->
+<!--        <div class="stars" aria-label="5 star rating">-->
+<!--          <i class="fas fa-star"></i><i class="fas fa-star"></i-->
+<!--        ><i class="fas fa-star"></i><i class="fas fa-star"></i-->
+<!--        ><i class="fas fa-star"></i>-->
+<!--        </div>-->
+<!--        <p class="price">$999.00</p>-->
+<!--      </div>-->
+<!--    </article>-->
+<!--    }-->
+<!--  </section>-->
+<!--</section>-->
+

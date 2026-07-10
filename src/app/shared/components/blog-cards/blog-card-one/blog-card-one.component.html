@@ -1,0 +1,24 @@
+<div class="blog-card" [id]="data?._id">
+  <div class="blog-image" [routerLink]="['/blog-details',data?.slug]">
+    <a>
+      <img checkImageDefault [src]="data?.images && data?.images.length ? data?.images[0] : ''" alt="Slide" />
+    </a>
+  </div>
+  <div class="blog-body">
+    <ul>
+      <li><mat-icon>person</mat-icon>{{data?.authorName}}</li>
+      <li class="view-count"><span><mat-icon>date_range</mat-icon> {{data.createdAt | date}}</span>
+        <span>Total View : {{data?.totalView}}</span>
+      </li>
+    </ul>
+    <div class="blog-title" [routerLink]="['/blog-details',data?.slug]">
+      <a>{{ data?.title }}</a>
+    </div>
+    <div class="blog-des">
+      <p>{{data?.shortDesc}}</p>
+    </div>
+    <div class="read-more">
+      <a [routerLink]="['/blog-details',data?.slug]">Read More </a>
+    </div>
+  </div>
+</div>

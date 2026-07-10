@@ -1,0 +1,136 @@
+@import "variables";
+.main-area{
+  //background: linear-gradient(
+  //    90deg,
+  //    #f5d7d7 0%,
+  //    #e3e8ff 50%,
+  //    #d7e9ff 100%
+  //);
+  color: #1f2937;
+}
+.section-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.image-section {
+  flex: 1 1 400px;
+  max-width: 480px;
+}
+
+.image-section img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.content-section {
+  flex: 1 1 400px;
+  max-width: 480px;
+}
+
+.content-section h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+}
+
+.content-section p.description {
+  font-size: 1.125rem;
+  margin: 0 0 24px 0;
+  color: #374151;
+}
+
+.btn-shopping {
+  background-color: $color-primary;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-shopping:hover {
+  background-color: $color-primary;
+}
+
+.btn-shopping i {
+  font-size: 0.75rem;
+}
+
+.products {
+  max-width: 1200px;
+  margin: 32px auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 0 13px 40px 13px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+}
+
+.product-card img {
+  width: 64px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-name {
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin: 0 0 6px 0;
+  color: #1f2937;
+}
+
+.stars {
+  color: #fbbf24;
+  font-size: 0.875rem;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: $color-primary;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .content-section,
+  .image-section {
+    max-width: 100%;
+    padding: 0 13px;
+  }
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}

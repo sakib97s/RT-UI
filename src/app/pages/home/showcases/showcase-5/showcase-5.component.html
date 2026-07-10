@@ -1,0 +1,69 @@
+<div class="container">
+  @defer (when !isLoading) {
+  @if(!isLoading){<div class="left">
+    <div class="top-categories">
+      <div class="menu-header">
+        <span class="menu-title">Upcoming Campaigns</span>
+      </div>
+
+      <!-- Campaign list -->
+      <ul class="categories-list campaigns">
+        @for (c of upcomingCampaigns; track trackByCampaign($index, c)) {
+        <li class="campaign-card">
+          <div class="campaign-left">
+            <img class="campaign-logo" [src]="c?.logoUrl" [alt]="c?.title"/>
+
+<!--            <img class="campaign-logo"-->
+<!--                 [ngSrc]="(c?.logoUrl  | arrToSingleImage) | imgCtrl : 'filename'"-->
+<!--              [width]="(c?.logoUrl  | arrToSingleImage) | imgCtrl : 'width'"-->
+<!--              [height]="(c?.logoUrl  | arrToSingleImage) | imgCtrl : 'height'"-->
+<!--              [alt]="c?.title"-->
+<!--              [ngSrcset]="rawSrcset"-->
+<!--              sizes="(max-width: 599px) 120px, (min-width: 600px) 120px"-->
+<!--            />-->
+            <div class="campaign-title">{{ c?.title }}</div>
+            <div class="campaign-note">Campaign starts in</div>
+          </div>
+
+          <div class="campaign-countdown" aria-label="Countdown">
+            <div class="cd-row">
+              <div class="cd-pill">
+                <span class="cd-number">{{ c?.dd }}</span><span class="cd-label">d</span>
+              </div>
+              <div class="cd-pill">
+                <span class="cd-number">{{ c?.hh }}</span><span class="cd-label">h</span>
+              </div>
+            </div>
+            <div class="cd-row">
+              <div class="cd-pill">
+                <span class="cd-number">{{ c?.mm }}</span><span class="cd-label">m</span>
+              </div>
+              <div class="cd-pill">
+                <span class="cd-number">{{ c?.ss }}</span><span class="cd-label">s</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  }
+
+  } @placeholder(minimum 50ms) {
+  <app-showcase-three-category-loader></app-showcase-three-category-loader>
+  }
+
+  <div class="right">
+    @defer (when !isLoading) {
+    @if(!isLoading){
+    <app-image-slider [slides]="carousels" class="carousel-component" [showIndicators]="true" [autoPlay]="true"
+      [autoPlayTime]="3000" [showControls]="true" [pauseOnHoverOrTouch]="true">
+    </app-image-slider>
+    }
+    } @placeholder(minimum 50ms) {
+    <app-carousel-loader></app-carousel-loader>
+    }
+  </div>
+</div>

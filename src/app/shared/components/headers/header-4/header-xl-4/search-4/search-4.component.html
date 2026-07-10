@@ -1,0 +1,56 @@
+<div class="search-area" (outsideClick)="handleOutsideClick()" appOutSideClick>
+  <div class="search-field" [class.has-border]="isHeaderWhite()">
+    <div class="search-icon" (click)="onSearchNavigate()">
+      @if (!isLoading) {
+        <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/organization/62d539deb767fec5c06847bd/theme/assets/c57641f8807ddd446a52.svg" 
+             alt="Search" 
+             width="20" 
+             height="20">
+      } @else {
+        <span class="loader"></span>
+      }
+    </div>
+    <form #searchForm="ngForm">
+      <input #searchInput id="searchInput" class="tw" type="text" placeholder="Search"
+             (focus)="handleFocus($event)" (blur)="handleBlur()" name="searchTerm" autocomplete="off" ngModel (keydown.enter)="onSearchNavigate()"/>
+    </form>
+  </div>
+
+  <div class="search-result">
+
+    <ul class="auto-complete-box item-empty" [ngClass]="!searchProducts?.length && isOpen && searchQuery ? 'active1' : ''">
+      <li class="item-empty-message">
+        <p>Sorry! We couldn't find your Product.
+        </p>
+      </li>
+    </ul>
+
+    <ul id="auto-suggestion" class="auto-complete-box item-found"
+        [ngClass]="searchProducts?.length > 0 && isOpen ? 'active' : ''">
+      @for (data of searchProducts; track data._id) {
+        <li class="list-view" (click)="onSelectItem(data)">
+          <div class="search-result-left">
+            <div class="result-product-img">
+              <img class="img-thumb"
+                   [src]="data?.images && data?.images?.length? data?.images[0]: 'https://cdn.saleecom.com/upload/images/placeholder.png'"
+                   alt="image" loading="lazy"/>
+            </div>
+            <div class="desc">
+              <h3>{{ data?.name }}</h3>
+              <p>{{ data?.category?.name }}</p>
+            </div>
+          </div>
+
+          <div class="price">
+            <div class="newPrice">{{ (data | productPrice : "salePrice") | currencyCtr }}</div>
+            @if ((data | productPrice : "discountAmount") > 0) {
+              <div class="oldPrice">{{ ( data | productPrice : "regularPrice") | currencyCtr }}</div>
+            }
+          </div>
+
+        </li>
+      }
+    </ul>
+  </div>
+
+</div>

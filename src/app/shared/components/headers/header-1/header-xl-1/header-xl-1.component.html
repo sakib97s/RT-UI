@@ -1,0 +1,129 @@
+<header class="site-header" role="banner" aria-label="Site Header">
+  <div class="header-inner">
+
+    <!-- ===== LOGO ===== -->
+    <a routerLink="/" class="logo-box" aria-label="Best in Rome Tour - Home" title="Best in Rome Tour">
+      <div class="logo-top-row">
+        <span class="logo-best-in">BEST IN</span>
+        <svg class="logo-colosseum" viewBox="0 0 48 36" fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img" aria-label="Colosseum icon">
+          <title>Colosseum</title>
+          <path d="M4 32V25C4 25 12 18 24 18C36 18 44 25 44 25V32H4Z" fill="#1A305C"/>
+          <path d="M12 19.5C18 19.5 24 16 30 11C36 6 44 6 44 6V25C44 25 36 18 24 18C12 18 12 19.5 12 19.5Z" fill="#1A305C"/>
+          <rect x="4" y="30" width="40" height="2" fill="#D8AB2A"/>
+          <path d="M8 29V25C8 23.9 8.9 23 10 23C11.1 23 12 23.9 12 25V29" stroke="#D8AB2A" stroke-width="2"/>
+          <path d="M16 28V24C16 22.9 16.9 22 18 22C19.1 22 20 22.9 20 24V28" stroke="#D8AB2A" stroke-width="2"/>
+          <path d="M24 27V23C24 21.9 24.9 21 26 21C27.1 21 28 21.9 28 23V27" stroke="#D8AB2A" stroke-width="2"/>
+          <path d="M32 26V22C32 20.9 32.9 20 34 20C35.1 20 36 20.9 36 22V26" stroke="#D8AB2A" stroke-width="2"/>
+          <path d="M40 25V21C40 19.9 40.9 19 42 19C43.1 19 44 19.9 44 21V25" stroke="#D8AB2A" stroke-width="2"/>
+          <path d="M26 15V13C26 12.4 26.4 12 27 12C27.6 12 28 12.4 28 13V15" stroke="#FAF6EE" stroke-width="1.5"/>
+          <path d="M32 14V12C32 11.4 32.4 11 33 11C33.6 11 34 11.4 34 12V14" stroke="#FAF6EE" stroke-width="1.5"/>
+          <path d="M38 12V10C38 9.4 38.4 9 39 9C39.6 9 40 9.4 40 10V12" stroke="#FAF6EE" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <span class="logo-bottom-row">ROME TOUR</span>
+    </a>
+
+    <!-- ===== MOBILE CENTER: Phone ===== -->
+    <a href="tel:+393888955085" class="mobile-phone-center" aria-label="Call us at +39 3888 955085">
+      <i class="fa-solid fa-phone" aria-hidden="true"></i>
+      <span>+39 3888955085</span>
+    </a>
+
+    <!-- ===== DESKTOP NAV ===== -->
+    <nav class="desktop-nav" aria-label="Primary Navigation">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" title="Home">Home</a>
+      <a routerLink="/pages/about-us" routerLinkActive="active" title="About Us">About Us</a>
+      <a routerLink="/products" routerLinkActive="active" title="All Tickets">All Tickets</a>
+      <a routerLink="/pages/services" routerLinkActive="active" title="Services">Services</a>
+      <a routerLink="/pages/faq" routerLinkActive="active" title="FAQ">FAQ</a>
+      <a routerLink="/pages/help" routerLinkActive="active" title="Contact">Contact</a>
+    </nav>
+
+    <!-- ===== DESKTOP ACTIONS ===== -->
+    <div class="desktop-actions" aria-label="Header Actions">
+      <a href="tel:+393888955085" class="desktop-phone" aria-label="Call +39 3888955085">
+        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+        <span>+39 3888955085</span>
+      </a>
+      <a routerLink="/products" class="btn-book-now" title="Book a Tour Now">Book Now</a>
+
+      <!-- Currency Selector -->
+      <div class="currency-dropdown" id="currency-selector">
+        <button class="currency-toggle" (click)="currOpen.set(!currOpen())"
+                [attr.aria-expanded]="currOpen()"
+                aria-controls="currency-menu"
+                aria-label="Select currency">
+          <i class="fa-solid fa-coins" aria-hidden="true"></i>
+          <span>{{currencyService.current().code}}</span>
+          <i class="fa-solid fa-chevron-down chevron" aria-hidden="true"></i>
+        </button>
+        @if (currOpen()) {
+          <ul class="currency-menu" id="currency-menu" role="listbox" aria-label="Currency options">
+            @for (c of currencyService.currencies; track c.code) {
+              <li role="option" [attr.aria-selected]="currencyService.current().code === c.code">
+                <button
+                  (click)="currencyService.setCurrency(c.code); currOpen.set(false)"
+                  [class.active]="currencyService.current().code === c.code">
+                  {{c.symbol}} {{c.code}}
+                </button>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+
+    <!-- ===== HAMBURGER (all sizes < lg) ===== -->
+    <button class="hamburger" id="hamburger-btn"
+            (click)="menuOpen.set(!menuOpen())"
+            [attr.aria-expanded]="menuOpen()"
+            aria-controls="mobile-menu"
+            aria-label="Toggle navigation menu">
+      <span class="hamburger-icon" aria-hidden="true">
+        <i class="fa-solid" [class.fa-bars]="!menuOpen()" [class.fa-xmark]="menuOpen()"></i>
+      </span>
+    </button>
+
+  </div><!-- /.header-inner -->
+
+  <!-- ===== MOBILE DRAWER ===== -->
+  <nav id="mobile-menu" class="mobile-drawer" [class.open]="menuOpen()"
+       aria-label="Mobile Navigation"
+       [attr.aria-hidden]="!menuOpen()">
+    <ul class="mobile-nav-list" role="list">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="menuOpen.set(false)" title="Home">Home</a></li>
+      <li><a routerLink="/pages/about-us" routerLinkActive="active" (click)="menuOpen.set(false)" title="About Us">About Us</a></li>
+      <li><a routerLink="/products" routerLinkActive="active" (click)="menuOpen.set(false)" title="All Tickets">All Tickets</a></li>
+      <li><a routerLink="/pages/services" routerLinkActive="active" (click)="menuOpen.set(false)" title="Services">Services</a></li>
+      <li><a routerLink="/pages/faq" routerLinkActive="active" (click)="menuOpen.set(false)" title="FAQ">FAQ</a></li>
+      <li><a routerLink="/pages/help" routerLinkActive="active" (click)="menuOpen.set(false)" title="Contact">Contact</a></li>
+    </ul>
+
+    <div class="mobile-drawer-footer">
+      <!-- Book Now CTA -->
+      <a routerLink="/products" class="btn-book-now full-width" (click)="menuOpen.set(false)" title="Book a Tour Now">
+        <i class="fa-solid fa-ticket" aria-hidden="true"></i> Book Now
+      </a>
+
+      <!-- Currency Selector -->
+      <div class="mobile-currency-section">
+        <p class="currency-label">Select Currency</p>
+        <div class="currency-pills" role="group" aria-label="Currency selection">
+          @for (c of currencyService.currencies; track c.code) {
+            <button
+              (click)="currencyService.setCurrency(c.code); menuOpen.set(false)"
+              [class.active]="currencyService.current().code === c.code"
+              [attr.aria-pressed]="currencyService.current().code === c.code">
+              {{c.symbol}} {{c.code}}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+

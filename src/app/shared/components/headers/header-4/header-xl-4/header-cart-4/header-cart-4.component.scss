@@ -1,0 +1,44 @@
+@import "common/headers/header-cart";
+
+.cart-dropdown-wrap {
+  z-index: 10002 !important; // Higher than category dropdown (10001) and search area (9999)
+}
+
+::ng-deep.cart-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  
+  img {
+    width: 34px;
+    height: 34px;
+    display: block;
+    object-fit: contain;
+  }
+  
+  svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  span {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    background-color: $color-tertiary !important;
+    color: $color-white !important;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    font-weight: 500;
+    font-size: 11px;
+    text-align: center;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+  }
+}

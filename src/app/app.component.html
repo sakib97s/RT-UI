@@ -1,0 +1,9 @@
+<!-- Showcase Part Multiple Views -->
+
+<app-header-1 [bottomNavViews]="bottomNavViews" [currentUrl]="currentUrl"></app-header-1>
+
+<!-- END Showcase Part View -->
+
+<router-outlet />
+
+<app-footer [showFooter]="showFooter" [currentUrl]="currentUrl" id="footerSection"></app-footer>

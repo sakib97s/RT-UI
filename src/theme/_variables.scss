@@ -1,0 +1,84 @@
+// Fonts Family
+@import "store-shop-variables";
+$font-en-outfit: 'Outfit', sans-serif;
+$font-en-satoshi: 'Satoshi', sans-serif;
+$font-en-primary: $font-en-outfit;
+$font-en-family: "Outfit", sans-serif;
+
+:root {
+  --shop-color-primary: #0F172A;
+  --shop-color-secondary: #3B82F6;
+  --shop-color-tertiary: #ff00ae;
+  --shop-color-bg: #F8FAFC;
+  --shop-color-test: #e8007c;
+  --shop-color-primary-light: color-mix(in srgb, var(--shop-color-primary) 20%, white 80%);
+  --shop-color-primary-light-2: color-mix(in srgb, var(--shop-color-primary) 30%, white 70%);
+  --shop-color-primary-light-3: color-mix(in srgb, var(--shop-color-primary) 10%, white 90%);
+
+  /* RomeVentures Variables */
+  --primary: #0F172A;
+  --primary-light: #1E293B;
+  --accent: #3B82F6;
+  --accent-hover: #2563EB;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --background: #F8FAFC;
+  --surface: #FFFFFF;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --border: #E2E8F0;
+  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+// Base COLORS
+$color-primary: var(--shop-color-primary);
+$color-primary-light: var(--shop-color-primary-light);
+$color-primary-light-2: var(--shop-color-primary-light-2);
+$color-primary-light-3: var(--shop-color-primary-light-3);
+$color-secondary: var(--shop-color-secondary);
+$color-tertiary: var(--shop-color-tertiary);
+$discount-color: #00c153;
+
+// Essential Colors
+$color-success: #018e55;
+$color-accent: #1aa4e0;
+$color-warn: #ff0e4a;
+
+// Names Color
+$color-white: #ffffff;
+$color-black: #000000;
+$color-green: #00c153;
+$color-gray: #948f8fa1;
+$color-gray-dark: #777877;
+$color-orange: #ff4500;
+$color-red: #b00a0a;
+
+//Body Color
+$body-color: var(--shop-color-bg);
+
+//box shadow
+$box-shadow-black: 1px 5px 10px rgba(0, 0, 0, 0.1);
+
+// Container
+$header-height: 93px;
+$header-height-sm: 55px;
+$mobile-nav-header-height: 50px;
+$container-max-width: 1340px;
+
+// Fonts
+$font-title: 34px;
+$font-title-sm: 26px;
+
+$font-sub-title: 26px;
+$font-sub-title-sm: 20px;
+
+$font-title-desc: 16px;
+$font-title-desc-sm: 12px;
+
+$font-readable: 14px;
+$font-readable-sm: 12px;

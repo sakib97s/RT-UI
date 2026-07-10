@@ -1,0 +1,21 @@
+/**
+** Added This Option in angular.json
+"stylePreprocessorOptions": {
+  "includePaths": [
+    "src/theme"
+    ]
+  }
+ */
+
+@import "base";
+@import "material/theme";
+@import "print";
+
+/* Hide header and bottom nav when category sidenav is open */
+// body.hide-app-chrome {
+//   header-2,
+//   app-header-1,
+//   app-header-2,
+//   app-header-3,
+//   app-header-4,
+// }
