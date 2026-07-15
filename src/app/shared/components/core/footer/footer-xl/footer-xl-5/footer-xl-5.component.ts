@@ -5,11 +5,10 @@ import { ShopInformation } from '../../../../../../interfaces/common/shop-inform
 import { ImgCtrlPipe } from '../../../../../pipes/img-ctrl.pipe';
 
 @Component({
-  selector: 'app-footer-xl-5',
-  templateUrl: './footer-xl-5.component.html',
-  styleUrl: './footer-xl-5.component.scss',
-  imports: [RouterLink, NgOptimizedImage, ImgCtrlPipe],
-  standalone: true,
+    selector: 'app-footer-xl-5',
+    templateUrl: './footer-xl-5.component.html',
+    styleUrl: './footer-xl-5.component.scss',
+    imports: [RouterLink, NgOptimizedImage, ImgCtrlPipe]
 })
 export class FooterXl5Component implements OnInit {
   // Decorator

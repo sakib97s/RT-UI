@@ -11,11 +11,10 @@ import { Router, RouterLink } from '@angular/router';
 import { ShopInformation } from '../../../../../../interfaces/common/shop-information.interface';
 declare var FB: any;
 @Component({
-  selector: 'app-footer-xl-2',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './footer-xl-2.component.html',
-  styleUrl: './footer-xl-2.component.scss',
+    selector: 'app-footer-xl-2',
+    imports: [RouterLink],
+    templateUrl: './footer-xl-2.component.html',
+    styleUrl: './footer-xl-2.component.scss'
 })
 export class FooterXl2Component implements OnInit, AfterViewInit {
   // Decorator

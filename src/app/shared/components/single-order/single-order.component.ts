@@ -4,11 +4,10 @@ import {RouterLink} from '@angular/router';
 import {CurrencyCtrPipe} from '../../pipes/currency.pipe';
 
 @Component({
-  selector: 'app-single-order',
-  standalone: true,
-  imports: [CommonModule, RouterLink, CurrencyCtrPipe],
-  templateUrl: './single-order.component.html',
-  styleUrl: './single-order.component.scss',
+    selector: 'app-single-order',
+    imports: [CommonModule, RouterLink, CurrencyCtrPipe],
+    templateUrl: './single-order.component.html',
+    styleUrl: './single-order.component.scss'
 })
 export class SingleOrderComponent implements OnInit {
   @Input() inputData!: any;

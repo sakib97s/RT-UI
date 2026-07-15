@@ -10,11 +10,10 @@ import {Title} from '@angular/platform-browser';
 import {UtilsService} from '../../../../../services/core/utils.service';
 
 @Component({
-  selector: 'app-bottom-navbar-2',
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgClass, ImgCtrlPipe, NgOptimizedImage],
-  templateUrl: './bottom-navbar-2.component.html',
-  styleUrl: './bottom-navbar-2.component.scss',
+    selector: 'app-bottom-navbar-2',
+    imports: [RouterLink, RouterLinkActive, NgClass, ImgCtrlPipe, NgOptimizedImage],
+    templateUrl: './bottom-navbar-2.component.html',
+    styleUrl: './bottom-navbar-2.component.scss'
 })
 export class BottomNavbar2Component {
   // Decorator

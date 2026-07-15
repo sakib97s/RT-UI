@@ -4,11 +4,10 @@ import { ShopInformation } from '../../../../../interfaces/common/shop-informati
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-bottom-navbar',
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgClass],
-  templateUrl: './bottom-navbar.component.html',
-  styleUrl: './bottom-navbar.component.scss',
+    selector: 'app-bottom-navbar',
+    imports: [RouterLink, RouterLinkActive, NgClass],
+    templateUrl: './bottom-navbar.component.html',
+    styleUrl: './bottom-navbar.component.scss'
 })
 export class BottomNavbarComponent {
   // Decorator

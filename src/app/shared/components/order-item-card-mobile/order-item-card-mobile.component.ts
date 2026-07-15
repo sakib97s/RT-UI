@@ -21,17 +21,16 @@ import { PricePipe } from '../../pipes/price.pipe';
 import { ProductPricePipe } from '../../pipes/product-price.pipe';
 
 @Component({
-  selector: 'app-order-item-card-mobile',
-  templateUrl: './order-item-card-mobile.component.html',
-  styleUrl: './order-item-card-mobile.component.scss',
-  imports: [
-    FormsModule,
-    OnlyNumberDirective,
-    CurrencyCtrPipe,
-    ProductPricePipe,
-  ],
-  standalone: true,
-  providers: [PricePipe, DatePipe],
+    selector: 'app-order-item-card-mobile',
+    templateUrl: './order-item-card-mobile.component.html',
+    styleUrl: './order-item-card-mobile.component.scss',
+    imports: [
+        FormsModule,
+        OnlyNumberDirective,
+        CurrencyCtrPipe,
+        ProductPricePipe,
+    ],
+    providers: [PricePipe, DatePipe]
 })
 export class OrderItemCardMobileComponent implements OnInit, OnDestroy {
   // Decorator

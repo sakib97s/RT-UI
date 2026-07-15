@@ -29,22 +29,21 @@ import {EmptyDataComponent} from "../../shared/components/ui/empty-data/empty-da
 import {ImgCtrlPipe} from "../../shared/pipes/img-ctrl.pipe";
 import {CurrencyCtrPipe} from '../../shared/pipes/currency.pipe';
 @Component({
-  selector: 'app-search-page',
-  templateUrl: './search-page.component.html',
-  styleUrl: './search-page.component.scss',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    ProductPricePipe,
-    AutoInputFocusDirective,
-    EmptyDataComponent,
-    ImgCtrlPipe,
-    NgOptimizedImage,
-    TitleCasePipe,
-    RouterLink,
-    CurrencyCtrPipe
-  ]
+    selector: 'app-search-page',
+    templateUrl: './search-page.component.html',
+    styleUrl: './search-page.component.scss',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        ProductPricePipe,
+        AutoInputFocusDirective,
+        EmptyDataComponent,
+        ImgCtrlPipe,
+        NgOptimizedImage,
+        TitleCasePipe,
+        RouterLink,
+        CurrencyCtrPipe
+    ]
 })
 export class SearchPageComponent implements AfterViewInit, OnDestroy,OnInit {
 

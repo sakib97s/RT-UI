@@ -1,12 +1,10 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'app-gallery-image-viewer',
-  standalone: true,
-  imports: [
-  ],
-  templateUrl: './gallery-image-viewer.component.html',
-  styleUrl: './gallery-image-viewer.component.scss'
+    selector: 'app-gallery-image-viewer',
+    imports: [],
+    templateUrl: './gallery-image-viewer.component.html',
+    styleUrl: './gallery-image-viewer.component.scss'
 })
 export class GalleryImageViewerComponent implements OnChanges {
   // Image Zoom & View Area

@@ -5,13 +5,12 @@ import {AdditionalPageService} from "../../services/common/additional-page.servi
 import {SafeHtmlCustomPipe} from "../../shared/pipes/safe-html.pipe";
 
 @Component({
-  selector: 'app-additional-page-view',
-  templateUrl: './additional-page-view.component.html',
-  styleUrl: './additional-page-view.component.scss',
-  standalone: true,
-  imports: [
-    SafeHtmlCustomPipe
-  ]
+    selector: 'app-additional-page-view',
+    templateUrl: './additional-page-view.component.html',
+    styleUrl: './additional-page-view.component.scss',
+    imports: [
+        SafeHtmlCustomPipe
+    ]
 })
 export class AdditionalPageViewComponent implements OnInit, OnDestroy {
 

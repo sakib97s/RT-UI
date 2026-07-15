@@ -11,16 +11,15 @@ import { SwiperComponent } from "../../../shared/components/swiper/swiper.compon
 import { ProductCardLoaderComponent } from "../../../shared/loader/product-card-loader/product-card-loader.component";
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrl: './blog.component.scss',
-  standalone: true,
-  imports: [
-    RouterLink,
-    BlogCardOneComponent,
-    ProductCardLoaderComponent,
-    SwiperComponent
-  ]
+    selector: 'app-blog',
+    templateUrl: './blog.component.html',
+    styleUrl: './blog.component.scss',
+    imports: [
+        RouterLink,
+        BlogCardOneComponent,
+        ProductCardLoaderComponent,
+        SwiperComponent
+    ]
 })
 export class BlogComponent implements OnInit, OnDestroy {
   // Store Data

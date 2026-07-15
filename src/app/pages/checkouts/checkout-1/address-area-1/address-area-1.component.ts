@@ -10,14 +10,13 @@ import { ReloadService } from '../../../../services/core/reload.service';
 import { NgClass, TitleCasePipe } from "@angular/common";
 
 @Component({
-  selector: 'app-address-area-1',
-  templateUrl: './address-area-1.component.html',
-  standalone: true,
-  imports: [
-    NgClass,
-    TitleCasePipe
-  ],
-  styleUrl: './address-area-1.component.scss'
+    selector: 'app-address-area-1',
+    templateUrl: './address-area-1.component.html',
+    imports: [
+        NgClass,
+        TitleCasePipe
+    ],
+    styleUrl: './address-area-1.component.scss'
 })
 export class AddressArea1Component implements OnInit, OnDestroy {
 

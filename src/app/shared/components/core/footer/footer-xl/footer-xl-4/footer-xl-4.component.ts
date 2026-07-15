@@ -14,11 +14,10 @@ import { ShopInformation } from '../../../../../../interfaces/common/shop-inform
 
 declare var FB: any;
 @Component({
-  selector: 'app-footer-xl-4',
-  templateUrl: './footer-xl-4.component.html',
-  styleUrl: './footer-xl-4.component.scss',
-  standalone: true,
-  imports: [RouterLink],
+    selector: 'app-footer-xl-4',
+    templateUrl: './footer-xl-4.component.html',
+    styleUrl: './footer-xl-4.component.scss',
+    imports: [RouterLink]
 })
 export class FooterXl4Component implements OnInit, AfterViewInit {
   // Decorator

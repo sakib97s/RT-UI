@@ -4,13 +4,12 @@ import {Router} from "@angular/router";
 import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-action-snackbar',
-  standalone: true,
-  imports: [
-    MatIcon
-  ],
-  templateUrl: './action-snackbar.component.html',
-  styleUrl: './action-snackbar.component.scss'
+    selector: 'app-action-snackbar',
+    imports: [
+        MatIcon
+    ],
+    templateUrl: './action-snackbar.component.html',
+    styleUrl: './action-snackbar.component.scss'
 })
 export class ActionSnackbarComponent {
 

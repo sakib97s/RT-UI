@@ -1,4 +1,6 @@
-<div class="overlay" *ngIf="categorySlide" (click)="onHideCategory()"></div>
+@if (categorySlide) {
+  <div class="overlay" (click)="onHideCategory()"></div>
+}
 
 <div class="category-slide" [class.category-slide-active]="categorySlide">
   <div class="slide-top">
@@ -9,50 +11,62 @@
   <div class="category-menu">
     <ul>
       <!-- CATEGORY LIST -->
-      <li *ngFor="let cat of categories; trackBy: trackById">
-        <a (click)="onCategoryClick(cat)" [style.border-color]="toggleSub === cat._id ? 'transparent' : ''" [class.active]="toggleSub === cat._id">
-          <span class="icon">
-            <img
-              [ngSrc]="(cat?.images?.length ? cat.images[0] : placeholderImg) | imgCtrl : 'filename'"
-              [width]="(cat?.images?.length ? cat.images[0] : placeholderImg) | imgCtrl : 'width'"
-              [height]="(cat?.images?.length ? cat.images[0] : placeholderImg) | imgCtrl : 'height'"
-              alt="{{ cat?.name || 'category' }}"
-            />
-          </span>
-          <span class="label">{{ cat.name }}</span>
-          <mat-icon>chevron_right</mat-icon>
-        </a>
-
-        <div class="sub-category" *ngIf="toggleSub === cat._id">
-          <ul>
-            <li *ngFor="let sub of subcategoryMap[cat._id]; trackBy: trackById">
-              <a (click)="onSubCategoryClick(cat, sub)" [class.active]="toggleChild === cat._id + '_' + sub._id">
-                <span class="label">{{ sub.name }}</span>
-                <mat-icon>chevron_right</mat-icon>
-              </a>
-
-              <div class="sub-category child-category" *ngIf="toggleChild === cat._id + '_' + sub._id">
+      @for (cat of categories; track trackById($index, cat)) {
+        <li>
+          <a (click)="onCategoryClick(cat)" [style.border-color]="toggleSub === cat._id ? 'transparent' : ''" [class.active]="toggleSub === cat._id">
+            <span class="icon">
+              <img
+                [ngSrc]="(cat?.images?.length ? cat.images[0] : placeholderImg) | imgCtrl : 'filename'"
+                [width]="(cat?.images?.length ? cat.images[0] : placeholderImg) | imgCtrl : 'width'"
+                [height]="(cat?.images?.length ? cat.images[0] : placeholderImg) | imgCtrl : 'height'"
+                alt="{{ cat?.name || 'category' }}"
+                />
+              </span>
+              <span class="label">{{ cat.name }}</span>
+              <mat-icon>chevron_right</mat-icon>
+            </a>
+            @if (toggleSub === cat._id) {
+              <div class="sub-category">
                 <ul>
-                  <li *ngFor="let child of childCategoryMap[sub._id]; trackBy: trackById" (click)="onHideCategory()">
-                    <a [routerLink]="['/products']"
-                       [queryParams]="{categories: cat.slug, subCategories: sub.slug, childCategories: child.slug}">
-                      <span class="label">{{ child.name }}</span>
-                      <mat-icon>chevron_right</mat-icon>
-                    </a>
-                  </li>
+                  @for (sub of subcategoryMap[cat._id]; track trackById($index, sub)) {
+                    <li>
+                      <a (click)="onSubCategoryClick(cat, sub)" [class.active]="toggleChild === cat._id + '_' + sub._id">
+                        <span class="label">{{ sub.name }}</span>
+                        <mat-icon>chevron_right</mat-icon>
+                      </a>
+                      @if (toggleChild === cat._id + '_' + sub._id) {
+                        <div class="sub-category child-category">
+                          <ul>
+                            @for (child of childCategoryMap[sub._id]; track trackById($index, child)) {
+                              <li (click)="onHideCategory()">
+                                <a [routerLink]="['/products']"
+                                  [queryParams]="{categories: cat.slug, subCategories: sub.slug, childCategories: child.slug}">
+                                  <span class="label">{{ child.name }}</span>
+                                  <mat-icon>chevron_right</mat-icon>
+                                </a>
+                              </li>
+                            }
+                          </ul>
+                        </div>
+                      }
+                    </li>
+                  }
                 </ul>
               </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
+            }
+          </li>
+        }
+      </ul>
+    </div>
 
-  <div class="slide-bottom">
-    <p>All Rights Reserved by
-      <a *ngIf="shopInfo?.showBranding === false && shopInfo?.brandingText" [routerLink]="'/'" target="_blank">{{ shopInfo?.brandingText }}</a>
-      <a *ngIf="shopInfo?.showBranding" href="https://www.saleecom.com/" target="_blank">Saleecom</a>
-    </p>
+    <div class="slide-bottom">
+      <p>All Rights Reserved by
+        @if (shopInfo?.showBranding === false && shopInfo?.brandingText) {
+          <a [routerLink]="'/'" target="_blank">{{ shopInfo?.brandingText }}</a>
+        }
+        @if (shopInfo?.showBranding) {
+          <a href="https://www.saleecom.com/" target="_blank">Saleecom</a>
+        }
+      </p>
+    </div>
   </div>
-</div>

@@ -4,11 +4,10 @@ import {RouterLink} from '@angular/router';
 import {isPlatformBrowser} from "@angular/common";
 
 @Component({
-  selector: 'app-empty-data',
-  standalone: true,
-  imports: [LottieComponent, RouterLink],
-  templateUrl: './empty-data.component.html',
-  styleUrl: './empty-data.component.scss',
+    selector: 'app-empty-data',
+    imports: [LottieComponent, RouterLink],
+    templateUrl: './empty-data.component.html',
+    styleUrl: './empty-data.component.scss'
 })
 export class EmptyDataComponent {
 

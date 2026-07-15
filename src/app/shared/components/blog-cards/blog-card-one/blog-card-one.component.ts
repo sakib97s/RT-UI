@@ -6,17 +6,16 @@ import {MatIcon} from "@angular/material/icon";
 import {ImageLoadErrorDirective} from "../../../directives/image-load-error.directive";
 
 @Component({
-  selector: 'app-blog-card-one',
-  templateUrl: './blog-card-one.component.html',
-  styleUrl: './blog-card-one.component.scss',
-  imports: [
-    RouterLink,
-    SafeHtmlCustomPipe,
-    DatePipe,
-    MatIcon,
-    ImageLoadErrorDirective
-  ],
-  standalone: true
+    selector: 'app-blog-card-one',
+    templateUrl: './blog-card-one.component.html',
+    styleUrl: './blog-card-one.component.scss',
+    imports: [
+        RouterLink,
+        SafeHtmlCustomPipe,
+        DatePipe,
+        MatIcon,
+        ImageLoadErrorDirective
+    ]
 })
 export class BlogCardOneComponent {
   @Input() data:any;

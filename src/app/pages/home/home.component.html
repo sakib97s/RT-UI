@@ -11,62 +11,77 @@
   <!-- Intro/Welcome Text Section -->
   <section class="intro-section container text-center">
     <p class="intro-paragraph">
-      At Good Morning Italy, we turn your visit to Rome into an unforgettable journey. Born from the collaboration of experienced travel professionals, our tour operator specializes in ticketing services and skip the line guided tours for the most iconic attractions in Rome, including the Colosseum, Vatican Museums, and St. Peter's Basilica.
+      At Good Morning Italy, we turn your visit to Rome into an unforgettable journey. Born from the collaboration of
+      experienced travel professionals, our tour operator specializes in ticketing services and skip the line guided
+      tours for the most iconic attractions in Rome, including the Colosseum, Vatican Museums, and St. Peter's Basilica.
     </p>
   </section>
 
+  @if (isTagProduct) {
+    @for (tag of tags; track tag._id; let i = $index) {
+      <app-tag-products 
+        [tag]="tag" 
+        [index]="i" 
+        [isEnableCheckoutOrderModal]="isEnableCheckoutOrderModal" 
+        [isEnableHomeRecentOrder]="isEnableHomeRecentOrder">
+      </app-tag-products>
+    }
+  }
+
   <!-- Our Priority Entrance Tours Section -->
   @if (tours.length > 0) {
-    <section class="tours-section container">
-      <div class="section-title-wrapper text-center">
-        <h2 class="section-heading">Our Priority entrance Tours</h2>
-        <p class="section-subheading">Book with us and discover Rome the smart way.</p>
-      </div>
+  <section class="tours-section container">
+    <div class="section-title-wrapper text-center">
+      <h2 class="section-heading">Our Priority entrance Tours</h2>
+      <p class="section-subheading">Book with us and discover Rome the smart way.</p>
+    </div>
 
-      <div class="tours-grid">
-        @for (tour of tours.slice(0, 6); track tour._id) {
-          <div class="tour-card-item" [routerLink]="['/product-details', tour.slug]">
-            <div class="tour-image-box">
-              <img [src]="tour.images && tour.images[0] ? tour.images[0] : (tour.image || 'images/colosseum.png')" [alt]="tour.name" loading="lazy">
-            </div>
-            <div class="tour-details-box">
-              <h3 class="tour-title">{{tour.name}}</h3>
-              <p class="tour-desc">
-                {{ tour.shortDescription || 'Experience the history and beauty of Rome with skip-the-line priority entry and expert guided tour guides.' }}
-              </p>
-              <div class="tour-meta-row">
-                <span class="tour-duration"><i class="fa-regular fa-clock"></i> 3 Hours</span>
-                <span class="tour-price-from">From <strong>{{currencyService.format(tour.salePrice)}}</strong></span>
-              </div>
-            </div>
+    <div class="tours-grid">
+      @for (tour of tours.slice(0, 6); track tour._id) {
+      <div class="tour-card-item" [routerLink]="['/product-details', tour.slug]">
+        <div class="tour-image-box">
+          <img [src]="tour.images && tour.images[0] ? tour.images[0] : (tour.image || 'images/colosseum.png')"
+            [alt]="tour.name" loading="lazy">
+        </div>
+        <div class="tour-details-box">
+          <h3 class="tour-title">{{tour.name}}</h3>
+          <p class="tour-desc">
+            {{ tour.shortDescription || 'Experience the history and beauty of Rome with skip-the-line priority entry and
+            expert guided tour guides.' }}
+          </p>
+          <div class="tour-meta-row">
+            <span class="tour-duration"><i class="fa-regular fa-clock"></i> 3 Hours</span>
+            <span class="tour-price-from">From <strong>{{currencyService.format(tour.salePrice)}}</strong></span>
           </div>
-        }
+        </div>
       </div>
-    </section>
+      }
+    </div>
+  </section>
   }
 
   <!-- Clients Reviews Section -->
   <section class="reviews-section container">
     <h2 class="section-heading text-center">Clients Reviews</h2>
-    
+
     <div class="reviews-list">
       @for (review of reviews; track review.title) {
-        <div class="review-card">
-          <h3 class="review-title">{{review.title}}</h3>
-          <div class="review-rating-row">
-            @for (star of [1,2,3,4,5]; track star) {
-              <i class="fa-solid fa-star gold-star"></i>
-            }
-            <span class="review-date">{{review.date}}</span>
-          </div>
-          <p class="review-text">"{{review.text}}"</p>
-          <div class="review-author-row">
-            <span class="review-author">{{review.author}} from {{review.country}}</span>
-            @if (review.verified) {
-              <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified</span>
-            }
-          </div>
+      <div class="review-card">
+        <h3 class="review-title">{{review.title}}</h3>
+        <div class="review-rating-row">
+          @for (star of [1,2,3,4,5]; track star) {
+          <i class="fa-solid fa-star gold-star"></i>
+          }
+          <span class="review-date">{{review.date}}</span>
         </div>
+        <p class="review-text">"{{review.text}}"</p>
+        <div class="review-author-row">
+          <span class="review-author">{{review.author}} from {{review.country}}</span>
+          @if (review.verified) {
+          <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified</span>
+          }
+        </div>
+      </div>
       }
     </div>
 

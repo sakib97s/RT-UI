@@ -8,14 +8,13 @@ import {isPlatformBrowser, isPlatformServer} from "@angular/common";
 import {BannerLoaderOneComponent} from "../../../../shared/loader/banner-loader-one/banner-loader-one.component";
 
 @Component({
-  selector: 'app-banner-1',
-  standalone: true,
-  imports: [
-    RouterLink,
-    BannerLoaderOneComponent
-  ],
-  templateUrl: './banner-1.component.html',
-  styleUrl: './banner-1.component.scss'
+    selector: 'app-banner-1',
+    imports: [
+        RouterLink,
+        BannerLoaderOneComponent
+    ],
+    templateUrl: './banner-1.component.html',
+    styleUrl: './banner-1.component.scss'
 })
 export class Banner1Component implements OnInit, OnDestroy {
 

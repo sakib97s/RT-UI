@@ -19,17 +19,16 @@ import { ProductPricePipe } from '../../pipes/product-price.pipe';
 import { VariationInfoInlinePipe } from '../../pipes/variation-info-inline.pipe';
 
 @Component({
-  selector: 'app-order-item-card',
-  templateUrl: './order-item-card.component.html',
-  styleUrl: './order-item-card.component.scss',
-  imports: [
-    OnlyNumberDirective,
-    FormsModule,
-    VariationInfoInlinePipe,
-    ProductPricePipe,
-    CurrencyCtrPipe,
-  ],
-  standalone: true,
+    selector: 'app-order-item-card',
+    templateUrl: './order-item-card.component.html',
+    styleUrl: './order-item-card.component.scss',
+    imports: [
+        OnlyNumberDirective,
+        FormsModule,
+        VariationInfoInlinePipe,
+        ProductPricePipe,
+        CurrencyCtrPipe,
+    ]
 })
 export class OrderItemCardComponent implements OnInit, OnDestroy {
   // Decorator

@@ -29,21 +29,20 @@ import { CurrencyService } from "../../services/core/currency.service";
 import { RouterModule } from "@angular/router";
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.scss',
-  standalone: true,
-  imports: [
-    ProductDetailsCategoryLoaderComponent,
-    ProductCard1Component,
-    ProductCardLoaderComponent,
-    EmptyDataComponent,
-    ProductCard2Component,
-    ProductCard3Component,
-    ProductCard4Component,
-    OutSideClickDirective,
-    RouterModule,
-  ],
+    selector: 'app-products',
+    templateUrl: './products.component.html',
+    styleUrl: './products.component.scss',
+    imports: [
+        ProductDetailsCategoryLoaderComponent,
+        ProductCard1Component,
+        ProductCardLoaderComponent,
+        EmptyDataComponent,
+        ProductCard2Component,
+        ProductCard3Component,
+        ProductCard4Component,
+        OutSideClickDirective,
+        RouterModule,
+    ]
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   // Theme Views
@@ -585,7 +584,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   /**
    * LOAD MORE
    */
-  @HostListener('window:scroll', ['$event'])
+  @HostListener('window:scroll')
   onWindowScroll() {
     if (this.shouldUsePagination) {
       return;

@@ -13,13 +13,11 @@ import { DiscountTypeEnum } from "../../../../enum/product.enum";
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-coupons',
-  templateUrl: './coupons.component.html',
-  styleUrl: './coupons.component.scss',
-  providers: [PricePipe],
-  imports: [
-  ],
-  standalone: true
+    selector: 'app-coupons',
+    templateUrl: './coupons.component.html',
+    styleUrl: './coupons.component.scss',
+    providers: [PricePipe],
+    imports: []
 })
 export class CouponsComponent implements OnInit, OnDestroy {
 

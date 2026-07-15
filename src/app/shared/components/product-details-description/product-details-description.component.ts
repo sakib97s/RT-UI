@@ -3,15 +3,14 @@ import {SafeHtmlCustomPipe} from "../../pipes/safe-html.pipe";
 import {NgClass, NgStyle} from "@angular/common";
 
 @Component({
-  selector: 'app-product-details-description',
-  imports: [
-    SafeHtmlCustomPipe,
-    NgStyle,
-    NgClass
-  ],
-  templateUrl: './product-details-description.component.html',
-  styleUrl: './product-details-description.component.scss',
-  standalone: true,
+    selector: 'app-product-details-description',
+    imports: [
+        SafeHtmlCustomPipe,
+        NgStyle,
+        NgClass
+    ],
+    templateUrl: './product-details-description.component.html',
+    styleUrl: './product-details-description.component.scss'
 })
 export class ProductDetailsDescriptionComponent {
   @Input() data: any;

@@ -25,6 +25,10 @@ const baseRoutes: Routes = [
     data: { preloadAfter: ['/'], urlType: 'website.com/product-details/test-product' },
   },
   {
+    path: 'product-details/preview/:token',
+    loadComponent: () => import('./pages/product-details/product-details.component').then(m => m.ProductDetailsComponent),
+  },
+  {
     path: 'products/:slug',
     loadComponent: () => import('./pages/product-details/product-details.component').then(m => m.ProductDetailsComponent),
     data: { preloadAfter: ['/'], urlType: 'website.com/products/test-product' },

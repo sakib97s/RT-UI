@@ -27,23 +27,22 @@ import { FooterXl5Component } from './footer-xl/footer-xl-5/footer-xl-5.componen
 import { SocialChatComponent } from './social-chat/social-chat.component';
 
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-  imports: [
-    BottomNavbarComponent,
-    BottomNavbar2Component,
-    BottomNavbar3Component,
-    SocialChatComponent,
-    FooterXl2Component,
-    FooterXl1Component,
-    FooterXl3Component,
-    FooterXl4Component,
-    // BottomNavbar4Component,
-    FooterXl5Component,
-    BottomNavbar5Component,
-  ],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
+    selector: 'app-footer',
+    imports: [
+        BottomNavbarComponent,
+        BottomNavbar2Component,
+        BottomNavbar3Component,
+        SocialChatComponent,
+        FooterXl2Component,
+        FooterXl1Component,
+        FooterXl3Component,
+        FooterXl4Component,
+        // BottomNavbar4Component,
+        FooterXl5Component,
+        BottomNavbar5Component,
+    ],
+    templateUrl: './footer.component.html',
+    styleUrl: './footer.component.scss'
 })
 export class FooterComponent implements OnInit, OnDestroy {
   // Decorator

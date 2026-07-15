@@ -18,14 +18,13 @@ import { AppConfigService } from "../../../../services/core/app-config.service";
 import { log } from 'console';
 
 @Component({
-  selector: 'app-header-1',
-  standalone: true,
-  imports: [
-    HeaderXl1Component,
-    HeaderSm1Component
-  ],
-  templateUrl: './header-1.component.html',
-  styleUrl: './header-1.component.scss'
+    selector: 'app-header-1',
+    imports: [
+        HeaderXl1Component,
+        HeaderSm1Component
+    ],
+    templateUrl: './header-1.component.html',
+    styleUrl: './header-1.component.scss'
 })
 export class Header1Component implements OnInit, OnDestroy {
 

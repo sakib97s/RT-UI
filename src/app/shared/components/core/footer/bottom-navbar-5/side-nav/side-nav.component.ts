@@ -1,19 +1,16 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {NgForOf, NgIf} from "@angular/common";
+
 import {MatIcon} from "@angular/material/icon";
 
 @Component({
-  selector: 'app-side-nav',
-  templateUrl: './side-nav.component.html',
-  styleUrl: './side-nav.component.scss',
-  imports: [
+    selector: 'app-side-nav',
+    templateUrl: './side-nav.component.html',
+    styleUrl: './side-nav.component.scss',
+    imports: [
     RouterLink,
-    NgForOf,
-    NgIf,
     MatIcon
-  ],
-  standalone: true
+]
 })
 export class SideNavComponent {
   @Input() shopInfo: any;

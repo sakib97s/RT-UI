@@ -8,17 +8,13 @@ import {
   QueryList, Renderer2,
   ViewChild
 } from '@angular/core';
-import {isPlatformBrowser, NgForOf, NgIf} from "@angular/common";
+import { isPlatformBrowser } from "@angular/common";
 
 @Component({
-  selector: 'app-swiper',
-  templateUrl: './swiper.component.html',
-  styleUrl: './swiper.component.scss',
-  imports: [
-    NgForOf,
-    NgIf
-  ],
-  standalone: true
+    selector: 'app-swiper',
+    templateUrl: './swiper.component.html',
+    styleUrl: './swiper.component.scss',
+    imports: []
 })
 
 export class SwiperComponent implements AfterViewInit, OnInit, OnDestroy {

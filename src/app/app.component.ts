@@ -11,9 +11,10 @@ import { GtmPageView } from "./interfaces/core/gtm.interface";
 import { GtmService } from "./services/core/gtm.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    standalone: false
 })
 export class AppComponent implements OnInit, OnDestroy {
   // Theme Settings

@@ -1,4 +1,6 @@
-<div class="overlay" *ngIf="categorySlide" (click)="onHideCategory()"></div>
+@if (categorySlide) {
+  <div class="overlay" (click)="onHideCategory()"></div>
+}
 
 <div class="category-slide" [class.category-slide-active]="categorySlide">
   <div class="slide-top">
@@ -9,44 +11,55 @@
   <div class="category-menu">
     <ul>
       <!-- CATEGORY LIST -->
-      <li *ngFor="let data of categoryMenus">
-        <a (click)="data.subCategories?.length > 0 ? showSub(data._id) : onHideCategory()"
-           [style.border-color]="toggleSub === data._id ? 'transparent' : ''" [routerLink]="['/products']"
-           [queryParams]="{categories: data.slug}">
-          {{ data.name }}
-          <mat-icon *ngIf="data.subCategories?.length > 0">
-            {{ toggleSub === data._id ? 'remove' : 'add' }}
-          </mat-icon>
-        </a>
-
-        <div class="sub-category" *ngIf="toggleSub === data._id">
-          <ul>
-            <li *ngFor="let subData of data.subCategories">
-              <a (click)="subData.childCategories?.length > 0 ? showChild(data._id + '_' + subData._id) : onHideCategory()"
-                 [routerLink]="['/products']"
-                 [queryParams]="{categories: data.slug, subCategories: subData.slug}">
-                {{ subData.name }}
-                <mat-icon *ngIf="subData.childCategories?.length > 0">
-                  {{ toggleChild === data._id + '_' + subData._id ? 'remove' : 'add' }}
-                </mat-icon>
-              </a>
-
-              <div class="sub-category" *ngIf="toggleChild === data._id + '_' + subData._id">
-                <ul>
-                  <li *ngFor="let child of subData.childCategories" (click)="onHideCategory()">
-                    <a [routerLink]="['/products']"
-                       [queryParams]="{categories: data.slug, subCategories: subData.slug, childCategories: child.slug}">
-                      {{ child.name }}
-                      <mat-icon>arrow_forward</mat-icon>
+      @for (data of categoryMenus; track data) {
+        <li>
+          <a (click)="data.subCategories?.length > 0 ? showSub(data._id) : onHideCategory()"
+            [style.border-color]="toggleSub === data._id ? 'transparent' : ''" [routerLink]="['/products']"
+            [queryParams]="{categories: data.slug}">
+            {{ data.name }}
+            @if (data.subCategories?.length > 0) {
+              <mat-icon>
+                {{ toggleSub === data._id ? 'remove' : 'add' }}
+              </mat-icon>
+            }
+          </a>
+          @if (toggleSub === data._id) {
+            <div class="sub-category">
+              <ul>
+                @for (subData of data.subCategories; track subData) {
+                  <li>
+                    <a (click)="subData.childCategories?.length > 0 ? showChild(data._id + '_' + subData._id) : onHideCategory()"
+                      [routerLink]="['/products']"
+                      [queryParams]="{categories: data.slug, subCategories: subData.slug}">
+                      {{ subData.name }}
+                      @if (subData.childCategories?.length > 0) {
+                        <mat-icon>
+                          {{ toggleChild === data._id + '_' + subData._id ? 'remove' : 'add' }}
+                        </mat-icon>
+                      }
                     </a>
+                    @if (toggleChild === data._id + '_' + subData._id) {
+                      <div class="sub-category">
+                        <ul>
+                          @for (child of subData.childCategories; track child) {
+                            <li (click)="onHideCategory()">
+                              <a [routerLink]="['/products']"
+                                [queryParams]="{categories: data.slug, subCategories: subData.slug, childCategories: child.slug}">
+                                {{ child.name }}
+                                <mat-icon>arrow_forward</mat-icon>
+                              </a>
+                            </li>
+                          }
+                        </ul>
+                      </div>
+                    }
                   </li>
-                </ul>
-              </div>
-
-            </li>
-          </ul>
-        </div>
-      </li>
+                }
+              </ul>
+            </div>
+          }
+        </li>
+      }
     </ul>
   </div>
 </div>

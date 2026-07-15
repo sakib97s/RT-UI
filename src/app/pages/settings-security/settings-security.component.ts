@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-settings-security',
-  templateUrl: './settings-security.component.html',
-  styleUrl: './settings-security.component.scss',
-  standalone: true,
-  imports: []
+    selector: 'app-settings-security',
+    templateUrl: './settings-security.component.html',
+    styleUrl: './settings-security.component.scss',
+    imports: []
 })
 export class SettingsSecurityComponent {
 

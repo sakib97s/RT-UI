@@ -16,22 +16,21 @@ import {TranslatePipe} from "../../../../../pipes/translate.pipe";
 import {MatIcon} from "@angular/material/icon";
 
 @Component({
-  selector: 'app-header-cart-1',
-  templateUrl: './header-cart-1.component.html',
-  styleUrl: './header-cart-1.component.scss',
-  imports: [
-    RouterLink,
-    NgClass,
-    ProductPricePipe,
-    VariationInfoInlinePipe,
-    EmptyDataComponent,
-    CurrencyCtrPipe,
-    TranslatePipe,
-    DecimalPipe,
-    MatIcon,
-  ],
-  providers: [ProductPricePipe],
-  standalone: true
+    selector: 'app-header-cart-1',
+    templateUrl: './header-cart-1.component.html',
+    styleUrl: './header-cart-1.component.scss',
+    imports: [
+        RouterLink,
+        NgClass,
+        ProductPricePipe,
+        VariationInfoInlinePipe,
+        EmptyDataComponent,
+        CurrencyCtrPipe,
+        TranslatePipe,
+        DecimalPipe,
+        MatIcon,
+    ],
+    providers: [ProductPricePipe]
 })
 export class HeaderCart1Component implements OnInit, OnDestroy {
 

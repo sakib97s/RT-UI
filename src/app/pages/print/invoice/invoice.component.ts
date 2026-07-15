@@ -10,16 +10,15 @@ import {Invoice} from "../../../interfaces/common/invoice.interface";
 import {CurrencyCtrPipe} from '../../../shared/pipes/currency.pipe';
 
 @Component({
-  selector: 'app-invoice',
-  templateUrl: './invoice.component.html',
-  styleUrl: './invoice.component.scss',
-  standalone: true,
-  imports: [
-    MatIconModule,
-    MatButtonModule,
-    RouterLink,
-    CurrencyCtrPipe,
-  ]
+    selector: 'app-invoice',
+    templateUrl: './invoice.component.html',
+    styleUrl: './invoice.component.scss',
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        RouterLink,
+        CurrencyCtrPipe,
+    ]
 })
 export class InvoiceComponent implements OnInit, OnDestroy {
 

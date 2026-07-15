@@ -1,4 +1,4 @@
-import { DatePipe, NgIf } from "@angular/common";
+import { DatePipe } from "@angular/common";
 import { AfterViewInit, Component, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, ReactiveFormsModule } from "@angular/forms";
 import { MatIcon } from "@angular/material/icon";
@@ -19,11 +19,10 @@ import { SafeHtmlCustomPipe } from "../../shared/pipes/safe-html.pipe";
 import { AllCommentsComponent } from "./all-comments/all-comments.component";
 
 @Component({
-  selector: 'app-blog-details',
-  templateUrl: './blog-details.component.html',
-  styleUrl: './blog-details.component.scss',
-  imports: [
-    NgIf,
+    selector: 'app-blog-details',
+    templateUrl: './blog-details.component.html',
+    styleUrl: './blog-details.component.scss',
+    imports: [
     SafeHtmlCustomPipe,
     DatePipe,
     ImageLoadErrorDirective,
@@ -31,9 +30,8 @@ import { AllCommentsComponent } from "./all-comments/all-comments.component";
     ReactiveFormsModule,
     AllCommentsComponent,
     BlogCardOneComponent,
-    SwiperComponent,
-  ],
-  standalone: true
+    SwiperComponent
+]
 })
 export class BlogDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
 

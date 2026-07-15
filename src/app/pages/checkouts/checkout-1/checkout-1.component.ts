@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild, DOCUMENT } from '@angular/core';
 import { FormGroup, FormsModule, NgForm } from "@angular/forms";
 import { Cart } from "../../../interfaces/common/cart.interface";
 import { User, UserAddress } from "../../../interfaces/common/user.interface";
@@ -9,7 +9,7 @@ import { UiService } from "../../../services/core/ui.service";
 import { ReloadService } from "../../../services/core/reload.service";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { UserDataService } from "../../../services/common/user-data.service";
-import { DOCUMENT } from "@angular/common";
+
 import { CART_MAX_QUANTITY } from '../../../core/utils/app-data';
 import { ProductPricePipe } from '../../../shared/pipes/product-price.pipe';
 import { DeliveryCharge, Setting } from '../../../interfaces/common/setting.interface';
@@ -30,26 +30,25 @@ import { CurrencyCtrPipe } from '../../../shared/pipes/currency.pipe';
 import { CurrencyService } from '../../../services/core/currency.service';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout-1.component.html',
-  styleUrl: './checkout-1.component.scss',
-  providers: [ProductPricePipe],
-  standalone: true,
-  imports: [
-    FormsModule,
-    OrderItemCardComponent,
-    OrderItemCardMobileComponent,
-    OrderLoaderComponent,
-    MatInput,
-    ProductCardLoaderComponent,
-    PaymentCardLoaderComponent,
-    PaymentMethodComponent,
-    CouponsComponent,
-    AddressArea1Component,
-    DeliveryCharge1Component,
-    RouterLink,
-    CurrencyCtrPipe
-  ]
+    selector: 'app-checkout',
+    templateUrl: './checkout-1.component.html',
+    styleUrl: './checkout-1.component.scss',
+    providers: [ProductPricePipe],
+    imports: [
+        FormsModule,
+        OrderItemCardComponent,
+        OrderItemCardMobileComponent,
+        OrderLoaderComponent,
+        MatInput,
+        ProductCardLoaderComponent,
+        PaymentCardLoaderComponent,
+        PaymentMethodComponent,
+        CouponsComponent,
+        AddressArea1Component,
+        DeliveryCharge1Component,
+        RouterLink,
+        CurrencyCtrPipe
+    ]
 })
 export class Checkout1Component implements OnInit, OnDestroy {
 

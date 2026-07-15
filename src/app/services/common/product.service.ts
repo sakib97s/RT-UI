@@ -93,6 +93,12 @@ export class ProductService {
     }>(API_URL + 'get-all-by-shop', filterData, {params});
   }
 
+  getProductByToken(token: string, select?: string) {
+    return this.httpClient.get<{ data: Product; message: string; success: boolean }>(
+      API_PRODUCT + 'preview-by-token/' + token + (select ? '?select=' + select : '')
+    );
+  }
+
   getProductBySlug(slug: string, select?: string) {
     let params = new HttpParams();
     if (select) {

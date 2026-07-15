@@ -18,11 +18,10 @@ import { ProductRatingCardComponent } from '../../../shared/components/product-r
 import { StarRatingViewComponent } from '../../../shared/components/star-rating-view/star-rating-view.component';
 
 @Component({
-  selector: 'app-product-details-reviews',
-  templateUrl: './product-details-reviews.component.html',
-  styleUrl: './product-details-reviews.component.scss',
-  standalone: true,
-  imports: [StarRatingViewComponent, ProductRatingCardComponent, RouterLink],
+    selector: 'app-product-details-reviews',
+    templateUrl: './product-details-reviews.component.html',
+    styleUrl: './product-details-reviews.component.scss',
+    imports: [StarRatingViewComponent, ProductRatingCardComponent, RouterLink]
 })
 export class ProductDetailsReviewsComponent implements OnInit, OnDestroy {
   // Decorator

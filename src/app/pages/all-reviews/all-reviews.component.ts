@@ -9,19 +9,16 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Product} from "../../interfaces/common/product.interface";
 import {ProductService} from "../../services/common/product.service";
 import {GalleryImageViewerComponent} from "../../shared/components/gallery-image-viewer/gallery-image-viewer.component";
-import {DatePipe, NgSwitch, NgSwitchCase} from "@angular/common";
+import { DatePipe } from "@angular/common";
 
 @Component({
-  selector: 'app-all-reviews',
-  templateUrl: './all-reviews.component.html',
-  styleUrl: './all-reviews.component.scss',
-  standalone: true,
-  imports: [
+    selector: 'app-all-reviews',
+    templateUrl: './all-reviews.component.html',
+    styleUrl: './all-reviews.component.scss',
+    imports: [
     GalleryImageViewerComponent,
-    NgSwitch,
-    DatePipe,
-    NgSwitchCase
-  ]
+    DatePipe
+]
 })
 export class AllReviewsComponent implements OnInit, OnDestroy {
 

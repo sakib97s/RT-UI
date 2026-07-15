@@ -9,16 +9,15 @@ import {TrackingHeaderComponent} from "./tracking-header/tracking-header.compone
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-order-tracking',
-  templateUrl: './order-tracking.component.html',
-  styleUrl: './order-tracking.component.scss',
-  standalone: true,
-  imports: [
-    MobileHeaderComponent,
-    TrackingHeaderComponent,
-    RouterLink,
-    KeyValuePipe
-  ]
+    selector: 'app-order-tracking',
+    templateUrl: './order-tracking.component.html',
+    styleUrl: './order-tracking.component.scss',
+    imports: [
+        MobileHeaderComponent,
+        TrackingHeaderComponent,
+        RouterLink,
+        KeyValuePipe
+    ]
 })
 export class OrderTrackingComponent implements OnInit, OnDestroy {
 

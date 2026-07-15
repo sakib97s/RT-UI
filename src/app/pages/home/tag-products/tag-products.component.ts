@@ -15,20 +15,19 @@ import { ProductCard5Component } from "../../../shared/components/product-cards/
 import { ProductCardLoaderComponent } from "../../../shared/loader/product-card-loader/product-card-loader.component";
 
 @Component({
-  selector: 'app-tag-products',
-  templateUrl: './tag-products.component.html',
-  styleUrl: './tag-products.component.scss',
-  standalone: true,
-  imports: [
-    // TimeCounterModule,
-    RouterLink,
-    ProductCard1Component,
-    ProductCard2Component,
-    ProductCardLoaderComponent,
-    ProductCard3Component,
-    ProductCard4Component,
-    ProductCard5Component
-  ]
+    selector: 'app-tag-products',
+    templateUrl: './tag-products.component.html',
+    styleUrl: './tag-products.component.scss',
+    imports: [
+        // TimeCounterModule,
+        RouterLink,
+        ProductCard1Component,
+        ProductCard2Component,
+        ProductCardLoaderComponent,
+        ProductCard3Component,
+        ProductCard4Component,
+        ProductCard5Component
+    ]
 })
 export class TagProductsComponent implements OnInit, OnDestroy {
 

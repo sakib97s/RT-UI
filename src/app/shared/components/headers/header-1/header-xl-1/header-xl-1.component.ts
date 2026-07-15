@@ -1,8 +1,4 @@
-import {
-  CommonModule,
-  isPlatformBrowser,
-  NgOptimizedImage,
-} from '@angular/common';
+import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import {
   Component,
   HostListener,
@@ -30,20 +26,18 @@ import { HeaderCart1Component } from './header-cart-1/header-cart-1.component';
 import { Search1Component } from './search-1/search-1.component';
 
 @Component({
-  selector: 'app-header-xl-1',
-  templateUrl: './header-xl-1.component.html',
-  styleUrls: ['./header-xl-1.component.scss'],
-  imports: [
+    selector: 'app-header-xl-1',
+    templateUrl: './header-xl-1.component.html',
+    styleUrls: ['./header-xl-1.component.scss'],
+    imports: [
     RouterLink,
     RouterModule,
-    CommonModule,
     Search1Component,
     HeaderCart1Component,
     NgOptimizedImage,
-    ImgCtrlPipe,
-  ],
-  providers: [PricePipe],
-  standalone: true,
+    ImgCtrlPipe
+],
+    providers: [PricePipe]
 })
 export class HeaderXl1Component implements OnInit, OnDestroy {
   // Decorator

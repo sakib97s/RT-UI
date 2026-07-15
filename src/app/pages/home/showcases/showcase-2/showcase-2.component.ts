@@ -6,14 +6,13 @@ import {ImageSliderComponent} from '../../../../shared/components/image-slider/i
 import {CarouselComponent} from '../../../../shared/loader/carousel-loader/carousel-loader.component';
 
 @Component({
-  selector: 'app-showcase-2',
-  templateUrl: './showcase-2.component.html',
-  styleUrls: ['./showcase-2.component.scss'],
-  standalone: true,
-  imports: [
-    ImageSliderComponent,
-    CarouselComponent
-  ],
+    selector: 'app-showcase-2',
+    templateUrl: './showcase-2.component.html',
+    styleUrls: ['./showcase-2.component.scss'],
+    imports: [
+        ImageSliderComponent,
+        CarouselComponent
+    ]
 })
 
 export class Showcase2Component implements OnInit, OnDestroy {

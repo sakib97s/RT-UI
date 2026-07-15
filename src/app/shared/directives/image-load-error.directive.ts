@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
   selector: '[checkImageDefault]',
   standalone: true,
   host: {
-    '[src]': 'checkPath(src)',
+    '[attr.src]': 'checkPath(src)',
     '(error)': 'onError()'
   }
 })

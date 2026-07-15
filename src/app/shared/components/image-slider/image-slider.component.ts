@@ -14,15 +14,14 @@ import {FormsModule} from '@angular/forms';
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-image-slider',
-  standalone: true,
-  imports: [
-    NgStyle,
-    FormsModule,
-    RouterLink
-  ],
-  templateUrl: './image-slider.component.html',
-  styleUrls: ['./image-slider.component.scss']
+    selector: 'app-image-slider',
+    imports: [
+        NgStyle,
+        FormsModule,
+        RouterLink
+    ],
+    templateUrl: './image-slider.component.html',
+    styleUrls: ['./image-slider.component.scss']
 })
 export class ImageSliderComponent implements OnInit, OnDestroy {
 

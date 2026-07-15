@@ -7,11 +7,10 @@ import { Subscription } from "rxjs";
 import { isPlatformBrowser } from "@angular/common";
 
 @Component({
-  selector: 'app-pending-review',
-  templateUrl: './pending-review.component.html',
-  styleUrl: './pending-review.component.scss',
-  standalone: true,
-  imports: [RouterModule],
+    selector: 'app-pending-review',
+    templateUrl: './pending-review.component.html',
+    styleUrl: './pending-review.component.scss',
+    imports: [RouterModule]
 })
 export class PendingReviewComponent implements OnInit, OnDestroy {
 

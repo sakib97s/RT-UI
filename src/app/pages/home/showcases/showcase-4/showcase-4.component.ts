@@ -11,16 +11,15 @@ import {
 } from "../../../../shared/loader/showcase-three-category-loader/showcase-three-category-loader.component";
 
 @Component({
-  selector: 'app-showcase-4',
-  templateUrl: './showcase-4.component.html',
-  styleUrl: './showcase-4.component.scss',
-  imports: [
-    RouterLink,
-    ImageSliderComponent,
-    CarouselComponent,
-    ShowcaseThreeCategoryLoaderComponent
-  ],
-  standalone: true
+    selector: 'app-showcase-4',
+    templateUrl: './showcase-4.component.html',
+    styleUrl: './showcase-4.component.scss',
+    imports: [
+        RouterLink,
+        ImageSliderComponent,
+        CarouselComponent,
+        ShowcaseThreeCategoryLoaderComponent
+    ]
 })
 export class Showcase4Component implements OnInit, OnDestroy {
 

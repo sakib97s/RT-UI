@@ -40,23 +40,22 @@ import { CustomOrderModalComponent } from '../../../dialog/custom-order-modal/cu
 import { shouldUseDirectCheckout } from '../../../../core/utils/shop-config';
 
 @Component({
-  selector: 'app-product-card-1',
-  standalone: true,
-  imports: [
-    RouterLink,
-    StarRatingViewComponent,
-    ProductPricePipe,
-    ArrayToSingleImagePipe,
-    ImgCtrlPipe,
-    NgOptimizedImage,
-    CurrencyCtrPipe,
-    TranslatePipe,
-    ReactiveFormsModule,
-    CustomOrderModalComponent,
-  ],
-  templateUrl: './product-card-1.component.html',
-  styleUrl: './product-card-1.component.scss',
-  providers: [PricePipe],
+    selector: 'app-product-card-1',
+    imports: [
+        RouterLink,
+        StarRatingViewComponent,
+        ProductPricePipe,
+        ArrayToSingleImagePipe,
+        ImgCtrlPipe,
+        NgOptimizedImage,
+        CurrencyCtrPipe,
+        TranslatePipe,
+        ReactiveFormsModule,
+        CustomOrderModalComponent,
+    ],
+    templateUrl: './product-card-1.component.html',
+    styleUrl: './product-card-1.component.scss',
+    providers: [PricePipe]
 })
 export class ProductCard1Component implements OnInit, OnDestroy, OnChanges {
   // Decorator

@@ -1,5 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
+
+import { Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output, DOCUMENT } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -18,12 +18,11 @@ import { DiscountTypeEnum } from '../../../enum/product.enum';
 import { AppConfigService } from "../../../services/core/app-config.service";
 
 @Component({
-  selector: 'app-custom-order-modal',
-  templateUrl: './custom-order-modal.component.html',
-  styleUrl: './custom-order-modal.component.scss',
-  standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CurrencyCtrPipe, TranslatePipe, ProductPricePipe],
-  providers: [PricePipe],
+    selector: 'app-custom-order-modal',
+    templateUrl: './custom-order-modal.component.html',
+    styleUrl: './custom-order-modal.component.scss',
+    imports: [ReactiveFormsModule, FormsModule, CurrencyCtrPipe, TranslatePipe, ProductPricePipe],
+    providers: [PricePipe]
 })
 export class CustomOrderModalComponent implements OnInit, OnDestroy {
   @Input() product: Product = null;

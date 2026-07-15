@@ -31,19 +31,18 @@ interface Campaign {
 }
 
 @Component({
-  selector: 'app-showcase-5',
-  standalone: true,
-  imports: [
-    CarouselComponent,
-    ImageSliderComponent,
-    ShowcaseThreeCategoryLoaderComponent,
-    ArrayToSingleImagePipe,
-    ImgCtrlPipe,
-    NgOptimizedImage,
-  ],
-  templateUrl: './showcase-5.component.html',
-  styleUrl: './showcase-5.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-showcase-5',
+    imports: [
+        CarouselComponent,
+        ImageSliderComponent,
+        ShowcaseThreeCategoryLoaderComponent,
+        ArrayToSingleImagePipe,
+        ImgCtrlPipe,
+        NgOptimizedImage,
+    ],
+    templateUrl: './showcase-5.component.html',
+    styleUrl: './showcase-5.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Showcase5Component implements OnInit, OnDestroy {
   upcomingCampaigns: any[] = [];

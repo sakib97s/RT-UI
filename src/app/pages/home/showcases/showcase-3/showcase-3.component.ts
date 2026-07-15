@@ -13,16 +13,15 @@ import {
 import {FilterData} from "../../../../interfaces/core/filter-data";
 
 @Component({
-  selector: 'app-showcase-3',
-  standalone: true,
-  imports: [
-    CarouselComponent,
-    ImageSliderComponent,
-    RouterLink,
-    ShowcaseThreeCategoryLoaderComponent
-  ],
-  templateUrl: './showcase-3.component.html',
-  styleUrl: './showcase-3.component.scss'
+    selector: 'app-showcase-3',
+    imports: [
+        CarouselComponent,
+        ImageSliderComponent,
+        RouterLink,
+        ShowcaseThreeCategoryLoaderComponent
+    ],
+    templateUrl: './showcase-3.component.html',
+    styleUrl: './showcase-3.component.scss'
 })
 export class Showcase3Component implements OnInit, OnDestroy {
 

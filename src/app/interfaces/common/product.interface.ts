@@ -5,6 +5,20 @@ import { Tag } from './tag.interface';
 import { Variation, VariationOption } from './variation.interface';
 
 export interface Product {
+  highlights?: any[];
+  includes?: any[];
+  excludes?: any[];
+  itineraryStops?: any[];
+  timeSlots?: any[];
+  multipleMeetingPoints?: any[];
+  remainingCapacity?: number;
+  languages?: any;
+  extraServices?: any;
+  importantInfo?: any;
+  knowBeforeYouGo?: any;
+  pickupLocations?: any;
+  dropLocations?: any;
+  version?: number;
   _id?: string;
   name: string;
   slug?: string;

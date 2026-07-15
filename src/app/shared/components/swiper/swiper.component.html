@@ -1,11 +1,13 @@
 <div class="slider">
-  <button *ngIf="navigation"
-          class="slider__button slider__button--prev"
-          (click)="slide('prev')"
-          [disabled]="!loop && currentIndex === 0"
-          aria-label="Previous slide">
-    ❮
-  </button>
+  @if (navigation) {
+    <button
+      class="slider__button slider__button--prev"
+      (click)="slide('prev')"
+      [disabled]="!loop && currentIndex === 0"
+      aria-label="Previous slide">
+      ❮
+    </button>
+  }
 
   <div class="slider__container">
     <div
@@ -17,20 +19,25 @@
     </div>
   </div>
 
-  <button *ngIf="navigation"
-          class="slider__button slider__button--next"
-          (click)="slide('next')"
-          [disabled]="!loop && currentIndex >= maxIndex"
-          aria-label="Next slide">
-    ❯
-  </button>
+  @if (navigation) {
+    <button
+      class="slider__button slider__button--next"
+      (click)="slide('next')"
+      [disabled]="!loop && currentIndex >= maxIndex"
+      aria-label="Next slide">
+      ❯
+    </button>
+  }
 
-  <div class="slider__pagination" *ngIf="pagination">
-    <div
-      class="dot"
-      *ngFor="let _ of [].constructor(totalPages); let i = index"
-      [class.dot--active]="i === currentPage"
-      (click)="goToPage(i)">
+  @if (pagination) {
+    <div class="slider__pagination">
+      @for (_ of [].constructor(totalPages); track _; let i = $index) {
+        <div
+          class="dot"
+          [class.dot--active]="i === currentPage"
+          (click)="goToPage(i)">
+        </div>
+      }
     </div>
-  </div>
+  }
 </div>

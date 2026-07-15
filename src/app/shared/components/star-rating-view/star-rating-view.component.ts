@@ -1,11 +1,10 @@
 import {Component, Input, OnChanges} from '@angular/core';
 
 @Component({
-  selector: 'app-star-rating-view',
-  standalone: true,
-  imports: [],
-  templateUrl: './star-rating-view.component.html',
-  styleUrl: './star-rating-view.component.scss'
+    selector: 'app-star-rating-view',
+    imports: [],
+    templateUrl: './star-rating-view.component.html',
+    styleUrl: './star-rating-view.component.scss'
 })
 export class StarRatingViewComponent implements  OnChanges{
   // Decorator

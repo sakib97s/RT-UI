@@ -1,8 +1,4 @@
-import {
-  CommonModule,
-  isPlatformBrowser,
-  NgOptimizedImage,
-} from '@angular/common';
+import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import {
   Component,
   inject,
@@ -20,11 +16,10 @@ import { AppConfigService } from '../../../../../../services/core/app-config.ser
 import { ImgCtrlPipe } from '../../../../../pipes/img-ctrl.pipe';
 
 @Component({
-  selector: 'app-footer-xl-1',
-  standalone: true,
-  imports: [CommonModule, ImgCtrlPipe, NgOptimizedImage, RouterLink],
-  templateUrl: './footer-xl-1.component.html',
-  styleUrl: './footer-xl-1.component.scss',
+    selector: 'app-footer-xl-1',
+    imports: [ImgCtrlPipe, NgOptimizedImage, RouterLink],
+    templateUrl: './footer-xl-1.component.html',
+    styleUrl: './footer-xl-1.component.scss'
 })
 export class FooterXl1Component implements OnInit, OnDestroy {
   // Decorator

@@ -9,16 +9,15 @@ import {EmptyDataComponent} from "../../../shared/components/ui/empty-data/empty
 import {OrderLoaderComponent} from "../../../shared/loader/order-loader/order-loader.component";
 
 @Component({
-  selector: 'app-list-order',
-  templateUrl: './list-order.component.html',
-  standalone: true,
-  imports: [
-    NgClass,
-    SingleOrderComponent,
-    EmptyDataComponent,
-    OrderLoaderComponent
-  ],
-  styleUrl: './list-order.component.scss'
+    selector: 'app-list-order',
+    templateUrl: './list-order.component.html',
+    imports: [
+        NgClass,
+        SingleOrderComponent,
+        EmptyDataComponent,
+        OrderLoaderComponent
+    ],
+    styleUrl: './list-order.component.scss'
 })
 export class ListOrderComponent implements OnInit, OnDestroy {
 

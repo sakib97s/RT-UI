@@ -1,4 +1,4 @@
-import { NgForOf, NgIf, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -13,11 +13,10 @@ import { Subscription } from 'rxjs';
 import { ImgCtrlPipe } from '../../../../../pipes/img-ctrl.pipe';
 
 @Component({
-  selector: 'app-side-nav',
-  templateUrl: './side-nav.component.html',
-  styleUrl: './side-nav.component.scss',
-  imports: [RouterLink, NgForOf, NgIf, MatIcon, NgOptimizedImage, ImgCtrlPipe],
-  standalone: true,
+    selector: 'app-side-nav',
+    templateUrl: './side-nav.component.html',
+    styleUrl: './side-nav.component.scss',
+    imports: [RouterLink, MatIcon, NgOptimizedImage, ImgCtrlPipe]
 })
 export class SideNavComponent implements OnDestroy {
   @Input() shopInfo: any;

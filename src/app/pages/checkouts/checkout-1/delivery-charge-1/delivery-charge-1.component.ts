@@ -6,13 +6,12 @@ import { ReloadService } from '../../../../services/core/reload.service';
 import { PaymentCardLoaderComponent } from "../../../../shared/loader/payment-card-loader/payment-card-loader.component";
 
 @Component({
-  selector: 'app-delivery-charge',
-  templateUrl: './delivery-charge-1.component.html',
-  standalone: true,
-  imports: [
-    PaymentCardLoaderComponent
-  ],
-  styleUrl: './delivery-charge-1.component.scss'
+    selector: 'app-delivery-charge',
+    templateUrl: './delivery-charge-1.component.html',
+    imports: [
+        PaymentCardLoaderComponent
+    ],
+    styleUrl: './delivery-charge-1.component.scss'
 })
 export class DeliveryCharge1Component implements OnInit, OnDestroy {
 

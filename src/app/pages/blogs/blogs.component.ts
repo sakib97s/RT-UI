@@ -11,16 +11,15 @@ import {Pagination} from "../../interfaces/core/pagination";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-blogs',
-  templateUrl: './blogs.component.html',
-  styleUrl: './blogs.component.scss',
-  imports: [
-    BlogCardOneComponent,
-    BlogBannerComponent,
-    MatIcon,
-    FormsModule,
-  ],
-  standalone: true
+    selector: 'app-blogs',
+    templateUrl: './blogs.component.html',
+    styleUrl: './blogs.component.scss',
+    imports: [
+        BlogCardOneComponent,
+        BlogBannerComponent,
+        MatIcon,
+        FormsModule,
+    ]
 })
 export class BlogsComponent implements OnInit {
 //Store Data

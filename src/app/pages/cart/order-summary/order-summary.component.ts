@@ -5,14 +5,13 @@ import {CurrencyCtrPipe} from '../../../shared/pipes/currency.pipe';
 import {TranslatePipe} from "../../../shared/pipes/translate.pipe";
 
 @Component({
-  selector: 'app-order-summary',
-  templateUrl: './order-summary.component.html',
-  standalone: true,
-  imports: [
-    CurrencyCtrPipe,
-    TranslatePipe
-  ],
-  styleUrl: './order-summary.component.scss'
+    selector: 'app-order-summary',
+    templateUrl: './order-summary.component.html',
+    imports: [
+        CurrencyCtrPipe,
+        TranslatePipe
+    ],
+    styleUrl: './order-summary.component.scss'
 })
 export class OrderSummaryComponent {
 

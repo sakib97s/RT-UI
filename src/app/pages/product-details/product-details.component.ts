@@ -1,4 +1,4 @@
-import {isPlatformBrowser, NgClass, NgIf, NgFor, NgStyle, NgTemplateOutlet} from '@angular/common';
+import { isPlatformBrowser, NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {Component, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild, ElementRef, signal, computed} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
@@ -33,18 +33,26 @@ import {ShopInformationService} from '../../services/common/shop-information.ser
 import {ShopInformation} from '../../interfaces/common/shop-information.interface';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss',
-  standalone: true,
-  imports: [
-    NgClass, NgIf, NgFor, NgStyle, NgTemplateOutlet,
-    FormsModule, ReactiveFormsModule, RouterLink,
-    StarRatingViewComponent, ProductDetailsDescriptionComponent,
-    ProductDetailsReviewsComponent, ProductDetailsLoaderComponent,
-    CurrencyCtrPipe, TranslatePipe, PricePipe, ProductPricePipe
-  ],
-  providers: [PricePipe, ProductPricePipe]
+    selector: 'app-product-details',
+    templateUrl: './product-details.component.html',
+    styleUrl: './product-details.component.scss',
+    imports: [
+    NgClass,
+    NgStyle,
+    NgTemplateOutlet,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterLink,
+    StarRatingViewComponent,
+    ProductDetailsDescriptionComponent,
+    ProductDetailsReviewsComponent,
+    ProductDetailsLoaderComponent,
+    CurrencyCtrPipe,
+    TranslatePipe,
+    PricePipe,
+    ProductPricePipe
+],
+    providers: [PricePipe, ProductPricePipe]
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   @ViewChild('zoomViewer') zoomViewer: ElementRef;
@@ -124,22 +132,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly pricePipe = inject(PricePipe);
   public readonly currencyService = inject(CurrencyService);
-
-  private subscriptions: Subscription[] = [];
-
-  ngOnInit() {
-    this.getSettingData();
-    this.getShopInfo();
-    this.activateRoute.paramMap.subscribe((param) => {
-      this.slug = param.get('slug');
-      if (this.slug) {
-        this.getProductBySlug();
-      }
-    });
-
-    // Wishlist Sync
-    const sub = this.wishlistService.refreshStoredWishList$.subscribe(() => {
-      this.wishlists = this.wishlistService.wishlistItems;
       this.checkWishlist();
     });
     this.subscriptions.push(sub);
@@ -160,6 +152,33 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.error(err);
+      }
+    });
+    this.subscriptions.push(sub);
+  }
+
+
+  private getProductByToken(token: string) {
+    this.isLoading = true;
+    const sub = this.productService.getProductByToken(token).subscribe({
+      next: (res) => {
+        this.product = res.data;
+        if (this.product) {
+          this.image = this.product.images[0];
+          this.selectedImage = this.product.images[0];
+          if (this.product.isVariation) {
+            this.setDefaultVariation();
+          }
+          this.loadReviewData();
+          if (isPlatformBrowser(this.platformId)) {
+            this.updateMetaData();
+          }
+        }
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error(err);
+        this.isLoading = false;
       }
     });
     this.subscriptions.push(sub);

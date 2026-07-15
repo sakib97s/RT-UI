@@ -7,17 +7,16 @@ import { OrderLoaderComponent } from "../../shared/loader/order-loader/order-loa
 import { ListOrderComponent } from "./list-order/list-order.component";
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrl: './order-list.component.scss',
-  standalone: true,
-  imports: [
-    SingleOrderComponent,
-    SidebarComponent,
-    MobileHeaderComponent,
-    EmptyDataComponent,
-    OrderLoaderComponent,
-    ListOrderComponent
-  ]
+    selector: 'app-order-list',
+    templateUrl: './order-list.component.html',
+    styleUrl: './order-list.component.scss',
+    imports: [
+        SingleOrderComponent,
+        SidebarComponent,
+        MobileHeaderComponent,
+        EmptyDataComponent,
+        OrderLoaderComponent,
+        ListOrderComponent
+    ]
 })
 export class OrderListComponent { }

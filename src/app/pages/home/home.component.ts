@@ -42,14 +42,13 @@ import { Blog } from '../../interfaces/common/blog.interface';
 import { Product } from '../../interfaces/common/product.interface';
 import { BlogService } from '../../services/common/blog.service';
 import { CurrencyService } from '../../services/core/currency.service';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  standalone: true,
   imports: [
     Showcase2Component,
     Banner1Component,
@@ -61,9 +60,9 @@ import { RouterModule } from '@angular/router';
     Showcase4Component,
     FooterXl5Component,
     Showcase5Component,
-    CommonModule,
     RouterModule,
-  ],
+    TagProductsComponent
+  ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   @Input() index: number = 0;
@@ -191,7 +190,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.getAllSeoPage();
     this.getSetting();
-//    this.getPromoOffers();
+    //    this.getPromoOffers();
 
     this.breakpointObserver
       .observe([Breakpoints.Handset])

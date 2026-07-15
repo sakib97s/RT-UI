@@ -3,24 +3,22 @@ import {RouterLink} from "@angular/router";
 import {Cart} from '../../../../../interfaces/common/cart.interface';
 import {NavigationService} from '../../../../../services/core/navigation.service';
 import {ImgCtrlPipe} from '../../../../pipes/img-ctrl.pipe';
-import {CommonModule, NgClass, NgIf, NgOptimizedImage} from '@angular/common';
+import { CommonModule, NgClass, NgOptimizedImage } from '@angular/common';
 import {AppConfigService} from '../../../../../services/core/app-config.service';
 import {SideNavComponent} from "./side-nav/side-nav.component";
 
 @Component({
-  selector: 'app-header-sm-1',
-  standalone: true,
-  imports: [
+    selector: 'app-header-sm-1',
+    imports: [
     RouterLink,
     ImgCtrlPipe,
     NgOptimizedImage,
-    NgIf,
     CommonModule,
     NgClass,
     SideNavComponent
-  ],
-  templateUrl: './header-sm-1.component.html',
-  styleUrl: './header-sm-1.component.scss'
+],
+    templateUrl: './header-sm-1.component.html',
+    styleUrl: './header-sm-1.component.scss'
 })
 export class HeaderSm1Component {
   @ViewChild('sideNav') sideNav!: SideNavComponent;

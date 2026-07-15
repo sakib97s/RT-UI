@@ -5,14 +5,13 @@ import {Review} from '../../../interfaces/common/review.interface';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-product-rating-card',
-  standalone: true,
-  imports: [
-    DatePipe,
-    StarRatingViewComponent
-  ],
-  templateUrl: './product-rating-card.component.html',
-  styleUrl: './product-rating-card.component.scss'
+    selector: 'app-product-rating-card',
+    imports: [
+        DatePipe,
+        StarRatingViewComponent
+    ],
+    templateUrl: './product-rating-card.component.html',
+    styleUrl: './product-rating-card.component.scss'
 })
 export class ProductRatingCardComponent {
 

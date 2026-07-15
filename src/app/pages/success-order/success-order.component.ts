@@ -12,15 +12,14 @@ import {ReloadService} from "../../services/core/reload.service";
 import {SettingService} from "../../services/common/setting.service";
 
 @Component({
-  selector: 'app-success-order',
-  templateUrl: './success-order.component.html',
-  styleUrls: ['./success-order.component.scss'],
-  standalone: true,
-  imports: [
-    RouterModule,
-    UpperCasePipe,
-    TranslatePipe,
-  ]
+    selector: 'app-success-order',
+    templateUrl: './success-order.component.html',
+    styleUrls: ['./success-order.component.scss'],
+    imports: [
+        RouterModule,
+        UpperCasePipe,
+        TranslatePipe,
+    ]
 })
 export class SuccessOrderComponent implements OnInit, OnDestroy {
 

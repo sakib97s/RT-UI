@@ -32,18 +32,17 @@ import { ProductPricePipe } from '../../../../../pipes/product-price.pipe';
 import { AppConfigService } from '../../../../../../services/core/app-config.service';
 
 @Component({
-  selector: 'app-search-1',
-  templateUrl: './search-1.component.html',
-  styleUrl: './search-1.component.scss',
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    NgClass,
-    OutSideClickDirective,
-    ProductPricePipe,
-    CurrencyCtrPipe,
-  ],
-  standalone: true,
+    selector: 'app-search-1',
+    templateUrl: './search-1.component.html',
+    styleUrl: './search-1.component.scss',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        OutSideClickDirective,
+        ProductPricePipe,
+        CurrencyCtrPipe,
+    ]
 })
 export class Search1Component implements OnInit, AfterViewInit, OnDestroy {
   // Decorator

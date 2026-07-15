@@ -7,16 +7,15 @@ import { Category } from "../../../../../interfaces/common/category.interface";
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-bottom-navbar-5',
-  standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    NgClass,
-    SideNavComponent
-  ],
-  templateUrl: './bottom-navbar-5.component.html',
-  styleUrl: './bottom-navbar-5.component.scss'
+    selector: 'app-bottom-navbar-5',
+    imports: [
+        RouterLink,
+        RouterLinkActive,
+        NgClass,
+        SideNavComponent
+    ],
+    templateUrl: './bottom-navbar-5.component.html',
+    styleUrl: './bottom-navbar-5.component.scss'
 })
 export class BottomNavbar5Component implements OnInit, OnDestroy {
   ngOnInit(): void {

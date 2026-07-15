@@ -7,26 +7,23 @@ import {Product} from "../../../interfaces/common/product.interface";
 import {FilterData} from "../../../interfaces/core/filter-data";
 import {LightgalleryModule} from "lightgallery/angular";
 import {ImageLoadErrorDirective} from "../../../shared/directives/image-load-error.directive";
-import {DatePipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import { DatePipe, NgOptimizedImage } from "@angular/common";
 import {CommentService} from "../../../services/common/comment.service";
 import {ShopInformationService} from "../../../services/common/shop-information.service";
 import {ShopInformation} from "../../../interfaces/common/shop-information.interface";
 import {ImgCtrlPipe} from "../../../shared/pipes/img-ctrl.pipe";
 
 @Component({
-  selector: 'app-all-comments',
-  templateUrl: './all-comments.component.html',
-  styleUrls: ['./all-comments.component.scss'],
-  standalone: true,
-  imports: [
+    selector: 'app-all-comments',
+    templateUrl: './all-comments.component.html',
+    styleUrls: ['./all-comments.component.scss'],
+    imports: [
     LightgalleryModule,
     ImageLoadErrorDirective,
-    NgForOf,
-    NgIf,
     DatePipe,
     ImgCtrlPipe,
     NgOptimizedImage
-  ]
+]
 })
 export class AllCommentsComponent implements OnInit, OnDestroy {
 

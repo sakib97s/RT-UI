@@ -22,17 +22,16 @@ import { MAX_IMAGE_UPLOAD } from "../../core/utils/app-data";
 import { SidebarComponent } from "../../shared/components/sidebar/sidebar.component";
 
 @Component({
-  selector: 'app-add-review',
-  templateUrl: './add-review.component.html',
-  styleUrl: './add-review.component.scss',
-  standalone: true,
-  imports: [
-    NgxDropzoneModule,
-    ReactiveFormsModule,
-    MatCard,
-    DatePipe,
-    SidebarComponent
-  ]
+    selector: 'app-add-review',
+    templateUrl: './add-review.component.html',
+    styleUrl: './add-review.component.scss',
+    imports: [
+        NgxDropzoneModule,
+        ReactiveFormsModule,
+        MatCard,
+        DatePipe,
+        SidebarComponent
+    ]
 })
 export class AddReviewComponent implements OnInit, OnDestroy {
 

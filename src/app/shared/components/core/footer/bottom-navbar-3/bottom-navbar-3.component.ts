@@ -17,11 +17,10 @@ import { AppConfigService } from '../../../../../services/core/app-config.servic
 import { NavigationService } from '../../../../../services/core/navigation.service';
 
 @Component({
-  selector: 'app-bottom-navbar-3',
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgClass],
-  templateUrl: './bottom-navbar-3.component.html',
-  styleUrl: './bottom-navbar-3.component.scss'
+    selector: 'app-bottom-navbar-3',
+    imports: [RouterLink, RouterLinkActive, NgClass],
+    templateUrl: './bottom-navbar-3.component.html',
+    styleUrl: './bottom-navbar-3.component.scss'
 })
 export class BottomNavbar3Component {
   // Decorator

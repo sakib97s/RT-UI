@@ -22,21 +22,20 @@ import { SafeHtmlCustomPipe } from '../../../../shared/pipes/safe-html.pipe';
 import { UiService } from "../../../../services/core/ui.service";
 
 @Component({
-  selector: 'app-payment-method',
-  templateUrl: './payment-method.component.html',
-  styleUrl: './payment-method.component.scss',
-  imports: [
-    PaymentCardLoaderComponent,
-    TranslatePipe,
-    MatError,
-    MatFormField,
-    MatInput,
-    MatLabel,
-    ReactiveFormsModule,
-    TranslatePipe,
-    SafeHtmlCustomPipe
-  ],
-  standalone: true
+    selector: 'app-payment-method',
+    templateUrl: './payment-method.component.html',
+    styleUrl: './payment-method.component.scss',
+    imports: [
+        PaymentCardLoaderComponent,
+        TranslatePipe,
+        MatError,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        ReactiveFormsModule,
+        TranslatePipe,
+        SafeHtmlCustomPipe
+    ]
 })
 export class PaymentMethodComponent implements OnInit, OnChanges, OnDestroy {
 
