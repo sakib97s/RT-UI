@@ -1,10 +1,10 @@
-@import 'variables';
+@use 'variables' as *;
+@use "sass:color";
 
 .container{
   margin-top: $header-height-sm;
   background-color: $color-white;
 }
-
 .search-content{
   display: block;
   width: 100%;
@@ -13,7 +13,6 @@
   height: 0;
   background-color: $color-white;
 }
-
 .header-fixed {
   position: fixed;
   top: 0;
@@ -23,14 +22,12 @@
   left: 0;
   background: var(--header-bg, $color-white);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  color: var(--header-text, lighten($color-black, 10%));
+  color: var(--header-text, color.adjust($color-black, $lightness: 10%));
 }
-
 .homepage-only-height {
   display: inline-block;
   height: 62px;
 }
-
 .logo {
   text-align: center;
   display: flex;
@@ -56,7 +53,6 @@
     color: var(--header-text, $color-primary);
   }
 }
-
 .search-header{
   display: flex;
   align-items: center;
@@ -67,7 +63,6 @@
   background-color: var(--header-bg, $color-white);
   cursor: pointer;
   padding: 10px 0;
-
   svg {
     width: 24px;
     fill: var(--header-text, $color-primary);
@@ -78,7 +73,6 @@
   form{
     width: 100%;
   }
-
   .search-field{
     display: flex;
     border: 1px solid var(--header-text, $color-primary);
@@ -87,7 +81,6 @@
     height: 40px;
     background-color: $color-white;
     border-radius: 5px;
-    
     &.has-border {
       border: 1px solid #000;
     }
@@ -100,7 +93,7 @@
       font-family: $font-en-primary;
       font-weight: 500;
       font-size: calc($font-readable-sm + 2px)!important;
-      // color: var(--header-text, lighten($color-black, 10%));
+      // color: var(--header-text, color.adjust($color-black, $lightness: 10%));
     }
     .close{
       cursor: pointer;
@@ -115,7 +108,6 @@
       fill: currentColor;
     }
   }
-
   .search-btn{
       display: block;
       margin-right: 4px;
@@ -128,25 +120,22 @@
       color: $color-white;
       font-weight: 500;
       border: none;
-
     svg{
       fill: $color-white;
     }
   }
 }
-
 .search-products{
   padding-bottom: 100px;
   display: block;
   position: relative;
-
   .product-cards{
     margin-top: 65px;
     .card{
       padding: 8px;
       background-color: $color-white;
       display: flex;
-      border-bottom: 1px solid lighten($color-gray, 20%);
+      border-bottom: 1px solid color.adjust($color-gray, $lightness: 20%);
       position: relative;
       cursor: pointer;
       .card-img{
@@ -154,7 +143,7 @@
         width: 60px;
         min-width: 60px;
         border-radius: 8px;
-        background-color: lighten($color-gray, 20%);
+        background-color: color.adjust($color-gray, $lightness: 20%);
         position: relative;
         img{
           height: 100%;
@@ -179,7 +168,6 @@
           font-weight: 400;
           font-size: calc($font-readable - 2px);
           margin-bottom: 8px;
-
         }
         .price{
           font-family: $font-en-primary;
@@ -196,14 +184,13 @@
             margin-left: 3px;
             border-radius: 2px;
             color: $discount-color;
-            background: lighten($discount-color, 56%);
+            background: color.adjust($discount-color, $lightness: 56%);
           }
         }
       }
     }
   }
 }
-
 .no-data{
   display: flex;
   justify-content: center;
@@ -212,7 +199,7 @@
   width: 100%;
   height: 80vh;
   font-size: 18px;
-  color: darken($color-white, 50%);
+  color: color.adjust($color-white, $lightness: -50%);
   svg{
    margin-bottom: 15px;
     fill: $color-primary;
@@ -229,20 +216,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   img {
     width: 36px;
     height: 36px;
     object-fit: contain;
     transition: opacity 0.2s ease;
   }
-
   &:hover {
     img {
       opacity: 0.7;
     }
   }
-
   span {
     position: absolute;
     right: -1px;
@@ -261,7 +245,6 @@
     justify-content: center;
   }
 }
-
 .logo.hidden {
   height: 0!important;
   overflow: hidden!important;
@@ -273,7 +256,6 @@
   .search-header{
     padding: 8px;
   }
-
   input{
     background-color: $color-white;
   }

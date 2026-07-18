@@ -7,9 +7,9 @@
   }
  */
 
-@import "base";
-@import "material/theme";
-@import "print";
+@use 'base' as *;
+@use 'material/theme' as *;
+@use 'print' as *;
 
 /* Hide header and bottom nav when category sidenav is open */
 // body.hide-app-chrome {

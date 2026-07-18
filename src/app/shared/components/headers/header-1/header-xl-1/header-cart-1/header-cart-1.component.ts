@@ -27,7 +27,6 @@ import {MatIcon} from "@angular/material/icon";
         EmptyDataComponent,
         CurrencyCtrPipe,
         TranslatePipe,
-        DecimalPipe,
         MatIcon,
     ],
     providers: [ProductPricePipe]

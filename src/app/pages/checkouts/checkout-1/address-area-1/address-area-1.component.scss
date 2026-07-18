@@ -1,4 +1,5 @@
-@import 'variables';
+@use 'variables' as *;
+@use "sass:color";
 
 .container{
   width: 100%;
@@ -15,7 +16,6 @@
 .hide-add-btn{
   display: none!important;
 }
-
 .shipping-main-area {
   display: block;
   max-width: 1200px;
@@ -26,12 +26,10 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
-
 .shipping-top-area {
   display: block;
   margin-bottom: 25px;
 }
-
 .shipping-top-area .title {
   display: flex;
   align-items: center;
@@ -39,11 +37,10 @@
   height: auto;
   margin-bottom: 20px;
   padding-bottom: 16px;
-  border-bottom: 1px solid darken($color-white, 10%);
+  border-bottom: 1px solid color.adjust($color-white, $lightness: -10%);
   gap: 10px;
   width: 100%;
 }
-
 .title {
   h3 {
     color: $color-black;
@@ -53,7 +50,6 @@
     font-style: normal;
     display: block;
   }
-
   button {
     display: block;
     max-width: 150px;
@@ -70,18 +66,16 @@
     border-radius: 5px;
   }
 }
-
 .add-address-btn {
   display: block;
   width: 100%;
-
   button {
     background-color: $color-white;
     border: 1px solid #cecece;
     max-width: 400px;
     width: 100%;
     outline: none;
-    color: lighten($color-black, 25%);
+    color: color.adjust($color-black, $lightness: 25%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,12 +88,11 @@
     box-sizing: border-box;
     border-radius: 5px;
     margin: auto;
-
     span {
       width: 26px;
       height: 26px;
-      border: 1px solid lighten($color-black, 25%);
-      color: lighten($color-black, 25%);
+      border: 1px solid color.adjust($color-black, $lightness: 25%);
+      color: color.adjust($color-black, $lightness: 25%);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -107,7 +100,6 @@
     }
   }
 }
-
 .shipping-address-main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -115,12 +107,11 @@
   grid-gap: 20px;
   margin-bottom: 20px;
 }
-
 .shipping-info {
   padding: 10px;
   box-sizing: border-box;
   box-shadow: 0 3px 8px 0 rgb(0 0 0 / 6%);
-  border: 2px solid darken($color-white,10%);
+  border: 2px solid color.adjust($color-white, $lightness: -10%);
   cursor: pointer;
   transition: all 0.3s linear;
   position: relative;
@@ -128,7 +119,6 @@
   display: block;
   background-color: $color-white;
 }
-
 .button-area{
   position: absolute;
   top:10px;
@@ -137,7 +127,6 @@
   opacity: 0;
   transition: all 0.3s linear;
   z-index: 6;
-
   ul{
     list-style: none;
     padding: 0;
@@ -147,9 +136,7 @@
     justify-content: flex-end;
     max-width: 120px;
     gap: 10px;
-
     li {
-
       button {
         cursor: pointer;
         outline: none;
@@ -162,7 +149,6 @@
         height: 30px;
         border-radius: 50%;
       }
-
       svg {
         width: 20px;
         height: 20px;
@@ -172,30 +158,24 @@
         color: $color-primary;
         background-color: orangered;
       }
-
       .svg2 {
         color: $color-primary;
         background-color: rgb(0, 203, 112);
-
       }}
     }
 }
-
 .shipping-info.active-address{
-
   .button-area{
     visibility: visible;
     opacity: 1;
   }
 }
 .shipping-info:hover{
-
   .button-area{
     visibility: visible;
     opacity: 1;
   }
 }
-
 .shipping-place {
   display: flex;
   align-items: center;
@@ -204,15 +184,13 @@
   width: 100%;
   margin-bottom: 5px;
 }
-
 .shipping-place-left {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
-
   span {
-    background-color: lighten($color-black, 25%);
+    background-color: color.adjust($color-black, $lightness: 25%);
     color: #fff;
     font-family: $font-en-primary;
     font-weight: 500;
@@ -223,7 +201,6 @@
     box-sizing: border-box;
     border-radius: 5px;
   }
-
   h3 {
     color: $color-black;
     font-family: $font-en-primary;
@@ -233,25 +210,21 @@
     display: flex;
     align-items: center;
     gap: 10px;
-
     i {
       color: $color-black;
       font-size: 22px;
     }
-
     svg{
       height: 20px;
       width: 20px;
     }
   }
 }
-
 .name-area {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 5px;
-
   h3 {
     color: $color-black;
     font-family: $font-en-primary;
@@ -266,7 +239,6 @@
     height: 20px;
   }
 }
-
 .address {
   display: block;
 }
@@ -275,14 +247,11 @@
     list-style: none;
     padding: 0;
     margin: 0;
-
     li {
-
       display: flex;
       gap: 5px;
       align-items: center;
       justify-content: flex-start;
-
       h3 {
         color: $color-black;
         font-family: $font-en-primary;
@@ -292,7 +261,6 @@
         display: block;
         line-height: 24px;
       }
-
       span{
         align-items: center;
         justify-content: center;
@@ -301,7 +269,6 @@
           padding-top: 6px;
         }
       }
-
       .address-svg{
         max-width: 20px;
         width: 100%;
@@ -310,25 +277,20 @@
     }
   }
 }
-
 .location-arrow-svg{
   width: 20px;
   height: 20px;
 }
-
 .active-address {
   border-color: $color-secondary;
   background-color: $color-secondary;
   filter: brightness(60%);
-
   .shipping-place-left {
     h3 {
       color: $color-black;
-
       i {
         color: $color-black;
       }
-
       span {
         display: flex;
         background-color: #fff;
@@ -336,14 +298,12 @@
     }
   }
 }
-
 @media (max-width: 997px) {
   .shipping-address-main {
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 20px;
   }
 }
-
 @media (max-width: 500px) {
   .address {
     ul {
@@ -357,26 +317,21 @@
     h3 {
       font-size: 15px;
       line-height: 22px;
-
       span {
         font-size: 13px;
         padding: 4px 10px;
       }
     }
   }
-
   .shipping-place-left {
     h3 {
       font-size: 18px;
     }
   }
-
 }
-
 .cart-btn-right {
   display: block;
   height: auto;
-
   button {
     background-color: $color-primary;
     color: #fff;
@@ -392,14 +347,12 @@
     display: block;
     border-radius: 5px;
     transition: all 0.3s linear;
-
     &:hover {
       color: $color-primary;
       background-color: #fff;
     }
   }
 }
-
 @media (max-width: 450px) {
   .cart-btn-info {
     flex-direction: column;
@@ -409,12 +362,10 @@
     margin-bottom: 10px;
   }
 }
-
 /* --- material style --- */
 ::ng-deep.cdk-overlay-container {
   z-index: 100010;
 }
-
 .user-address-update {
   border: 2px dashed rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -432,34 +383,30 @@
     font-family: $font-en-primary;
     font-size: 20px;
     font-weight: 500;
-    color: lighten($color-black, 25%);
+    color: color.adjust($color-black, $lightness: 25%);
     padding-top: 4px;
     cursor: pointer;
   }
-
   p {
     font-family: $font-en-primary;
     font-size: 10px;
     font-weight: 400;
-    color: lighten($color-black, 25%);
+    color: color.adjust($color-black, $lightness: 25%);
     text-align: center;
     padding-top: 4px;
     cursor: pointer;
   }
-
   i {
     font-size: 23px !important;
-    color: lighten($color-black, 25%);
+    color: color.adjust($color-black, $lightness: 25%);
     cursor: pointer;
     font-weight: 500;
   }
-
   svg{
-    color: lighten($color-black, 25%);
+    color: color.adjust($color-black, $lightness: 25%);
     cursor: pointer;
     font-weight: 900 !important;
   }
-
   &:hover {
     transition: all 0.3s ease;
     border-color: #2ab887;
@@ -469,7 +416,6 @@
     }
   }
 }
-
 @media(max-width:600px){
   .shipping-address-main{
     display: flex;
@@ -483,12 +429,11 @@
       padding: 5px 8px;
     }
   }
-
   .title{
     padding-bottom: 10px!important;
     margin-bottom: 12px!important;
     h3{
-      color: darken($color-white, 93%)!important;
+      color: color.adjust($color-white, $lightness: -93%)!important;
       font-size: 4.26667vw!important;
       font-weight: 700!important;
       line-height: 4.8vw!important;
@@ -506,7 +451,6 @@
     h2{
       font-size: 18px;
     }
-
     p {
       font-size: 12px;
     }
@@ -519,19 +463,16 @@
     margin-top: 15px;
   }
 }
-
 ::ng-deep.mat-mdc-form-field-infix{
       display: flex;
       gap: 10px;
       align-items: center;
       margin: 0 auto;
     }
-
 .disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .modal {
   display: flex;
   justify-content: center;
@@ -544,12 +485,10 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
   transition: opacity 0.3s ease;
-
   &.fade {
     opacity: 0;
   }
 }
-
 .modal-content {
   background-color: $color-white;
   padding: 20px;
@@ -558,7 +497,6 @@
   position: relative;
   width: 400px;
   animation: fadeIn 0.3s;
-
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -569,52 +507,44 @@
       transform: translateY(0);
     }
   }
-
   h2 {
     margin-bottom: 15px;
     color: #333;
   }
-
   label {
     font-weight: bold;
     margin-bottom: 8px;
     display: block;
     color: #555;
   }
-
   textarea {
     width: 100%;
-    border: 1px solid lighten($color-black, 25%)-light;
+    border: 1px solid color.adjust($color-black, $lightness: 25%)-light;
     border-radius: 4px;
     padding: 10px;
     resize: none;
     font-size: $font-readable;
     color: #333;
     outline: none;
-
     &:focus {
       border-color: $color-primary;
     }
   }
-
   .close {
     cursor: pointer;
     position: absolute;
     top: 10px;
     right: 15px;
-
     svg{
       height: 20px;
       width: 20px;
     }
   }
 }
-
 .delete-address-container {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-
   .delete-address {
     border: none;
     outline: none;
@@ -624,13 +554,10 @@
     border-radius: 5px;
     color: $color-white;
   }
-
   .delete-address.yes {
     background-color: $color-success;
   }
-
   .delete-address.no {
     background-color: $color-warn;
   }
-
 }

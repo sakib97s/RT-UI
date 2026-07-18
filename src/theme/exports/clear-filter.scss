@@ -1,4 +1,5 @@
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
 
 .title-area{
   display: flex;
@@ -18,11 +19,9 @@
     }
   }
 }
-
-
 @media (max-width: 599px) {
   .filter-container h2 {
-    color: darken($color-white, 93%)!important;
+    color: color.adjust($color-white, $lightness: -93%)!important;
     font-size: 4.26667vw!important;
     font-weight: 700!important;
     line-height: 4.8vw!important;

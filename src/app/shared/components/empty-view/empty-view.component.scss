@@ -1,4 +1,5 @@
-@import "variables";
+@use 'variables' as *;
+
 .empty-cart {
     text-align: center;
     background-color: $color-white;
@@ -16,7 +17,6 @@ img{
     width: 340px;
     margin-left: auto;
 }
-
 h1 {
     font-size: 40px;
     font-weight: 500;
@@ -24,16 +24,13 @@ h1 {
     margin-bottom: 40px;
     margin-top: 40px;
 }
-
 .highlight {
     color: $color-primary;
 }
-
 p {
     font-size: 18px;
     color: #777;
 }
-
 .return-button {
     display: inline-block;
     padding: 20px 80px;
@@ -48,11 +45,9 @@ p {
     transition: background-color 0.3s;
     margin-top: 20px;
 }
-
 .return-button:hover {
     background-color: #4b2cc5 ;
 }
-
 @media (max-width: 600px) {
     img{
         height: 300px;
@@ -62,16 +57,13 @@ p {
     .empty-cart {
         padding: 20px;
     }
-
     h1 {
         font-size: 32px;
         margin-top: 20px;
     }
-
     p {
         font-size: 14px;
     }
-
     .return-button {
         padding: 20px 30px;
         font-size: 16px;

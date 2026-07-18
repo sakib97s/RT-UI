@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 .container  {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -8,29 +8,24 @@
   margin: 16px auto;
   padding: 16px;
 }
-
 .title {
   text-align: center;
   font-size: 1.2rem;
 }
-
 .content {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 10px;
   margin-top: 10px;
-
   .item {
     background: #EA1044;
     padding: 10px 16px;
     border-radius: 5px;
-
     p {
       color: $color-white;
       font-size: 0.9rem;
       font-weight: bold;
     }
-
   }
 }

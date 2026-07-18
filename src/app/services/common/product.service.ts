@@ -95,7 +95,7 @@ export class ProductService {
 
   getProductByToken(token: string, select?: string) {
     return this.httpClient.get<{ data: Product; message: string; success: boolean }>(
-      API_PRODUCT + 'preview-by-token/' + token + (select ? '?select=' + select : '')
+      API_URL + 'preview-by-token/' + token + (select ? '?select=' + select : '')
     );
   }
 

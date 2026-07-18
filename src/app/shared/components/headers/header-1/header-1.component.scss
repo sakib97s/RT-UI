@@ -1,4 +1,5 @@
-@import "variables";
+@use 'variables' as *;
+
 app-header-xl-1 {
   display: block;
 }

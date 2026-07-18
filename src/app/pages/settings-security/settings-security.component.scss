@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as *;
 
 .alert-box {
   margin-top: 30px;
@@ -12,18 +12,15 @@
   border-radius: 5px;
   color: #a94442;
   position: relative;
-
   .alert-icon {
     font-size: 24px;
     margin-right: 10px;
   }
-
   .alert-text {
     flex: 1;
     font-size: 16px;
     color: #a94442;
   }
-
   .pay-now-btn {
     background-color: #d9534f;
     color: $color-white;
@@ -34,25 +31,21 @@
     font-size: 16px;
     transition: background-color 0.3s ease;
   }
-
   .pay-now-btn:hover {
     background-color: #c9302c;
   }
 }
-
 /* Tabs Styling */
 h3 {
   font-size: 50px;
   font-weight: 700;
   margin: 30px 0;
 }
-
 .tabs {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #dcdcdc;
   margin-bottom: 20px;
-
   .tab {
     padding: 10px 20px;
     cursor: pointer;
@@ -62,7 +55,6 @@ h3 {
     border: 1px solid transparent;
     border-bottom: none;
   }
-
   .tab.active {
     font-weight: bold;
     color: #000;
@@ -83,7 +75,6 @@ h3 {
   align-items: center;
   border-bottom: 1px solid #dcdcdc;
   margin-bottom: 20px;
-
   .tab {
     padding: 10px 20px;
     cursor: pointer;
@@ -93,7 +84,6 @@ h3 {
     border: 1px solid transparent;
     border-bottom: none;
   }
-
   .tab.active {
     font-weight: bold;
     color: #000;
@@ -103,11 +93,9 @@ h3 {
     background-color: $color-white;
   }
 }
-
 /* Content Styling */
 .section1 {
   margin-bottom: 40px;
-
   h2 {
     font-size: 20px;
     color: #333;
@@ -137,20 +125,17 @@ h3 {
       cursor: pointer;
       transition: 0.3s;
     }
-
     .add-btn:hover {
       transition: 0.3s;
       background-color: #0056b3;
       color: $color-white;
     }
   }
-
   .ssh-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
-
   .ssh-table th,
   .ssh-table td {
     padding: 10px;
@@ -158,7 +143,6 @@ h3 {
     text-align: left;
     width: 50%;
   }
-
   .ssh-table th {
     background-color: #f5f5f5;
   }
@@ -190,14 +174,12 @@ hr {
       cursor: pointer;
       transition: 0.3s;
     }
-
     .add-btn:hover {
       transition: 0.3s;
       background-color: #0056b3;
       color: $color-white;
     }
   }
-
   .alert {
     padding: 15px;
     background-color: #f1f5ff;
@@ -207,13 +189,11 @@ hr {
     display: flex;
     align-items: center;
   }
-
   .alert-icon {
     margin-right: 10px;
     font-size: 20px;
   }
 }
-
 @media only screen and (max-width: 599px) {
   .alert-box {
     flex-direction: column;
@@ -229,7 +209,6 @@ hr {
       }
     }
   }
-
   .section2 {
     .text-section {
       flex-direction: column;

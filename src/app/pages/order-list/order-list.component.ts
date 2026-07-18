@@ -11,11 +11,7 @@ import { ListOrderComponent } from "./list-order/list-order.component";
     templateUrl: './order-list.component.html',
     styleUrl: './order-list.component.scss',
     imports: [
-        SingleOrderComponent,
         SidebarComponent,
-        MobileHeaderComponent,
-        EmptyDataComponent,
-        OrderLoaderComponent,
         ListOrderComponent
     ]
 })

@@ -1,24 +1,21 @@
-@import "common/headers/header-sm";
+@use 'common/headers/header-sm' as *;
+@use "variables" as *;
 
 // Fix overflow issue for search dropdown
 header.header-fixed {
   overflow: visible !important;
-  
   > div {
     overflow: visible !important;
-    
     > div {
       overflow: visible !important;
     }
   }
 }
-
 ::ng-deep {
   header.header-fixed .container {
     overflow: visible !important;
   }
 }
-
 .welcome-login {
   display: flex;
   align-items: center;
@@ -30,11 +27,9 @@ header.header-fixed {
   flex-shrink: 0;
   margin-right: 8px;
   transition: border-color 0.2s ease;
-  
   &:hover {
     border-color: #ccc;
   }
-  
   .profile-icon-circle {
     width: 28px;
     height: 28px;
@@ -45,18 +40,15 @@ header.header-fixed {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    
     svg {
       width: 18px;
       height: 18px;
     }
   }
-  
   .welcome-text-wrapper {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    
     .welcome-text {
       margin: 0;
       font-size: 10px;
@@ -65,7 +57,6 @@ header.header-fixed {
       line-height: 1.3;
       font-weight: 400;
     }
-    
     .login-link {
       display: flex;
       align-items: center;
@@ -75,7 +66,6 @@ header.header-fixed {
       font-weight: 500;
       font-family: $font-en-primary;
       line-height: 1.3;
-      
       svg {
         width: 10px;
         height: 10px;
@@ -84,7 +74,6 @@ header.header-fixed {
     }
   }
 }
-
 .profile-icon-only {
   display: flex;
   align-items: center;
@@ -92,7 +81,6 @@ header.header-fixed {
   text-decoration: none;
   flex-shrink: 0;
   margin-right: 8px;
-  
   .profile-icon-circle {
     width: 28px;
     height: 28px;
@@ -104,19 +92,16 @@ header.header-fixed {
     justify-content: center;
     flex-shrink: 0;
     transition: all 0.2s ease;
-    
     &:hover {
       background-color: #f8bbd0;
       border-color: #c2185b;
     }
-    
     svg {
       width: 18px;
       height: 18px;
     }
   }
 }
-
 .header-main {
   .header-main-left {
     display: flex;
@@ -127,13 +112,11 @@ header.header-fixed {
   position: relative;
   padding: 10px 0;
   width: 100%;
-  
   .action-icons {
     display: flex;
     align-items: center;
     gap: 12px;
     flex-shrink: 0;
-    
     .search-icon-btn {
       display: flex;
       align-items: center;
@@ -143,23 +126,19 @@ header.header-fixed {
       cursor: pointer;
       padding: 5px;
       transition: opacity 0.3s ease;
-      
       &.hidden {
         display: none !important;
       }
-      
       img {
         width: 28px;
         height: 28px;
         object-fit: contain;
       }
-      
       &:hover {
         opacity: 0.7;
       }
     }
   }
-  
   .cart {
     position: relative;
     display: flex;
@@ -170,13 +149,11 @@ header.header-fixed {
     padding: 5px;
     text-decoration: none;
     color: var(--header-text, $color-primary);
-    
     img {
       width: 28px;
       height: 28px;
       object-fit: contain;
     }
-    
     span {
       position: absolute;
       top: 0;
@@ -205,21 +182,17 @@ header.header-fixed {
   margin: 0px 0 10px 0;
   position: relative;
   z-index: 9999 !important;
-  
-  
   ::ng-deep {
     .search-area {
       width: 100%;
       position: relative !important;
       z-index: 9999 !important;
-      
       .search-field {
         width: 100%;
         margin: 0;
         position: relative;
         z-index: 10000 !important;
       }
-      
       .search-result {
         position: absolute !important;
         top: 45px !important;
@@ -231,14 +204,12 @@ header.header-fixed {
         overflow-y: auto;
         box-sizing: border-box;
       }
-      
       .auto-complete-box {
         width: 100% !important;
         max-height: 60vh !important;
         overflow-y: auto;
         position: relative !important;
         z-index: 9999 !important;
-        
         &.item-found {
           &.active {
             display: block !important;
@@ -248,7 +219,6 @@ header.header-fixed {
             z-index: 9999 !important;
           }
         }
-        
         &.item-empty {
           &.active1 {
             display: block !important;
@@ -262,7 +232,6 @@ header.header-fixed {
     }
   }
 }
-
 .logo {
   display: flex;
   align-items: center;

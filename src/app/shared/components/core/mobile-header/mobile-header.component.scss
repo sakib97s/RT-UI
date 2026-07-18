@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 .nav-bar {
   width: 100%;
@@ -14,7 +14,6 @@
   background: $color-white;
   border-bottom: 1px solid #efefef;
   gap: 10px;
-
   .back-btn {
     display: flex;
     align-items: center;
@@ -23,25 +22,20 @@
     height: 40px;
     border-radius: 100%;
     margin-left: 2px;
-
     svg {
       width: 18px;
       height: 18px;
     }
   }
-
   p {
     margin-left: -4px;
   }
 }
-
 .nav-bar {
   display: none;
 }
-
 @media only screen and (max-width: 599px) {
   .nav-bar {
     display: flex;
   }
 }
-

@@ -1,13 +1,11 @@
-@import "variables";
+@use 'variables' as *;
 
 .cards-section {
   margin-bottom: 20px;
 }
-
 .list-order {
   width: 100%;
   margin-bottom: 30px;
-
   .btn-sec {
     display: flex;
     gap: 10px;
@@ -17,7 +15,6 @@
     z-index: 100;
     padding-block: 11px;
   }
-
   .button {
     padding: 10px 20px;
     border-radius: 20px;
@@ -25,7 +22,6 @@
     transition: all 0.5s ease;
     cursor: pointer;
   }
-
   .button.active {
     border: 1px solid $color-primary;
     background: $color-primary;
@@ -33,15 +29,12 @@
     transition: all 0.4s ease;
   }
 }
-
 .list-loader-parent {
   margin-top: 30px;
 }
-
 .empty-data {
   margin: 30px;
 }
-
 @media (max-width: 900px){
   .btn-sec-parent {
     overflow-x: scroll;
@@ -55,7 +48,6 @@
     }
   }
 }
-
 @media only screen and (max-width: 599px) {
   .list-loader-parent {
     margin-top: 15px;
@@ -69,14 +61,12 @@
   .container{
     margin-top: 15px;
   }
-
   .list-order {
     .btn-sec {
       justify-content: space-between;
       padding-inline: 19px;
       max-width: 348px;
     }
-
     .button {
       padding: 5px 10px;
       border-radius: 20px;

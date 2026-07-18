@@ -17,7 +17,7 @@ import { ImgCtrlPipe } from '../../../../../pipes/img-ctrl.pipe';
 
 @Component({
     selector: 'app-footer-xl-1',
-    imports: [ImgCtrlPipe, NgOptimizedImage, RouterLink],
+    imports: [  RouterLink],
     templateUrl: './footer-xl-1.component.html',
     styleUrl: './footer-xl-1.component.scss'
 })

@@ -1,16 +1,14 @@
-@import "variables";
+@use 'variables' as *;
 
 .tooltip {
   position: relative;
   display: inline-block;
   cursor: pointer;
-
   &:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
   }
 }
-
 .tooltiptext {
   visibility: hidden;
   min-width:83px;
@@ -27,7 +25,6 @@
   transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-
   /* Tooltip arrow */
   &::after {
     content: "";

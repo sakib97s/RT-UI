@@ -50,16 +50,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   imports: [
-    Showcase2Component,
-    Banner1Component,
-    FooterXl2Component,
-    FooterXl1Component,
-    FooterXl3Component,
-    BlogComponent,
-    FooterXl4Component,
-    Showcase4Component,
-    FooterXl5Component,
-    Showcase5Component,
     RouterModule,
     TagProductsComponent
   ]

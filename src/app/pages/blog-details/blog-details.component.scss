@@ -1,4 +1,5 @@
-@import'variables';
+@use 'variables' as *;
+
 $font-en-calibri: "Calibri", sans-serif;
 .slider-container {
   width: 100%;
@@ -7,13 +8,11 @@ $font-en-calibri: "Calibri", sans-serif;
   margin: 0 auto;
   //padding: 0 15px;
 }
-
 // Swiper Component Styles
 app-swiper {
   width: 100%;
   margin-bottom: 30px;
 }
-
 // Legacy grid styles (keeping for reference)
 .section-main {
   display: grid;
@@ -21,47 +20,39 @@ app-swiper {
   gap: 15px;
   margin-bottom: 30px;
 }
-
 // Default: 4 cards per row (1200px and above)
 @media only screen and (min-width: 1200px) {
   .section-main {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
   .section-main {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 @media only screen and (max-width: 991px) and (min-width: 768px) {
   .section-main {
     grid-template-columns: repeat(2, 1fr);
   }
-  
   .section{
     padding-bottom: 50px;
   }
 }
-
 @media only screen and (max-width: 767px) {
   .section-main {
     grid-template-columns: repeat(1, 1fr);
   }
-
   .top-section {
     margin-bottom: 0!important;
   }
 }
-
 $text-color: #5c5c5c;
 $font-title-size: 38px;
-//@import'../../../../theme/swipper';
+//
 //::ng-deep.swiper-wrapper{
 //  padding-bottom: 35px!important;
 //}
-
 .container.blog-details-top {
   max-width: 1000px;
   margin-bottom: 10px;
@@ -69,19 +60,16 @@ $font-title-size: 38px;
 .container.blog-comments {
   max-width: 1000px;
 }
-
 .comment-area {
   .container {
     max-width: 1000px;
   }
 }
-
 .main-container {
   width: 100%;
   background-color: transparent;
   overflow: hidden;
 }
-
 .top-section {
   width: 100%;
   //background-color: #f4f4f4;
@@ -89,7 +77,6 @@ $font-title-size: 38px;
   //text-align: center;
   padding: 10px;
   margin-bottom: 30px;
-
   .title {
     font-family: $font-en-calibri;
     //font-size: 24px;
@@ -97,11 +84,9 @@ $font-title-size: 38px;
     margin: auto;
     //color: #333;
     //line-height:32px;
-
     h1 {
       padding-bottom: 20px;
     }
-
     h4{
       color: #666;
       font-family: $font-en-calibri;
@@ -118,7 +103,6 @@ $font-title-size: 38px;
       }
     }
   }
-
   .date {
     margin-bottom: 10px;
     display: flex;
@@ -130,21 +114,17 @@ $font-title-size: 38px;
       height: auto;
       width: auto;
     }
-
     span {
       font-family: $font-en-calibri;
       font-size: 14px;
       color: $color-primary;
     }
-
   }
 }
-
 .bottom-section {
   height: auto;
   margin: 0 auto;
   //padding-top: 40px;
-
   img {
     height: auto;
     width: 100%;
@@ -153,7 +133,6 @@ $font-title-size: 38px;
     //padding-bottom: 62px;
     border-radius: 20px;
   }
-
   p {
     font-family: $font-en-calibri;
     font-size: 22px;
@@ -163,12 +142,10 @@ $font-title-size: 38px;
     padding-top: 30px;
   }
 }
-
 .share-area {
   height: auto;
   margin: 0 auto;
   margin-block: 20px;
-
   ul {
     list-style: none;
     padding: 0;
@@ -176,7 +153,6 @@ $font-title-size: 38px;
     display: flex;
     align-items: center;
     gap: 10px;
-
     li {
       span {
         border: 1px solid #eee;
@@ -192,7 +168,6 @@ $font-title-size: 38px;
         font-weight: 500;
         font-size: 15px;
         cursor: pointer;
-
         mat-icon{
           font-size: 17px;
         }
@@ -200,10 +175,7 @@ $font-title-size: 38px;
     }
   }
 }
-
-
 //**** Responsive-Aria ****//
-
 @media(max-width: 900px) {
   .top-section {
     .title {
@@ -211,33 +183,26 @@ $font-title-size: 38px;
       padding-bottom: 11px;
       line-height: 55px;
     }
-
     .date {
       mat-icon{
         font-size: 13px;
       }
-
       span {
         font-size: 13px;
       }
-
     }
   }
-
   .bottom-section {
     //padding-top: 50px;
-
     img {
       //padding-bottom: 50px;
     }
-
     p {
       font-size: 18px;
       line-height: 27px;
     }
   }
 }
-
 @media(max-width: 700px) {
   .main-container {
     width: 100%;
@@ -251,30 +216,23 @@ $font-title-size: 38px;
   .top-section .date {
     margin-bottom: 5px;
   }
-
-
   .comment-area {
     width: 100% !important;
     margin: auto;
   }
-
   .top-section {
     padding: 0;
-
     .title {
       font-size: 13px;
       padding-bottom: 11px;
       line-height: 28px;
     }
   }
-
   .bottom-section {
     //padding-top: 30px;
-
     img {
       margin-bottom: 20px;
     }
-
     p {
       font-size: 16px!important;
       line-height: 25px!important;
@@ -289,15 +247,12 @@ $font-title-size: 38px;
   //.description{
   //  margin: 0 4% !important;
   //}
-
   .bottom-section p {
     padding-top: 0;
   }
   .blog-details-top{
     //padding: 25px;
   }
-
-
   //::ng-deep p {
   //  font-size: 16px!important;
   //  line-height: 25px!important;
@@ -329,14 +284,12 @@ $font-title-size: 38px;
   //  line-height: 25px!important;
   //  font-family: $font-en-calibri!important;
   //}
-
   .container1{
     ::ng-deep p{
       font-size: 16px!important;
       line-height: 25px!important;
       font-family: $font-en-calibri!important;
     }
-
     ::ng-deep p {
       font-size: 16px!important;
       line-height: 25px!important;
@@ -363,18 +316,14 @@ $font-title-size: 38px;
       }
     }
   }
-
 }
-
 /** Section 1 ***/
-
 .title-area {
   display: block;
   padding-top: 12px;
   margin-bottom: 12px;
   text-align: center;
 }
-
 .title-area h1 {
   font-family: $font-en-calibri;
   font-weight: 600;
@@ -384,11 +333,9 @@ $font-title-size: 38px;
   display: block;
   line-height: 50px;
 }
-
 .section{
   margin-block: 30px;
 }
-
 .comment-area{
   display: block;
   width: 100%;
@@ -419,7 +366,6 @@ $font-title-size: 38px;
       resize: none;
       border-radius: 20px;
     }
-
     button{
       color: $color-white;
       font-family: $font-en-calibri;
@@ -435,7 +381,6 @@ $font-title-size: 38px;
     }
   }
 }
-
 .blog-details-top {
   margin-top: 30px;
   padding: 30px;
@@ -443,12 +388,10 @@ $font-title-size: 38px;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
   border-radius: 20px;
 }
-
 .title-right {
   display: flex;
   justify-content: space-between;
 }
-
 .blog-user-profile {
   display: flex;
   align-items: center;
@@ -464,17 +407,16 @@ $font-title-size: 38px;
     height: 33px;
     border-radius: 50px;
     margin: 0 10px 0 0;
-
     display: flex;
     justify-content: center;
     align-items: center;
     border: #ddd 1px solid;
   }
 }
-
 @media (max-width: 450px){
   .title-right {
     flex-direction: column;
     gap: 10px;
   }
 }
+

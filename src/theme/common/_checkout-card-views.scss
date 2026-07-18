@@ -1,21 +1,18 @@
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
 
 .user-offer-area {
   margin-bottom: 20px;
 }
-
 .checked-icon {
   width: 20px;
   height: 20px;
-
   svg {
     width: 20px !important;
     height: 20px !important;
     fill: $color-secondary;
   }
 }
-
-
 .item-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -29,18 +26,15 @@
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
 }
-
 .item-container::-webkit-scrollbar {
   display: none;
 }
-
 .item-container.grabbing {
   cursor: grabbing;
 }
-
 .item-card {
   cursor: pointer;
-  border: 1px solid darken($color-white, 15%);
+  border: 1px solid color.adjust($color-white, $lightness: -15%);
   padding: 14px 10px;
   box-sizing: border-box;
   border-radius: 5px;
@@ -53,7 +47,6 @@
   align-items: center;
   flex-direction: row;
   background: $color-white;
-
   .info {
     text-align: left;
     p {
@@ -67,14 +60,11 @@
       font-size: 17px;
     }
   }
-
   &.active {
     border-color: $color-green;
-    background: lighten($color-green, 59%);
+    background: color.adjust($color-green, $lightness: 59%);
   }
 }
-
-
 .item-card span {
   color: #2d2d2d;
   font-family: $font-en-primary;
@@ -84,7 +74,6 @@
   display: block;
   cursor: pointer;
 }
-
 @media (max-width: 600px) {
   .item-container {
     display: flex;

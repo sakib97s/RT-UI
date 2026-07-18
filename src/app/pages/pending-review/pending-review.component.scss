@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 .card {
   display: flex;
@@ -9,14 +9,11 @@
   background-color: $color-white;
   padding: 17px;
   margin: 10px 0;
-
   .mobile-btn{
     display: none !important;
   }
-
   .left-side {
     display: flex;
-
     img {
       width: 70px;
       height: 70px;
@@ -24,11 +21,9 @@
       object-fit: cover;
       border: none;
     }
-
     .card-details {
       display: flex;
       flex-direction: column;
-
       h4 {
         margin: 0;
         font-family: $font-en-primary;
@@ -36,7 +31,6 @@
         color: #000000;
         font-weight: 700;
       }
-
       p {
         font-family: $font-en-primary;
         font-size: 13px;
@@ -44,13 +38,11 @@
       }
     }
   }
-
   .button-group {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-
     .add-review-btn {
       background-color: $color-primary;
       color: $color-white;
@@ -63,17 +55,14 @@
       cursor: pointer;
       transition: background-color 0.3s, transform 0.3s;
     }
-
     .add-review-btn:hover {
       background-color: $color-primary;
       transform: scale(1.05);
     }
   }
 }
-
 /* Responsive Styles */
 @media (max-width: 768px) {
-
   .card {
     margin:  10px;
     .mobile-btn{
@@ -82,7 +71,6 @@
     .pc-btn{
       display: none;
     }
-
     .button-group .add-review-btn {
       padding: 7px;
       font-size: 14px;

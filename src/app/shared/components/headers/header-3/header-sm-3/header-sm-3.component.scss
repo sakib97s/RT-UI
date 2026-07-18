@@ -1,4 +1,5 @@
-@import "common/headers/header-sm";
+@use 'common/headers/header-sm' as *;
+
 .header-top{
   display: flex;
   align-items: center;

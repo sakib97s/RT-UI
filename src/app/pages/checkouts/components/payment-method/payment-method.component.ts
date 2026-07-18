@@ -27,13 +27,11 @@ import { UiService } from "../../../../services/core/ui.service";
     styleUrl: './payment-method.component.scss',
     imports: [
         PaymentCardLoaderComponent,
-        TranslatePipe,
         MatError,
         MatFormField,
         MatInput,
         MatLabel,
         ReactiveFormsModule,
-        TranslatePipe,
         SafeHtmlCustomPipe
     ]
 })

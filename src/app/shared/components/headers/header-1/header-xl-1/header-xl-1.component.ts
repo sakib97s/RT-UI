@@ -32,10 +32,6 @@ import { Search1Component } from './search-1/search-1.component';
     imports: [
     RouterLink,
     RouterModule,
-    Search1Component,
-    HeaderCart1Component,
-    NgOptimizedImage,
-    ImgCtrlPipe
 ],
     providers: [PricePipe]
 })

@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 $dark-primary-text: rgba(black, 0.87);
 $dark-secondary-text: rgba(black, 0.54);
 $dark-disabled-text: rgba(black, 0.38);
@@ -8,7 +10,6 @@ $light-secondary-text: rgba(white, 0.7);
 $light-disabled-text: rgba(white, 0.5);
 $light-dividers: rgba(white, 0.12);
 $light-focused: rgba(white, 0.12);
-
 // Primary
 $mat-soft-primary: (
   50: #eee6fa,
@@ -42,9 +43,6 @@ $mat-soft-primary: (
     A700: $light-primary-text,
   )
 );
-
-
-
 // Accent
 $mat-soft-accent: (
   50 : #e1f5fc,
@@ -78,8 +76,6 @@ $mat-soft-accent: (
     A700: $light-primary-text,
   )
 );
-
-
 // Warn
 $mat-soft-warn: (
   50 : #f9e0e0,

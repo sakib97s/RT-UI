@@ -1,4 +1,7 @@
-@import "common/headers/header-xl";
+@use 'common/headers/header-xl' as *;
+@use "sass:color";
+@use "variables" as *;
+
 .homepage-only-height{
   height: 80px!important;
 }
@@ -8,7 +11,7 @@
 //.header-main{
 //  a{
 //    p{
-//      color: darken($color-white , 10%) !important;
+//      color: color.adjust($color-white , $lightness: -10%) !important;
 //    }
 //  }
 //}
@@ -19,17 +22,14 @@
     fill: currentColor !important;
     transition: color .2s ease;
   }
-
   &:hover {
     color: var(--header-text-hover, $color-primary);
   }
 }
-
 .header-top-area{
   height: 60px !important;
   border-bottom: none !important;
 }
-
 .header-top{
   padding: 17px 0 !important;
   border-top: 1px solid #e8e8e8;
@@ -37,8 +37,6 @@
     display: flex;
     align-items: center;
     gap: 15px;
-
-
     a{
       text-decoration: none;
       color: var(--header-text, $color-black);
@@ -53,7 +51,6 @@
       justify-content: flex-start;
       gap: 5px;
       transition: all .3s linear;
-
       &:hover{
         color: var(--header-text-hover, $color-primary) !important;
       }
@@ -62,5 +59,4 @@
       list-style: none;
     }
   }
- 
 }

@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .pcontainer {
     line-height: 40px;
     display: flex;
@@ -15,7 +17,6 @@
     margin: 10px;
     align-items: center;
   }
-
   .card.active {
     transform: rotateX(0deg);
     color:  $color-black;
@@ -29,7 +30,6 @@
     gap: 5px;
     margin-bottom: 5px;
   }
-
   button {
     gap: 10px;
     display: flex;

@@ -1,4 +1,5 @@
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
 
 .container{
   width: 93%!important;
@@ -16,8 +17,6 @@ header {
 .marqu{
   height: 150px;
 }
-
-
 .header-fixed {
   position: fixed;
   top: 0;
@@ -27,7 +26,6 @@ header {
   left: 0;
   background: var(--header-bg, $color-white);
 }
-
 .homepage-msite-search-wrap {
   overflow: hidden;
   position: relative;
@@ -35,7 +33,6 @@ header {
   width: 100%;
   z-index: 100;
 }
-
 .header-main {
   display: flex;
   align-items: center;
@@ -46,7 +43,6 @@ header {
     fill: var(--header-text, $color-primary);
   }
 }
-
 .back-btn {
   display: flex;
   align-items: center;
@@ -55,13 +51,11 @@ header {
   height: 20px;
   border-radius: 100%;
   margin-right: 10px;
-
   svg {
     width: 20px;
     height: 20px;
   }
 }
-
 .logo {
   text-align: center;
   display: flex;
@@ -74,7 +68,6 @@ header {
   overflow: hidden;
   transition: height .25s linear, zIndex 0s linear .25s;
   text-decoration: none;
-
   p{
     font-size: 22px;
     text-decoration: none;
@@ -91,7 +84,6 @@ header {
     object-fit: contain;
   }
 }
-
 .cart {
   text-align: center;
   padding: 5px 10px 1px;
@@ -100,7 +92,6 @@ header {
   position: relative;
   text-decoration: none;
   color: var(--header-text, $color-primary);
-
   .cart-icon {
     color: $color-white;
   }
@@ -109,7 +100,6 @@ header {
     line-height: 15px;
     color: var(--header-text, #000000);
   }
-
   span {
     position: absolute;
     right: -1px;
@@ -124,17 +114,14 @@ header {
     text-align: center;
     line-height: 20px;
   }
-
   svg {
     fill: currentColor;
     transition: color .2s ease;
   }
-
   &:hover {
     color: var(--header-text-hover, $color-primary);
   }
 }
-
 .search-area {
   width: 75%;
   height: 40px;
@@ -146,14 +133,12 @@ header {
   border-radius: 5px;
   cursor: pointer;
   background-color: $color-white;
-
   .left {
     display: flex;
     justify-content: center;
     flex-direction: row;
     align-items: center;
   }
-
   .search-btn {
     display: block;
     margin-right: 4px;
@@ -166,7 +151,6 @@ header {
     color: $color-white;
     font-weight: 500;
   }
-
   .search-icon {
     margin-left: 4px;
     padding: 3px 5px 0;
@@ -174,7 +158,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    
     svg {
       fill: $color-primary !important;
       width: 24px;
@@ -183,7 +166,6 @@ header {
     }
   }
 }
-
 .header-fixed {
   position: fixed;
   top: 0;
@@ -192,12 +174,10 @@ header {
   left: 0;
   background: $color-white;
 }
-
 .logo.hidden {
   height: 0!important;
   overflow: hidden!important;
 }
-
 // Animated Search text
 .search-text {
   width: 100%;
@@ -206,21 +186,18 @@ header {
   box-sizing: content-box;
   display: flex;
   justify-content: center;
-
   span {
     display: block;
     height: 100%;
     padding-left: 10px;
-    color: darken($color-white,45%);
+    color: color.adjust($color-white, $lightness: -45%);
     animation: spin_words 6s infinite;
     font-weight: 500;
     font-size: calc($font-readable + 1px);
   }
-
   .words {
     overflow: hidden;
   }
-
   @keyframes spin_words {
     10% {
       transform: translateY(-112%);
@@ -248,7 +225,6 @@ header {
     }
   }
 }
-
 .hamburger {
   cursor: pointer;
   flex-direction: column;
@@ -274,4 +250,3 @@ header {
     }
   }
 }
-

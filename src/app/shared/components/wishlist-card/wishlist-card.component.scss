@@ -1,5 +1,5 @@
-
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
 
 .card {
   display: flex;
@@ -9,30 +9,25 @@
   margin-bottom: 8px;
   padding: 8px 10px;
 }
-
 .left {
   flex: 1;
   display: flex;
   align-items: center;
   gap: 16px;
-
   .image {
     width: auto;
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     img {
       width: 100px;
       height: 100%;
       object-fit: contain;
     }
   }
-
   .description {
     margin-left: 10px;
-
     h4 {
       font-family: $font-en-primary;
       font-size: $font-title-desc;
@@ -45,28 +40,23 @@
       font-weight: 500;
       margin: 4px 0;
     }
-
     a {
       text-decoration: none;
       color: $color-black;
-
       &:hover {
         color: $color-primary;
         text-decoration: underline;
       }
     }
   }
-
   .icon-btn {
     border: none;
     background: none;
     cursor: pointer;
-
     svg {
       fill: #797979;
       transition: fill 0.3s;
     }
-
     &:hover {
       svg {
         fill: red;
@@ -74,8 +64,6 @@
     }
   }
 }
-
-
 .right {
   .price{
     display: flex;
@@ -84,11 +72,10 @@
     padding-bottom: 5px;
     justify-content: flex-end;
   }
-
   .new-price {
     font-size: calc($font-readable + 2px);
     font-family: $font-en-primary;
-    color: lighten($color-black, 10%);
+    color: color.adjust($color-black, $lightness: 10%);
     font-weight: 550;
   }
   .old-price {
@@ -117,14 +104,11 @@
     }
   }
 }
-
-
 @media only screen and (max-width: 599px) {
   .left {
     gap: 5px;
     margin: 0;
   }
-
   .right {
     .price {
       display: flex;
@@ -134,8 +118,6 @@
     }
   }
 }
-
-
 /* popup.component.scss */
 .popup-overlay {
   position: fixed;
@@ -149,7 +131,6 @@
   align-items: center;
   z-index: 1000;
 }
-
 .popup-content {
   background: #fff;
   padding: 20px;
@@ -159,7 +140,6 @@
   width: 100%;
   position: relative;
 }
-
 .close-btn {
   position: absolute;
   top: 10px;

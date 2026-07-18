@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 .btn-primary {
   width: 140px;
@@ -21,15 +21,12 @@
   &:focus {
     outline: none;
   }
-
   &:hover {
     background-color: #3c24b1;
   }
-
   &.btn-loading {
     width: 160px;
     opacity: 0.9;
-
     &:hover {
       background-color: $color-primary;
       opacity: 0.9;

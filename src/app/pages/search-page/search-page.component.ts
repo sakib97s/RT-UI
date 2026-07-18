@@ -37,7 +37,6 @@ import {CurrencyCtrPipe} from '../../shared/pipes/currency.pipe';
         ReactiveFormsModule,
         ProductPricePipe,
         AutoInputFocusDirective,
-        EmptyDataComponent,
         ImgCtrlPipe,
         NgOptimizedImage,
         TitleCasePipe,

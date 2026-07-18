@@ -21,7 +21,6 @@ import { log } from 'console';
     selector: 'app-header-1',
     imports: [
         HeaderXl1Component,
-        HeaderSm1Component
     ],
     templateUrl: './header-1.component.html',
     styleUrl: './header-1.component.scss'

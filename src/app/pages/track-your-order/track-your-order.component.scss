@@ -1,8 +1,9 @@
-@import "variables";
-@import "exports/form-input-phone-no";
-@import "exports/form-input-primary";
-@import "exports/custom-button";
-@import "exports/spinner";
+@use 'variables' as *;
+@use 'exports/form-input-phone-no' as *;
+@use 'exports/form-input-primary' as *;
+@use 'exports/custom-button' as *;
+@use 'exports/spinner' as *;
+@use "sass:color";
 
 .container{
   max-width: 600px;
@@ -18,42 +19,31 @@
     font-size: calc($font-readable);
   }
 }
-
 form {
   margin-top: 20px;
 }
-
 .input-otp {
   width: 100%;
   max-width: 380px;
   margin: 20px auto 0;
 }
-
 .form-group {
   margin-top: 20px;
-
   .input-icon {
     &.password-eye {
       right: 12px;
     }
   }
 }
-
 .action {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-
   .btn-primary {
     padding: 10px 12px;
   }
 }
-
-
-
-
-
 .input-area {
   display: flex;
   align-items: center;
@@ -63,18 +53,14 @@ form {
   background-color: #fff;
   padding: 0 12px;
   margin: 20px 0;
-
   .flag {
     line-height: 0;
-
     svg {
       width: 20px;
       height: 20px;
       fill: $color-primary;
     }
-
   }
-
   .edit {
     line-height: 0;
     cursor: pointer;
@@ -83,16 +69,13 @@ form {
     color: $color-black;
     font-weight: 600;
     font-family: $font-en-primary;
-
     &:hover {
-      background-color: lighten(#4285F4, 36%);
+      background-color: color.adjust(#4285F4, $lightness: 36%);
     }
-
     svg {
       width: 20px;
     }
   }
-
   .country-code {
     margin: 0 8px;
     color: #555;
@@ -100,7 +83,6 @@ form {
     font-weight: 500;
     font-family: var(--font-primary);
   }
-
   input {
     height: 54px;
     border: none;
@@ -111,7 +93,6 @@ form {
     color: #3e3e3e;
     font-family: var(--font-primary);
   }
-
   &.is-invalid {
     background-color: #f8d7da;
     border-color: #dc3545;
@@ -120,7 +101,6 @@ form {
     }
   }
 }
-
 @media only screen and (max-width: 599px) {
   label {
     font-size: calc($font-readable-sm + 1px);
@@ -131,15 +111,11 @@ form {
         width: 24px;
       }
     }
-
     .country-code {
       font-size: calc($font-readable-sm + 1px);
     }
-
     input {
       font-size: calc($font-readable-sm + 1px);
     }
-
   }
-
 }

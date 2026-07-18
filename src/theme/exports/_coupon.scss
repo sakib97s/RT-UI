@@ -1,5 +1,4 @@
-@import "variables";
-
+@use 'variables' as *;
 
 .coupon-area {
   width: 100%;
@@ -8,11 +7,9 @@
   align-items: center;
   justify-content: flex-start;
 }
-
 .coupon-input {
   display: block;
   width: 100%;
-
   input {
     width: 100%;
     padding: 11px 15px;
@@ -26,11 +23,9 @@
     border-radius: 5px 0px 0px 5px;
   }
 }
-
 .apply-btn {
   max-width: 120px;
   width: 100%;
-
   button {
     background-color: $color-primary;
     color: #fff;
@@ -44,7 +39,6 @@
     outline: none;
     border: 1px solid $color-primary;
     border-radius: 0px 5px 5px 0px;
-
     &.danger {
       background-color: #d83333;
       border: 1px solid #d83333;

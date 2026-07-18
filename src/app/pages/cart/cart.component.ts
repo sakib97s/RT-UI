@@ -47,23 +47,7 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
     providers: [ProductPricePipe],
     imports: [
         FormsModule,
-        OnlyNumberDirective,
-        CartLoaderComponent,
-        EmptyDataComponent,
-        VariationInfoInlinePipe,
-        ProductPricePipe,
-        ProductCard1Component,
-        ProductCardLoaderComponent,
-        ProductCard2Component,
-        OrderSummaryComponent,
-        NgStyle,
-        NgClass,
         RouterLink,
-        ProductCard3Component,
-        CurrencyCtrPipe,
-        TranslatePipe,
-        ProductCard4Component,
-        JsonPipe,
     ]
 })
 export class CartComponent implements OnInit, OnDestroy {

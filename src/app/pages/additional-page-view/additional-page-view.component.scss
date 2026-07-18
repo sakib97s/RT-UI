@@ -1,11 +1,10 @@
-@import "variables";
+@use 'variables' as *;
 
 .container {
   width: 95%;
   margin: 0 auto;
   padding-top: 25px;
 }
-
 .coming-soon {
   text-align: center;
   font-size: 18px;
@@ -18,7 +17,6 @@
   background-color: transparent;
   min-height: 400px;
 }
-
 @media (max-width: 599px) {
   .description{
     padding-bottom: 70px;

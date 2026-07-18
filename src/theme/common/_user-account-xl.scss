@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as *;
 
 .container {
   width: 100%;
@@ -7,7 +7,6 @@
   margin-top: 20px;
   overflow: visible;
 }
-
 .sidebar {
   width: 100%;
   max-width: 340px;
@@ -15,11 +14,9 @@
   top: $header-height;
   height: fit-content;
 }
-
 .content {
   flex: 1;
 }
-
 @media only screen and (max-width: 599px) {
   .sidebar {
     display: none;

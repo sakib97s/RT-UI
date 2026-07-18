@@ -1,4 +1,5 @@
-@import 'variables';
+@use 'variables' as *;
+@use "sass:color";
 
 .tracking-container {
     width: 95%;
@@ -7,7 +8,6 @@
     padding: 20px 0;
     box-shadow: $box-shadow-black;
 }
-
 .card {
     width: 100%;
     padding: 30px;
@@ -18,7 +18,6 @@
     align-items: center;
     gap: 40px;
 }
-
 .tracking-item {
     display: flex;
     flex-direction: row;
@@ -26,7 +25,6 @@
     justify-content: space-between;
     gap: 30px;
 }
-
 .tracking-date {
     display: flex;
     flex-direction: column;
@@ -44,7 +42,6 @@
     color:$color-black;
     font-weight: bold;
 }
-
 .active-stick {
     position: relative;
     width: 1px;
@@ -52,7 +49,6 @@
     padding: 0;
     margin: 0;
     height: 300px;
-
 }
 .timeline-item{
     position: relative;
@@ -61,7 +57,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 .timeline-circle{
     width: 16px;
@@ -73,7 +68,6 @@
     left: -7px;
     bottom: 45px;
 }
-
 .timeline-item.active .timeline-circle {
     background-color: $color-primary;
 }
@@ -93,10 +87,9 @@
     }
   span{
     font-size: 12px;
-    color:darken($color-white,25%);
+    color:color.adjust($color-white, $lightness: -25%);
   }
 }
-
 .order-search {
   display: flex;
   justify-content: space-between;
@@ -104,7 +97,6 @@
   margin-bottom: 20px;
   padding: 0 30px;
 }
-
 .search-bar {
   display: flex;
   align-items: center;
@@ -113,24 +105,20 @@
   padding: 3px;
   width: 40%;
 }
-
 .search-bar input {
   border: none;
   outline: none;
   padding: 5px;
   flex: 1;
 }
-
 .search-bar button {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
-
 .search-bar .material-icons {
   color: $color-primary;
 }
-
 .view-orders {
   font-size: $font-readable;
   text-decoration: none;
@@ -141,19 +129,15 @@
   align-items: center;
   justify-content: center;
   display: flex;
-
   svg{
     height: 30px;
     width: 30px;
     fill: $color-primary;
   }
-
   &:hover {
     color: $color-primary;
   }
 }
-
-
 @media screen and (max-width: 599px){
     .status-text{
         h4{
@@ -163,19 +147,15 @@
             font-size: 10px;
         }
     }
-
   .order-search {
     flex-direction: column;
     padding: 0 15px;
   }
-
   .search-bar {
     width: 100%;
     margin-bottom: 10px;
   }
-
   .view-orders {
     text-align: center;
   }
 }
-

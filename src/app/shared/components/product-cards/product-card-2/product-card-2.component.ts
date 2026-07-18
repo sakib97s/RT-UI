@@ -43,7 +43,6 @@ import { shouldUseDirectCheckout } from '../../../../core/utils/shop-config';
     imports: [
         RouterLink,
         ProductPricePipe,
-        StarRatingViewComponent,
         ImageLoadErrorDirective,
         CurrencyCtrPipe,
         TranslatePipe,

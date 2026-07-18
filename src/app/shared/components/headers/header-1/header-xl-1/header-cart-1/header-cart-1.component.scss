@@ -1,4 +1,6 @@
-@import "common/headers/header-cart";
+@use 'common/headers/header-cart' as *;
+@use "variables" as *;
+
 /*** cart-fixed-box ***/
 .cart-fixed-box {
   position: fixed;
@@ -7,7 +9,6 @@
   right: 0;
   z-index: 260;
 }
-
 .cart-box {
   display: block;
   width: 80px;
@@ -18,15 +19,12 @@
   overflow: hidden;
   cursor: pointer;
 }
-
 .cart-box-top {
   display: block;
   background-color: #ffe9e6;
   padding: 3px 5px;
   box-sizing: border-box;
-
 }
-
 .cart-box-top span {
   display: block;
   margin-bottom: 3px;
@@ -35,16 +33,13 @@
   font-weight: 400;
   font-size: 13px;
 }
-
 .cart-box-top mat-icon {
   color: $color-primary;
   font-size: 20px;
 }
-
 .cart-price {
   display: block;
 }
-
 .cart-price span {
   color: #fff;
   font-family: $font-en-primary;

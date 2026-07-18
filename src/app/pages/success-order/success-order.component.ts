@@ -17,8 +17,6 @@ import {SettingService} from "../../services/common/setting.service";
     styleUrls: ['./success-order.component.scss'],
     imports: [
         RouterModule,
-        UpperCasePipe,
-        TranslatePipe,
     ]
 })
 export class SuccessOrderComponent implements OnInit, OnDestroy {

@@ -1,9 +1,9 @@
-@import "common/headers/header-xl";
+@use 'common/headers/header-xl' as *;
+@use "variables" as *;
 
 .homepage-only-height {
   height: 80px !important;
 }
-
 header.header-fixed {
   overflow: visible !important;
   position: fixed !important;
@@ -12,18 +12,15 @@ header.header-fixed {
   width: 100% !important;
   z-index: 999 !important;
   background-color: var(--header-bg, #fff) !important;
-  
   > div {
     overflow: visible !important;
     position: relative;
   }
 }
-
 // Override global header-xl SCSS overflow hidden
 ::ng-deep {
   header .header-top-area {
     overflow: visible !important;
-    
     &.hidden {
       overflow: hidden !important;
     }
@@ -32,36 +29,30 @@ header.header-fixed {
 //.header-fixed{
 //  background-color: $color-primary !important;
 //}
-
 .header-main {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   gap: 20px;
-  
   .logo {
     flex-shrink: 0;
   }
-  
   .welcome-login {
     flex-shrink: 0;
   }
-  
   .main-nav {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
   .search-area {
     flex: 1;
     max-width: 650px;
     position: relative;
     z-index: 9999 !important;
   }
-  
   .action {
     flex-shrink: 0;
     display: flex;
@@ -69,7 +60,6 @@ header.header-fixed {
     gap: 8px;
   }
 }
-
 .welcome-login {
   display: flex;
   flex-direction: column;
@@ -82,20 +72,16 @@ header.header-fixed {
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
-  
   &:hover {
     border-color: #ccc;
-    
     .login-link {
       color: #000;
-      
       svg {
         transform: translateX(2px);
         stroke: #000;
       }
     }
   }
-  
   #welcome-text {
     margin: 0;
     font-size: 12px;
@@ -103,7 +89,6 @@ header.header-fixed {
     line-height: 1.4;
     font-weight: 400;
   }
-  
   .login-link {
     display: flex;
     align-items: center;
@@ -115,7 +100,6 @@ header.header-fixed {
     font-family: $font-en-primary;
     transition: all 0.2s ease;
     line-height: 1.4;
-    
     svg {
       width: 14px;
       height: 14px;
@@ -127,7 +111,6 @@ header.header-fixed {
     }
   }
 }
-
 .profile-icon {
   display: flex;
   align-items: center;
@@ -137,12 +120,10 @@ header.header-fixed {
   border-radius: 50%;
   transition: all 0.2s ease;
   border: 1px solid transparent;
-  
   &:hover {
     background-color: #f5f5f5;
     border-color: #e8e8e8;
   }
-  
   img {
     width: 28px;
     height: 28px;
@@ -150,7 +131,6 @@ header.header-fixed {
     object-fit: contain;
   }
 }
-
 .user-profile {
   display: flex;
   align-items: center;
@@ -159,23 +139,19 @@ header.header-fixed {
   padding: 6px 10px;
   border-radius: 6px;
   transition: background-color 0.2s ease;
-  
   &:hover {
     background-color: #f5f5f5;
   }
-  
   .profile-icon-img {
     width: 28px;
     height: 28px;
     flex-shrink: 0;
     object-fit: contain;
   }
-  
   .user-info {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    
     .user-name {
       margin: 0;
       font-size: 14px;
@@ -185,7 +161,6 @@ header.header-fixed {
       line-height: 1.2;
       white-space: nowrap;
     }
-    
     .user-contact {
       margin: 0;
       font-size: 12px;
@@ -197,19 +172,16 @@ header.header-fixed {
     }
   }
 }
-
 ::ng-deep.cart-button {
   color: var(--header-text, $color-black);
   svg {
     fill: currentColor !important;
     transition: color .2s ease;
   }
-
   &:hover {
     color: var(--header-text-hover, $color-primary);
   }
 }
-
 .main-nav {
   display: flex;
   align-items: center;
@@ -219,7 +191,6 @@ header.header-fixed {
   padding: 0;
   flex: 1;
   max-width: 600px;
-  
   .nav-btn {
     text-decoration: none;
     color: #333;
@@ -234,18 +205,15 @@ header.header-fixed {
     border: none;
     padding: 0;
     white-space: nowrap;
-    
     &:hover {
       color: var(--header-text-hover, $color-primary);
     }
-    
     &.active {
       color: var(--header-text-hover, $color-primary);
       font-weight: 500;
     }
   }
 }
-
 .header-top-area{
   height: auto !important;
   border-top: 1px solid #e8e8e8;
@@ -257,13 +225,11 @@ header.header-fixed {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
   overflow: visible !important;
-  
   // Override global header-xl overflow hidden
   &.hidden {
     overflow: hidden !important;
   }
 }
-
 .header-top{
   padding: 7px 0 !important;
   position: relative;
@@ -272,11 +238,9 @@ header.header-fixed {
   justify-content: center;
   align-items: center;
 }
-
 .container {
   overflow: visible !important;
 }
-
 .category-nav {
   display: flex;
   align-items: center;
@@ -289,11 +253,9 @@ header.header-fixed {
   overflow: visible !important;
   width: 100%;
 }
-
 .nav-item {
   position: relative;
 }
-
 .category-link {
   text-decoration: none;
   color: var(--header-text, $color-black);
@@ -306,12 +268,10 @@ header.header-fixed {
   padding: 4px 20px;
   display: block;
   transition: all .3s linear;
-
   &:hover {
     color: var(--header-text-hover, $color-primary) !important;
   }
 }
-
   .simple-mega-menu {
   position: absolute;
   top: 100%;
@@ -329,19 +289,15 @@ header.header-fixed {
   transition: all 0.3s ease;
   margin-top: 0;
   animation: fadeInDown 0.3s ease;
-  
   .subcategory-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    
     li {
       border-bottom: 1px solid #f0f0f0;
-      
       &:last-child {
         border-bottom: none;
       }
-      
       a {
         display: block;
         padding: 12px 20px;
@@ -349,7 +305,6 @@ header.header-fixed {
         color: #666;
         font-size: 14px;
         transition: all 0.2s;
-        
         &:hover {
           color: $color-primary;
           background-color: #f8f8f8;
@@ -359,7 +314,6 @@ header.header-fixed {
     }
   }
 }
-
 @keyframes fadeInDown {
   from {
     opacity: 0;

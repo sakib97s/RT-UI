@@ -1,28 +1,25 @@
-@import "common/headers/header-cart";
+@use 'common/headers/header-cart' as *;
+@use "variables" as *;
 
 .cart-dropdown-wrap {
   z-index: 10002 !important; // Higher than category dropdown (10001) and search area (9999)
 }
-
 ::ng-deep.cart-button {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   cursor: pointer;
-  
   img {
     width: 34px;
     height: 34px;
     display: block;
     object-fit: contain;
   }
-  
   svg {
     width: 34px;
     height: 34px;
   }
-
   span {
     position: absolute;
     right: -8px;

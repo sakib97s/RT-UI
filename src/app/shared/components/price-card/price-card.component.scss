@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 .price-card {
   width: 100%;
@@ -7,7 +7,6 @@
   box-shadow: 0 10px 20px #0000000a;
   position: relative;
   overflow: hidden;
-
   .price-card-tag {
     position: absolute;
     top: 27px;
@@ -23,10 +22,8 @@
     line-height: 26px;
   }
 }
-
 .price-card-context {
   padding: 46px 40px 50px;
-
   .price-card-context-title {
     h1 {
       font-family: $font-en-primary;
@@ -37,7 +34,6 @@
       color: $color-white;
       margin-bottom: 12px;
     }
-
     p {
       font-size: 0.9rem;
       line-height: 21px;
@@ -48,30 +44,25 @@
       margin-bottom: 40px;
     }
   }
-
   .price-card-bottom-access-list {
     ul {
       margin: 0;
       padding: 0;
       list-style: none;
-
       li {
         width: 100%;
         margin-bottom: 5px;
-
         &:last-child {
           margin-bottom: 0;
         }
       }
     }
   }
-
   .see-all-feature {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-block: 40px;
-
     a {
       font-family: $font-en-primary;
       font-size: 1rem;
@@ -81,7 +72,6 @@
     }
   }
 }
-
 .bottom-access-list-data {
   display: flex;
   align-items: center;
@@ -89,7 +79,6 @@
   padding: 8px 15px 8px 8px;
   background-color: #f5f6f8;
   border-radius: 30px;
-
   .bottom-access-list-data-left {
     display: flex;
     align-items: center;
@@ -112,7 +101,6 @@
     align-items: center;
     justify-content: center;
     background-color: $color-green;
-
     svg {
       min-width: 12px;
       max-width: 12px;
@@ -120,7 +108,6 @@
     }
   }
 }
-
 @media only screen and (max-width: 599px) {
   .price-card {
     .price-card-tag {

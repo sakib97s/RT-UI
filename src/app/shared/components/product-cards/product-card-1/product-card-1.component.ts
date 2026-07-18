@@ -43,7 +43,6 @@ import { shouldUseDirectCheckout } from '../../../../core/utils/shop-config';
     selector: 'app-product-card-1',
     imports: [
         RouterLink,
-        StarRatingViewComponent,
         ProductPricePipe,
         ArrayToSingleImagePipe,
         ImgCtrlPipe,

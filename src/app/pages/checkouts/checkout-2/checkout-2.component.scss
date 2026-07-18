@@ -1,14 +1,15 @@
-@import "variables";
-@import "exports/isloading";
-@import "exports/coupon";
-@import "exports/otp-popup";
+@use 'variables' as *;
+@use 'exports/isloading' as *;
+@use 'exports/coupon' as *;
+@use 'exports/otp-popup' as *;
+@use "sass:color";
+
 .notice-wrap{
   //max-width: 800px;
   //margin:40px auto;
   //padding:0 15px;
   margin-top: 20px;
 }
-
 .notice-card{
   display:flex;
   background:#f7ecb5;             /* হালকা হলুদ ব্যাকগ্রাউন্ড */
@@ -16,7 +17,6 @@
   padding:18px 22px;
   box-shadow:0 2px 6px rgba(0,0,0,0.06);
 }
-
 .notice-card__bar{
   width:14px;
   border-radius:12px;
@@ -24,13 +24,11 @@
   margin-right:18px;
   flex-shrink:0;
 }
-
 .notice-card__text{
   color:#6b6460;
   font-size:16px;
   line-height:1.7;
 }
-
 @media (max-width:575px){
   .notice-card{
     padding:14px 16px;
@@ -48,12 +46,10 @@
 .main-area {
   padding-bottom: 110px;
 }
-
 .loader {
   margin-top: 3px;
   margin-right: 6px;
 }
-
 .wait-btn {
   color: $color-white;
   background-color: $color-primary;
@@ -61,22 +57,18 @@
   pointer-events: none;
   opacity: 0.6;
 }
-
 .checkout-area {
   display: grid;
   grid-template-columns: calc(62% - 15px) calc(37% - 21px);
   grid-gap: 50px;
 }
-
 .order-note-mobile {
   display: none;
 }
-
 .button-area {
   display: flex;
   justify-content: space-between;
   gap: 15px;
-
   .back-button {
     cursor: pointer;
     display: flex;
@@ -84,25 +76,22 @@
     align-items: center;
     background: none;
     border: none;
-    color: lighten($color-black, 25%);
+    color: color.adjust($color-black, $lightness: 25%);
     font-size: 16px;
     font-family: $font-en-primary;
     font-weight: 500;
     padding: 5px 0;
-
     svg {
       height: 20px;
       width: 20px;
       display: inline;
-      fill: lighten($color-black, 25%);
+      fill: color.adjust($color-black, $lightness: 25%);
       transition: transform 0.3s ease;
     }
-
     &:hover svg {
       transform: translateX(-5px);
     }
   }
-
   .order-button {
     display: flex;
     justify-content: center;
@@ -118,21 +107,18 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.5s ease;
-
     svg {
       height: 30px;
       width: 30px;
       display: inline;
       fill: $color-white;
     }
-
     &:hover {
       background-color: $color-primary;
       filter: brightness(90%);
     }
   }
 }
-
 @media (max-width: 950px) {
   .checkout-area {
     padding-bottom: 50px;
@@ -147,52 +133,45 @@
     display: block;
   }
 }
-
 .bottom-nav {
   position: fixed;
   width: 100%;
   display: none;
   bottom: 0;
 }
-
 .alternative-mobile-checkout {
   display: none;
 }
 .mobile-checkout {
   background: $color-white;
   display: flex;
-  border-top: 0.5px solid darken($color-white, 30%);
+  border-top: 0.5px solid color.adjust($color-white, $lightness: -30%);
   justify-content: flex-end;
   text-align: right;
   align-items: center;
   padding: 8px;
   gap: 10px;
-
   .order-button {
     display: flex;
     align-items: center;
   }
-
   .total {
     font-size: 13px;
     font-weight: 400;
     line-height: 13px;
     color:  $color-black;
     font-family: $font-en-primary;
-
     span {
       color: $color-primary;
       font-weight: 800;
     }
   }
-
   .button-text {
     font-size: 13px;
     font-weight: 400;
-    color: lighten($color-black, 25%);
+    color: color.adjust($color-black, $lightness: 25%);
     font-family: $font-en-primary;
   }
-
   button {
     background: $color-primary;
     border: none;
@@ -204,18 +183,14 @@
     color: $color-white;
   }
 }
-
-
 @media (max-width: 600px) {
   .bottom-nav {
     display: block;
   }
   .alternative-mobile-checkout {
     display: block;
-
     .mobile-checkout {
       border-top: none;
-
       button {
         background: #36c06b;
       }
@@ -225,85 +200,64 @@
     display: none;
   }
 }
-
-
 // Order Area Manage
 .order-area {
   padding-top: 20px;
   margin-bottom: 25px;
-
   .order-items {
     margin-bottom: 20px;
   }
-
   .mobile-card {
     display: none;
   }
-
   .summary {
     margin-top: 20px;
-
     .summary-item {
       display: flex;
       justify-content: space-between;
       padding: 5px 0;
       font-size: 16px;
-
       .label {
         font-weight: bold;
-        color: darken($color-white, 65%);
+        color: color.adjust($color-white, $lightness: -65%);
       }
-
       .value {
         font-weight: bold;
-        color: darken($color-white, 65%);
+        color: color.adjust($color-white, $lightness: -65%);
       }
-
       &.grand-total {
         font-size: calc($font-readable + 5px);
         font-weight: bold;
         color: #191919 !important;
       }
     }
-
     .border-bottom {
-      border-bottom: 1px solid darken($color-white, 10%);
+      border-bottom: 1px solid color.adjust($color-white, $lightness: -10%);
     }
   }
-
 }
-
 .d-mobile {
   display: none;
 }
-
-
 @media only screen and (max-width: 600px) {
-
   .d-mobile {
     display: block;
   }
-
   .order-area {
     .pc-card {
       display: none;
     }
-
     .mobile-card {
       display: block;
     }
-
-
     .summary {
       .summary-item {
         font-size: 14px;
-
         &.grand-total {
           font-size: 16px;
         }
       }
     }
-
   }
   .payment-area{
     background-color: $color-white;
@@ -321,7 +275,6 @@
    display: none!important;
   }
 }
-
 .coupon-div{
   margin: 10px 0;
   .coupon-btn{
@@ -331,16 +284,12 @@
     background-color: $color-white;
     font-family: $font-en-primary;
     font-size: 14px;
-
   }
 }
-
-
 .close-btn-div{
   display: flex;
   justify-content: flex-end;
   margin: 10px 0 5px 0;
-
   .close-btn{
     width: 20px !important;
     height: 20px !important;
@@ -350,23 +299,17 @@
     cursor: pointer;
     background-color: $color-red;
     color: $color-white;
-
   }
-
-
 }
-
 /*
  * Full Note
  */
 .form-input-select {
   width: 100%;
-
   mat-form-field {
     width: 100%;
   }
 }
-
 @media (max-width: 600px) {
   .full-note {
     background: white;
@@ -375,8 +318,6 @@
     margin-top: 10px;
   }
 }
-
-
 .advance-payment-area {
   position: relative;
   padding: 15px;
@@ -387,10 +328,8 @@
   overflow: hidden;
   z-index: 0;
   margin-bottom: 20px;
-
   // Main content background (optional)
   background: #fff;
-
   &::before {
     content: "";
     position: absolute;
@@ -407,7 +346,6 @@
     background-size: 1200% 1200%;
     animation: waveColor 12s ease infinite;
     z-index: -1;
-
     // Mask inside to create border-only effect
     mask:
       linear-gradient(#fff 0 0) content-box,
@@ -416,7 +354,6 @@
     -webkit-mask-composite: destination-out;
     pointer-events: none;
   }
-
   @keyframes waveColor {
     0% {
       background-position: 0% 50%;
@@ -428,13 +365,12 @@
       background-position: 0% 50%;
     }
   }
-
   .advance-btn{
-    border: 1px solid lighten($color-gray, 25%);
+    border: 1px solid color.adjust($color-gray, $lightness: 25%);
     border-radius: 4px;
     padding: 5px 8px;
     background: transparent;
-    color:  lighten($color-black, 10%);
+    color:  color.adjust($color-black, $lightness: 10%);
     font-family: $font-en-primary;
     font-size: 14px;
     font-weight: 500;
@@ -446,6 +382,4 @@
       border: 1px solid $color-primary;
     }
   }
-
 }
-

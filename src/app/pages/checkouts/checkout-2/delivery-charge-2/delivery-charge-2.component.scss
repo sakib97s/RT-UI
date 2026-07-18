@@ -1,9 +1,9 @@
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
 
 .payment-area {
   margin-bottom: 15px;
 }
-
 .checked-icon {
   display: none;
   width: 20px;
@@ -13,7 +13,6 @@
   transform-origin: center;
   transform: scale(1);
   transition: transform 0.25s linear;
-
   svg {
     width: 20px !important;
     height: 20px !important;
@@ -21,11 +20,9 @@
     fill: $color-secondary;
   }
 }
-
 .visible {
   display: block;
 }
-
 .online-payment {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -39,18 +36,15 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-
 .online-payment::-webkit-scrollbar {
   display: none;
 }
-
 .online-payment.grabbing {
   cursor: grabbing;
 }
-
 .method-info {
   cursor: pointer;
-  border: 2px solid darken($color-white, 15%);
+  border: 2px solid color.adjust($color-white, $lightness: -15%);
   padding: 5px 6px;
   box-sizing: border-box;
   border-radius: 5px;
@@ -60,12 +54,10 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-
   &.active {
     border-color: $color-secondary;
   }
 }
-
 .method-info img {
   width: 55%;
   margin: auto !important;
@@ -75,7 +67,6 @@
   height: 55px;
   padding: 5px;
 }
-
 .method-info span {
   color: #2d2d2d;
   font-family: $font-en-primary;
@@ -85,7 +76,6 @@
   display: block;
   cursor: pointer;
 }
-
 @media (max-width: 600px) {
   .online-payment {
     display: flex;
@@ -93,10 +83,8 @@
     overflow: scroll;
     padding-bottom: 10px;
     grid-gap: 10px;
-
     .method-info {
       min-width: 170px;
-
       img {
         height: 44px;
         padding: 4px;
@@ -107,13 +95,11 @@
     margin-bottom: 10px;
   }
   .method-info {
-    border: 2px solid darken($color-white, 15%);
+    border: 2px solid color.adjust($color-white, $lightness: -15%);
     padding: 6px 6px;
-
     img {
       margin-bottom: 3px !important;
     }
-
     span {
       font-size: 13px;
     }

@@ -1,4 +1,5 @@
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
 
 .coupon-card {
   padding: 5px;
@@ -9,14 +10,12 @@
   border-radius: 3px;
   position: relative;
   box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px, rgba(9, 30, 66, 0.13) 0 0 1px 1px;
-
   .coupon-top {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 5px;
     margin-top: 2px;
-
     svg {
       min-width: 23px;
       max-width: 23px;
@@ -26,17 +25,15 @@
       font-size: 12px;
       font-weight: 800;
       font-family: $font-en-primary;
-      color: lighten($color-black, 25%);
+      color: color.adjust($color-black, $lightness: 25%);
     }
-
     p {
       font-size: 9px;
       font-weight: 500;
       font-family: $font-en-primary;
-      color: lighten($color-black, 25%);
+      color: color.adjust($color-black, $lightness: 25%);
     }
   }
-
   .coupon-button {
     button {
       font-size: 10px;
@@ -53,5 +50,3 @@
     }
   }
 }
-
-

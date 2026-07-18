@@ -36,18 +36,7 @@ import { CurrencyService } from '../../../services/core/currency.service';
     providers: [ProductPricePipe],
     imports: [
         FormsModule,
-        OrderItemCardComponent,
-        OrderItemCardMobileComponent,
-        OrderLoaderComponent,
-        MatInput,
-        ProductCardLoaderComponent,
-        PaymentCardLoaderComponent,
-        PaymentMethodComponent,
-        CouponsComponent,
-        AddressArea1Component,
-        DeliveryCharge1Component,
         RouterLink,
-        CurrencyCtrPipe
     ]
 })
 export class Checkout1Component implements OnInit, OnDestroy {

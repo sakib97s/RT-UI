@@ -34,12 +34,8 @@ import { RouterModule } from "@angular/router";
     styleUrl: './products.component.scss',
     imports: [
         ProductDetailsCategoryLoaderComponent,
-        ProductCard1Component,
         ProductCardLoaderComponent,
         EmptyDataComponent,
-        ProductCard2Component,
-        ProductCard3Component,
-        ProductCard4Component,
         OutSideClickDirective,
         RouterModule,
     ]

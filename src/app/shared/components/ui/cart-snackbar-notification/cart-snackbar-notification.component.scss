@@ -1,4 +1,6 @@
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
+
 .sandbar {
   display: flex;
   align-items: center;
@@ -6,9 +8,8 @@
   gap: 8px;
   background-color: $color-white;
   font-size: 14px;
-  color: darken($color-white, 60%);
+  color: color.adjust($color-white, $lightness: -60%);
 }
-
 .message {
   display: flex;
   align-items: center;
@@ -32,9 +33,6 @@
     line-height: 10px;
   }
 }
-
-
-
 .view-cart {
   background-color: transparent;
   color: $color-primary;
@@ -49,7 +47,6 @@
   font-size: 12px;
   text-wrap: nowrap;
   transition: background-color 0.3s, color 0.3s;
-
   &:hover {
     background-color: $color-primary;
     cursor: pointer;
@@ -58,12 +55,10 @@
       fill: $color-white;
     }
   }
-
   svg{
     fill: $color-primary;
   }
 }
-
 .close-btn {
   background: none;
   border: none;
@@ -71,7 +66,6 @@
   cursor: pointer;
   font-size: 14px;
   transition: color 0.3s;
-
   &:hover {
     color: #ff4b4b;
   }

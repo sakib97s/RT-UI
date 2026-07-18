@@ -6,7 +6,6 @@ import {NgClass, NgStyle} from "@angular/common";
     selector: 'app-product-details-description',
     imports: [
         SafeHtmlCustomPipe,
-        NgStyle,
         NgClass
     ],
     templateUrl: './product-details-description.component.html',

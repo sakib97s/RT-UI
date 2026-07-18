@@ -1,10 +1,9 @@
-@import "variables";
+@use 'variables' as *;
 
 .fixed-view-input {
   display: flex;
   flex-direction: row;
   gap: 8px;
-
   .fixed-value {
     width: 70px;
     height: 42px;

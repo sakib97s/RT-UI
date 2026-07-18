@@ -1,4 +1,7 @@
-@import "variables";
+@use 'variables' as *;
+@use 'exports/tooltip' as *;
+@use 'exports/add-to-cart-varient' as *;
+@use "sass:color";
 
 /* Modal quantity control */
 .product-modal {
@@ -9,7 +12,6 @@
     gap: 12px;
     width: 100%;
   }
-
   .quantity-btn {
     display: inline-flex;
     align-items: center;
@@ -18,7 +20,6 @@
     border-radius: 6px;
     overflow: hidden;
     background: #fff;
-
     .minus,
     .plus {
       width: 36px;
@@ -30,15 +31,12 @@
       border: none;
       cursor: pointer;
       outline: none;
-
       svg { display: block; fill: #111; }
     }
-
     .q-input-box {
       height: 100%;
       display: flex;
       align-items: center;
-
       input {
         width: 64px;
         height: 100%;
@@ -50,7 +48,6 @@
       }
     }
   }
-
   .add-to-cart-btn {
     flex: 1;
     height: 38px;
@@ -68,14 +65,9 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     &:hover { filter: brightness(90%); }
   }
 }
-@import "variables";
-@import "exports/tooltip";
-@import "exports/add-to-cart-varient";
-
 .color-variant {
   button {
     display: flex;
@@ -95,7 +87,6 @@
     transition: all 0.3s linear;
     position: relative;
     cursor: pointer;
-
     &::after {
       content: "";
       width: 0;
@@ -107,18 +98,15 @@
       position: absolute;
       display: none;
     }
-
     picture {
       display: flex;
       align-items: center;
-
       img {
         height: 1.5rem;
         width: 1.5rem;
         object-fit: contain;
       }
     }
-
     span {
       color: #fff;
       font-size: 15px;
@@ -128,80 +116,63 @@
       display: none;
       z-index: 1;
     }
-
     img {
       width: 25px;
       height: 25px;
     }
-
     &:hover {
       border-color: $color-primary;
     }
-
     &.active {
       border-color: $color-primary;
-
       &::after {
         display: block;
       }
-
       span {
         display: block;
       }
     }
   }
 }
-
 .card-container {
   width: 100%;
   position: relative;
   cursor: pointer;
   transition: all 0.5s ease;
-  border: 1px solid darken($color-white, 8%);
+  border: 1px solid color.adjust($color-white, $lightness: -8%);
   border-radius: 1rem;
   text-decoration: none;
   display: inline-block;
   box-shadow: 0 0 10px rgb(0 0 0 / 7%);
-
   &:hover {
     border: 1px solid $color-primary;
     transition: all 0.5s ease;
-
-
     .product-card-bottom {
       .product-price {
-
         span {
           color: $color-primary;
           transition-duration: .3s;
         }
-
         .old-price {
           color: $color-primary;
         }
       }
     }
-
-
     .product-card-bottom-2 {
       .add-cart {
         .add {
           background-color: $color-primary;
           color: $color-white;
-
           svg {
             fill: $color-white;
           }
         }
       }
     }
-
-
     //box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
     //border: 1px solid $color-primary;
     ////filter: brightness(125%);
     //transition: all 0.5s ease;
-
     //.add-cart {
     //  .add {
     //    background-color: $color-primary;
@@ -213,23 +184,17 @@
     //}
   }
 }
-
-
-
 .card-parent {
   .active-wish-list {
     fill: $color-secondary !important;
   }
-
   .high-stock {
     stroke: $color-secondary !important;
   }
-
   .inactive {
     fill: none;
   }
 }
-
 .card-box {
   max-width: 320px;
   width: 100%;
@@ -239,14 +204,12 @@
   overflow: hidden;
   transition: all 0.5s ease;
 }
-
 .image-area1 {
   display: flex;
   justify-content: center;
   align-items: center;
   //padding: 3px 0 5px 0;
 }
-
 .picture-wrapper {
   height: 220px;
   width: 100%;
@@ -255,11 +218,9 @@
   justify-content: center;
   overflow: hidden;
 }
-
 .card-image-box {
   max-height: 50%;
   position: relative;
-
   img {
     height: 100%;
     width: 100%;
@@ -270,13 +231,11 @@
     //min-height: 220px;
     //max-height: 220px;
   }
-
   .product-tag {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 9;
-
     span {
       display: inline-block;
       font-size: 12px;
@@ -285,12 +244,10 @@
       border-radius: 5px;
       padding: 7px 10px;
     }
-
     .tag {
       background-color: $color-secondary;
     }
   }
-
   .img-wishlist {
     position: absolute;
     right: 0;
@@ -299,7 +256,6 @@
     background: none;
     border: none;
     cursor: pointer;
-
     .test {
       position: relative;
       background-color: transparent;
@@ -308,27 +264,21 @@
       outline: 0;
       overflow: visible;
     }
-
     &:hover .tooltiptext {
       visibility: visible;
       opacity: 1;
     }
   }
-
 }
-
 .product-category {
   margin-bottom: 5px;
-
   a {
-    color: darken($color-white, 8%);
+    color: color.adjust($color-white, $lightness: -8%);
     ;
     font-size: 12px;
   }
 }
-
 .product-title {
-
   //margin-top: 1.25rem;
   //padding-left: .75rem;
   //padding-right: .75rem;
@@ -346,20 +296,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-
     a {
       color: #253d4e;
       text-decoration: none;
     }
   }
 }
-
 .ratings {
   display: flex;
   align-items: center;
   gap: 4px;
   margin-bottom: 3px;
-
   p {
     font-family: $font-en-primary;
     color: $color-black;
@@ -367,14 +314,11 @@
     font-weight: 400;
   }
 }
-
 .product-card-bottom {
   margin-bottom: 3px;
-
   .product-price {
     display: flex;
     padding-top: 5px;
-
     span {
       display: flex;
       flex-direction: row;
@@ -386,10 +330,9 @@
       color: #000;
       transition-duration: .3s;
     }
-
     .old-price {
       font-size: .813rem;
-      //color: darken($color-white, 20%);
+      //color: color.adjust($color-white, $lightness: -20%);
       color: #000;
       font-weight: 500;
       margin: 0 0 0 7px;
@@ -397,22 +340,18 @@
       text-decoration: line-through;
     }
   }
-
 }
-
 .product-card-bottom-2 {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 100%;
   gap: .3rem;
-
   .add-cart {
     width: 100%;
     cursor: pointer;
     background: none;
     border: none;
-
     .add {
       position: relative;
       display: flex;
@@ -421,20 +360,17 @@
       padding: 9px 10px;
       border-radius: 8px;
       background-color: rgba(151, 151, 151, 0.4);
-      color: lighten($color-black, 10%);
+      color: color.adjust($color-black, $lightness: 10%);
       filter: brightness(135%);
       font-size: 15px;
       font-weight: 500;
       transition: background-color .4s ease;
-
       svg {
-        fill: lighten($color-black, 20%);
+        fill: color.adjust($color-black, $lightness: 20%);
       }
-
       &:hover {
         background-color: $color-primary;
         color: $color-white;
-
         svg {
           fill: $color-white;
         }
@@ -442,14 +378,12 @@
     }
   }
 }
-
 .product-card-bottom-2-flex {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 10px;
 }
-
 .add-cart-circle {
   flex: 1;
   width: 38px;
@@ -464,29 +398,23 @@
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-
   span {
     font-size: 14px;
     font-weight: 500;
     font-family: $font-en-primary;
-
   }
-
   svg {
-    fill: lighten($color-black, 20%);
+    fill: color.adjust($color-black, $lightness: 20%);
     display: block;
   }
-
   &:hover {
     background-color: $color-primary;
     color: $color-white;
-
     svg {
       fill: $color-white;
     }
   }
 }
-
 .buy-now-btn {
   flex: 1;
   padding: 0 18px;
@@ -504,13 +432,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   &:hover {
     background-color: $color-secondary;
     filter: brightness(90%);
   }
 }
-
 .stock-out {
   color: $color-black;
   background-color: #e7e7e7;
@@ -526,10 +452,8 @@
   align-items: center;
   justify-content: center;
 }
-
 .card-description-box {
   padding: 0 .5rem 1rem .5rem;
-
   .card-description-top {
     display: flex;
     flex-direction: column;
@@ -538,16 +462,13 @@
     margin: .5rem 0;
   }
 }
-
-
 @media only screen and (max-width: 599px) {
   .card-box {
     padding: 0;
   }
-
   .product-title {
     p {
-      color: darken($color-white, 93%);
+      color: color.adjust($color-white, $lightness: -93%);
       font-size: 3.46667vw;
       line-height: 4vw;
       word-break: break-all;
@@ -559,18 +480,15 @@
       height: 8vw;
     }
   }
-
   .ratings {
     p {
       font-size: 2.93333vw;
       line-height: 3.46667vw;
     }
   }
-
   .add {
     padding: 8px 8px 8px 8px !important;
   }
-
   .picture-wrapper {
     //height: 44.8vw;
     //width: 44.8vw;
@@ -580,7 +498,6 @@
     display: inline-flex;
     justify-content: center;
     overflow: hidden;
-
     img {
       display: inline-block;
       height: 100%;
@@ -590,13 +507,11 @@
       object-fit: cover;
     }
   }
-
   .mob-style-font-padding {
     padding: 0 1px !important;
     font-size: 12px !important;
     height: 32px !important;
   }
-
   .mob-style-font-padding {
     span {
       padding: 0 1px !important;
@@ -604,7 +519,6 @@
     }
   }
 }
-
 @media only screen and (max-width: 400px) {
   .card-box {
     padding: 0;

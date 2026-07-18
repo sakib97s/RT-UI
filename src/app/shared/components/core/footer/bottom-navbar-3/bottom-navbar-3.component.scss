@@ -1,6 +1,4 @@
-@import '../../../../../../theme/variables';
-
-
+@use '../../../../../../theme/variables' as *;
 
 .link-ripple-container{
   -webkit-appearance: none;
@@ -12,8 +10,6 @@
   -moz-user-select: none;
   user-select: none;
 }
-
-
 .navbar-outside {
     box-sizing: border-box;
     position: fixed;
@@ -27,7 +23,6 @@
     z-index: 1000;
     box-shadow: 0 -2px 12px rgba(0,0,0,0.07); 
     border-top: 1px solid $color-gray; 
-
     .container {
         width: 100%;
         max-width: 100%;
@@ -35,7 +30,6 @@
         margin: 0;
       }
 }
-
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -43,11 +37,9 @@
     flex-wrap: nowrap; // prevent wrapping
     min-width: 0;
 }
-
 .navbar-outside .container {
     min-width: 0;
 }
-
 // Navigation items
 .nav-item {
     display: flex;
@@ -62,7 +54,6 @@
     flex-shrink: 1; // allow shrinking
     min-width: 0;
     flex: 1 1 0;
-
     // Icon styles
     .nav-icon {
         fill: $color-gray-dark;
@@ -72,7 +63,6 @@
         margin-bottom: 4px;
         transition: fill 0.3s;
     }
-
     // Text styles
     span {
         color: $color-gray-dark;
@@ -85,7 +75,6 @@
         text-overflow: ellipsis;
         transition: font-size 0.2s;
     }
-
     // Hover state
     &:hover {
         background: rgba($color-primary, 0.07);
@@ -96,7 +85,6 @@
             fill: $color-primary;
         }
     }
-
     // Active state
     &.active {
         color: $color-primary;
@@ -109,7 +97,6 @@
             fill: $color-primary;
         }
     }
-
     // External links - prevent hover effects that make them look active
     &.external-link {
         &:hover {
@@ -123,7 +110,6 @@
         }
     }
 }
-
 // @media (max-width: 500px) {
 //   .nav-item {
 //     padding-left: 4px;

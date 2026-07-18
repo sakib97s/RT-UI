@@ -13,7 +13,6 @@ import {RouterLink} from "@angular/router";
     templateUrl: './order-tracking.component.html',
     styleUrl: './order-tracking.component.scss',
     imports: [
-        MobileHeaderComponent,
         TrackingHeaderComponent,
         RouterLink,
         KeyValuePipe

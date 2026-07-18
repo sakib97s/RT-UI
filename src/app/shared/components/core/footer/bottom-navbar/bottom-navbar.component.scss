@@ -1,10 +1,9 @@
-@import '../../../../../../theme/variables';
-@import "exports/chat-mobile";
+@use '../../../../../../theme/variables' as *;
+@use 'exports/chat-mobile' as *;
 
 .svg-bg{
   fill: $color-primary;
 }
-
 .navbar-outside{
     box-sizing: border-box;
     position: fixed;
@@ -51,7 +50,6 @@
       transition: all 0.5s ease;
     }
   }
-
 }
 .home-section,
 .categories-section,

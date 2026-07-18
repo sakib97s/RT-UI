@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 .no-internet-popup {
   position: fixed;
@@ -24,12 +24,9 @@
   background-color: $box-shadow-black; /* Semi-transparent black */
   z-index: 999; /* Below the popup */
 }
-
-  
 .header-2{
   margin-bottom: 60px;
 }
-
 @media only screen and (max-width: 599px) {
   .header-2{
     margin-bottom: 0 !important;

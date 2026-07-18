@@ -1,4 +1,5 @@
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
 
 .description-container{
     position: relative;
@@ -7,13 +8,12 @@
 .title{
     width: 100%;
     padding: 10px;
-    background-color: lighten($color-gray, 20%);
+    background-color: color.adjust($color-gray, $lightness: 20%);
     h4{
         font-family: $font-en-primary;
         font-size: calc($font-sub-title - 8px);
         font-weight: 500;
         color: $color-black;
-
         display:-webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
@@ -59,7 +59,6 @@ img{
     object-fit: cover;
     cursor: pointer;
 }
-
 p{
     margin: 20px 10px;
     font-family: $font-en-primary;

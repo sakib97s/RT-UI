@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables" as *;
+
 /* ==============================================
    SITE HEADER - Scalable, SEO-Friendly, Responsive
    Layout:
@@ -5,7 +8,6 @@
      Tablet  (768-1023px):LOGO | HAMBURGER (desktop nav hidden)
      Desktop (≥ 1024px): LOGO | NAV | PHONE + BOOK + CURRENCY
    ============================================== */
-
 /* ---------- CSS Custom Properties (Tokens) ---------- */
 :host {
   --clr-bg:        #FAF6EE;
@@ -19,7 +21,6 @@
   --radius-pill:   100px;
   --transition:    0.22s ease;
   --shadow-soft:   0 4px 24px rgba(0,0,0,0.08);
-
   /* Make the Angular host element itself sticky */
   display: block;
   position: sticky;
@@ -27,7 +28,6 @@
   z-index: 1000;
   width: 100%;
 }
-
 /* ---------- Base Header ---------- */
 .site-header {
   background: var(--clr-bg);
@@ -37,7 +37,6 @@
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   transition: box-shadow 0.3s ease;
 }
-
 /* Inner wrapper: max-width + horizontal padding */
 .header-inner {
   max-width: 1280px;
@@ -48,7 +47,6 @@
   align-items: center;
   gap: 12px;
 }
-
 /* -------------------------------------------------- */
 /* LOGO                                                */
 /* -------------------------------------------------- */
@@ -59,7 +57,6 @@
   user-select: none;
   flex-shrink: 0;
   line-height: 1;
-
   .logo-top-row {
     display: flex;
     align-items: flex-end;
@@ -85,11 +82,9 @@
     letter-spacing: 0.6px;
     margin-top: 2px;
   }
-
-  &:hover .logo-best-in { color: lighten(#D8AB2A, 8%); }
-  &:hover .logo-bottom-row { color: lighten(#1A305C, 15%); }
+  &:hover .logo-best-in { color: color.adjust(#D8AB2A, $lightness: 8%); }
+  &:hover .logo-bottom-row { color: color.adjust(#1A305C, $lightness: 15%); }
 }
-
 /* -------------------------------------------------- */
 /* MOBILE CENTER PHONE                                 */
 /* -------------------------------------------------- */
@@ -106,11 +101,9 @@
   font-size: 0.88rem;
   transition: color var(--transition);
   white-space: nowrap;
-
   i { font-size: 0.85rem; color: var(--clr-accent); }
   &:hover { color: var(--clr-accent); }
 }
-
 /* -------------------------------------------------- */
 /* DESKTOP NAV                                         */
 /* -------------------------------------------------- */
@@ -120,7 +113,6 @@
   gap: clamp(16px, 2.5vw, 32px);
   flex: 1;
   justify-content: center;
-
   a {
     text-decoration: none;
     color: var(--clr-primary);
@@ -131,7 +123,6 @@
     position: relative;
     transition: color var(--transition);
     white-space: nowrap;
-
     /* Animated underline on hover/active */
     &::after {
       content: '';
@@ -151,7 +142,6 @@
     }
   }
 }
-
 /* -------------------------------------------------- */
 /* DESKTOP ACTIONS                                     */
 /* -------------------------------------------------- */
@@ -161,7 +151,6 @@
   gap: 12px;
   flex-shrink: 0;
 }
-
 .desktop-phone {
   display: flex;
   align-items: center;
@@ -173,11 +162,9 @@
   font-size: 0.88rem;
   white-space: nowrap;
   transition: color var(--transition);
-
   i { font-size: 0.8rem; color: var(--clr-accent); }
   &:hover { color: var(--clr-accent); }
 }
-
 /* -------------------------------------------------- */
 /* BOOK NOW BUTTON                                     */
 /* -------------------------------------------------- */
@@ -199,14 +186,12 @@
   border: 2px solid transparent;
   transition: all var(--transition);
   white-space: nowrap;
-
   &:hover {
     background: transparent;
     color: var(--clr-primary);
     border-color: var(--clr-primary);
     box-shadow: 0 4px 12px rgba(26, 48, 92, 0.12);
   }
-
   &.full-width {
     width: 100%;
     font-size: 0.95rem;
@@ -214,14 +199,12 @@
     justify-content: center;
   }
 }
-
 /* -------------------------------------------------- */
 /* CURRENCY DROPDOWN                                   */
 /* -------------------------------------------------- */
 .currency-dropdown {
   position: relative;
 }
-
 .currency-toggle {
   display: inline-flex;
   align-items: center;
@@ -237,7 +220,6 @@
   cursor: pointer;
   transition: all var(--transition);
   white-space: nowrap;
-
   .chevron { font-size: 0.6rem; transition: transform var(--transition); }
   &[aria-expanded='true'] .chevron { transform: rotate(180deg); }
   &:hover {
@@ -245,7 +227,6 @@
     color: var(--clr-bg);
   }
 }
-
 .currency-menu {
   position: absolute;
   top: calc(100% + 8px);
@@ -260,7 +241,6 @@
   padding: 4px 0;
   list-style: none;
   margin: 0;
-
   li button {
     display: block;
     width: 100%;
@@ -273,12 +253,10 @@
     font-family: var(--font-main);
     color: var(--clr-primary);
     transition: background var(--transition);
-
     &:hover { background: var(--clr-bg); }
     &.active { color: var(--clr-accent); font-weight: 700; }
   }
 }
-
 /* -------------------------------------------------- */
 /* HAMBURGER BUTTON                                    */
 /* -------------------------------------------------- */
@@ -293,12 +271,9 @@
   flex-shrink: 0;
   border-radius: 8px;
   transition: background var(--transition);
-
   &:hover { background: var(--clr-muted); }
-
   .hamburger-icon { display: flex; align-items: center; }
 }
-
 /* -------------------------------------------------- */
 /* MOBILE DRAWER  –  smooth slide-down                 */
 /* -------------------------------------------------- */
@@ -312,20 +287,17 @@
   box-shadow: var(--shadow-soft);
   z-index: 999;
   overflow: hidden;
-
   /* Closed state */
   max-height: 0;
   opacity: 0;
   transform: translateY(-8px);
   pointer-events: none;
   visibility: hidden;
-
   transition:
     max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1),
     opacity    0.28s cubic-bezier(0.4, 0, 0.2, 1),
     transform  0.28s cubic-bezier(0.4, 0, 0.2, 1),
     visibility 0s   linear 0.38s;
-
   /* Open state */
   &.open {
     max-height: calc(100dvh - var(--header-h));
@@ -339,25 +311,21 @@
       opacity    0.28s cubic-bezier(0.4, 0, 0.2, 1),
       transform  0.28s cubic-bezier(0.4, 0, 0.2, 1),
       visibility 0s   linear;
-
     /* Staggered entrance for nav items */
     .mobile-nav-list li {
       animation: slideInItem 0.32s ease both;
-
       @for $i from 1 through 6 {
         &:nth-child(#{$i}) {
           animation-delay: #{$i * 0.045}s;
         }
       }
     }
-
     /* Fade-in footer */
     .mobile-drawer-footer {
       animation: slideInItem 0.32s ease 0.3s both;
     }
   }
 }
-
 @keyframes slideInItem {
   from {
     opacity: 0;
@@ -368,15 +336,12 @@
     transform: translateX(0);
   }
 }
-
 .mobile-nav-list {
   list-style: none;
   margin: 0;
   padding: 4px 0;
-
   li {
     position: relative;
-
     /* Left accent bar */
     &::before {
       content: '';
@@ -391,10 +356,8 @@
       transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
       transform-origin: center;
     }
-
     &:hover::before,
     &:has(.active)::before { transform: scaleY(1); }
-
     a {
       display: flex;
       align-items: center;
@@ -411,7 +374,6 @@
         background 0.22s ease,
         letter-spacing 0.22s ease;
       letter-spacing: 0;
-
       /* Arrow indicator – hidden by default */
       &::after {
         content: '→';
@@ -423,13 +385,11 @@
           opacity   0.22s ease,
           transform 0.22s ease;
       }
-
       &:hover,
       &.active {
         color: var(--clr-accent);
         background: rgba(216, 171, 42, 0.06);
         letter-spacing: 0.3px;
-
         &::after {
           opacity: 1;
           transform: translateX(0);
@@ -440,8 +400,6 @@
     &:last-child a { border-bottom: none; }
   }
 }
-
-
 .mobile-drawer-footer {
   padding: clamp(16px, 4vw, 24px) clamp(16px, 5vw, 32px);
   display: flex;
@@ -449,7 +407,6 @@
   gap: 16px;
   border-top: 2px solid var(--clr-muted);
 }
-
 /* Mobile Currency */
 .mobile-currency-section {
   .currency-label {
@@ -465,7 +422,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-
     button {
       padding: 7px 14px;
       border-radius: 8px;
@@ -477,7 +433,6 @@
       color: var(--clr-primary);
       cursor: pointer;
       transition: all var(--transition);
-
       &.active {
         background: var(--clr-accent);
         border-color: var(--clr-accent);
@@ -488,11 +443,9 @@
     }
   }
 }
-
 /* ============================================
    RESPONSIVE BREAKPOINTS
    ============================================ */
-
 /* ---------- TABLET: 768px – 1023px ----------
    Layout: LOGO | → gap → | HAMBURGER
    Desktop nav & desktop-actions are hidden.
@@ -522,7 +475,6 @@
     margin-left: auto; /* push to far right */
   }
 }
-
 /* ---------- MOBILE: < 768px ----------
    Layout: LOGO | PHONE (centered, flex-1) | HAMBURGER
 */
@@ -543,7 +495,6 @@
     padding: 13px 20px;
   }
 }
-
 /* ---------- SMALL MOBILE: < 380px ---------- */
 @media (max-width: 380px) {
   .mobile-phone-center span {

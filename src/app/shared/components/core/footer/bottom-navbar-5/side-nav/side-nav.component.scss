@@ -1,4 +1,5 @@
-@import'variables';
+@use 'variables' as *;
+
 /***** overlay ****/
 .overlay {
   display: block;
@@ -18,7 +19,6 @@ mat-icon {
 a:hover mat-icon {
   color: $color-primary;
 }
-
 .category-slide{
   display: block;
   background-color: #fff;
@@ -32,11 +32,9 @@ a:hover mat-icon {
   //box-shadow: 15px 0 25px 0 rgb(0 0 0 / 15%);
   transition: all 0.3s linear;
 }
-
 .category-slide-active {
   left: 0;
 }
-
 .slide-top{
   padding: 13px 18px;
   position: relative;
@@ -62,7 +60,6 @@ a:hover mat-icon {
   font-size: 20px;
   line-height: 26px;
 }
-
 .slide-top span {
   cursor: pointer;
   width: 33px;
@@ -81,13 +78,10 @@ a:hover mat-icon {
   box-shadow: 0 2px 3px 0 rgb(0 0 0 / 3%);
   transition: all 0.3s linear;
 }
-
 .slide-top span:hover {
   color: #fff;
   background-color: $color-primary;
 }
-
-
 .category-menu{
   display: block;
   width: 100%;
@@ -99,13 +93,11 @@ a:hover mat-icon {
   //padding: 0 15px;
   margin: 0;
   box-sizing: border-box;
-
 }
 .category-menu ul li{
   display: block;
   position: relative;
 }
-
 .category-menu ul li:last-child{
   margin: 0;
   //border: none;

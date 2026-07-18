@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 header {
   width: 100%;
@@ -14,7 +14,6 @@ header {
   background: $color-white;
   border-bottom: 1px solid #efefef;
 }
-
 .container{
   width: 95%;
   height: 40px;
@@ -30,29 +29,24 @@ header {
   cursor: pointer;
 }
 .svg-align{
-
   margin-top: 4px;
   padding: 0 10px;
   cursor: pointer;
-
   svg{
     height: 20px;
     width: 24px;
   }
-
 }
 .header-mid {
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
-
 .search-icon {
   margin-left: 4px;
   padding: 3px 5px 0;
   color: $color-primary;
 }
-
 // Animated Search text
 .search-text {
   width: 100%;
@@ -61,7 +55,6 @@ header {
   box-sizing: content-box;
   display: flex;
   justify-content: center;
-
   span {
     display: block;
     height: 100%;
@@ -71,11 +64,9 @@ header {
     font-weight: 500;
     font-size: calc($font-readable + 1px);
   }
-
   .words {
     overflow: hidden;
   }
-
   @keyframes spin_words {
     10% {
       transform: translateY(-112%);
@@ -102,9 +93,7 @@ header {
       transform: translateY(-400%);
     }
   }
-
 }
-
 @media only screen and (max-width: 599px) {
   header{
     display: flex;

@@ -1,4 +1,5 @@
-@import "common/headers/header-xl";
+@use 'common/headers/header-xl' as *;
+@use "variables" as *;
 
 header {
   border-bottom: none;
@@ -10,7 +11,6 @@ header {
   //justify-content: space-between;
   padding: 0 0;
   background-color: white;
-
   .category-menu {
     .browse-btn {
       background-color: $color-primary;
@@ -32,51 +32,41 @@ header {
       .menu-icon {
         font-size: 16px;
       }
-
       .dropdown-icon {
         font-size: 12px;
       }
     }
   }
-
   .nav-links {
     display: flex;
     gap: 20px;
-
     a {
       color: #333;
       text-decoration: none;
       font-size: 14px;
       position: relative;
-
       &.active {
         color: $color-primary;
       }
-
       &:hover {
         color: $color-primary;
       }
     }
   }
-
   .right-actions {
     display: flex;
     gap: 20px;
-
     .special-offer {
       color: $color-primary;
       font-weight: bold;
     }
-
     a {
       color: #333;
       text-decoration: none;
       font-size: 14px;
-
       &:hover {
         color: $color-primary;
       }
     }
   }
 }
-

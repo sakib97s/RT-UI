@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 .coupons{
   display: grid;
@@ -12,15 +12,12 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-
 .coupons::-webkit-scrollbar {
   display: none;
 }
-
 .coupons.grabbing {
   cursor: grabbing;
 }
-
 .coupon-area {
   padding: 16px 0 30px 0;
   box-sizing: border-box;
@@ -28,11 +25,9 @@
   align-items: center;
   justify-content: flex-start;
 }
-
 .coupon-input {
   display: block;
   width: 100%;
-
   input {
     width: 100%;
     padding: 11px 15px;
@@ -46,11 +41,9 @@
     border-radius: 5px 0 0 5px;
   }
 }
-
 .apply-btn {
   max-width: 120px;
   width: 100%;
-
   button {
     background-color: $color-primary;
     color: #fff;
@@ -64,14 +57,12 @@
     outline: none;
     border: 1px solid $color-primary;
     border-radius: 0 5px 5px 0;
-
     &.danger {
       background-color: #d83333;
       border: 1px solid #d83333;
     }
   }
 }
-
 @media (max-width: 600px) {
   .coupon-input input {
     padding: 6px 8px;

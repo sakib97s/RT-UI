@@ -1,4 +1,4 @@
-@import "variables";
+@use 'variables' as *;
 
 .navbar-outside {
   box-shadow: 0px -4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -11,7 +11,6 @@
   transition: all 0.3s ease;
   display: none;
 }
-
 .product-details-navbar {
   display: flex;
   justify-content: space-between;
@@ -20,7 +19,6 @@
   padding: 6px 10px;
   width: 100%;
 }
-
 .store {
   display: flex;
   flex-direction: column;
@@ -49,7 +47,6 @@
     }
   }
 }
-
 .add-to-cart {
   padding: 0px 5px;
   border-radius: 5px;
@@ -71,7 +68,6 @@
     text-wrap: nowrap;
   }
 }
-
 .buy-now {
   padding: 0 5px;
   border-radius: 5px;
@@ -93,7 +89,6 @@
     text-wrap: nowrap;
   }
 }
-
 @media only screen and (max-width: 599px) {
   .navbar-outside {
     display: block;

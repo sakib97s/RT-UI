@@ -1,5 +1,5 @@
-@import "variables";
-@import "exports/btn";
+@use 'variables' as *;
+@use 'exports/btn' as *;
 
 ::ng-deep.mat-bottom-sheet-container {
   padding: 0;
@@ -7,19 +7,16 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
-
 .cost-summary {
   .summary-item {
     display: flex;
     justify-content: space-between;
     font-size: $font-title-desc;
     margin: 20px 0;
-
     &.total {
       font-weight: bold;
       font-size: $font-title-desc;
     }
-
     &.discount {
       color: $color-warn;
     }
@@ -35,7 +32,6 @@
     }
   }
 }
-
 .modal-content {
   background-color: $color-white;
   width: 100%;
@@ -48,7 +44,6 @@
     color: #333;
   }
 }
-
 .modal-close {
   span {
     position: absolute;

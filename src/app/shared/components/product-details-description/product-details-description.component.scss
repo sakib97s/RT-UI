@@ -1,20 +1,17 @@
-@import "variables";
+@use 'variables' as *;
 
 .description {
   position: relative;
   width: 100%;
   word-break: break-all !important;
-  
   p {
     word-break: break-all;
     display: block;
     font-family: $font-en-primary !important;
   }
-
   ul, ol {
     margin: 15px 0 !important;
     padding-left: 35px !important;
-    
     li {
       margin: 8px 0 !important;
       font-family: $font-en-primary !important;
@@ -23,17 +20,14 @@
       display: list-item !important;
     }
   }
-
   ul li {
     list-style-type: disc !important;
     list-style-position: outside !important;
   }
-
   ol li {
     list-style-type: decimal !important;
     list-style-position: outside !important;
   }
-  
   pre {
     white-space: pre-wrap !important;
     word-break: break-all !important;
@@ -41,12 +35,10 @@
     font-family: $font-en-primary !important;
   }
 }
-
 :host ::ng-deep .description p {
   word-break: break-all;
   font-family: $font-en-primary !important;
 }
-
 :host ::ng-deep .description,
 :host ::ng-deep .description *,
 :host ::ng-deep .description .read-more,
@@ -55,7 +47,6 @@
     margin: 15px 0 !important;
     padding-left: 35px !important;
     display: block !important;
-    
     li {
       margin: 8px 0 !important;
       font-family: $font-en-primary !important;
@@ -65,11 +56,9 @@
       list-style-position: outside !important;
     }
   }
-
   ul li {
     list-style-type: disc !important;
   }
-
   ol li {
     list-style-type: decimal !important;
   }
@@ -80,7 +69,6 @@
     font-family: $font-en-primary !important;
   }
 }
-
 @media (max-width: 600px) {
   .description,
   :host ::ng-deep .description,
@@ -108,8 +96,6 @@
     margin-left: 0 !important;
   }
 }
-
-
 :host ::ng-deep .description .video-container {
   iframe {
     width: 100% !important;
@@ -117,20 +103,16 @@
     padding-block: 15px !important;
   }
 }
-
 @media (max-width: 599px){
   :host ::ng-deep .description .video-container {
     iframe {
       min-height: 20vw !important;
-
     }
   }
 }
-
 .see-more {
   text-align: center;
   margin-top: 10px;
-
   button {
     background: none;
     border: none;
@@ -140,29 +122,24 @@
     padding: 5px 15px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-
     &:hover {
       background-color: rgba(17, 151, 68, 0.1);
     }
   }
 }
-
 .read-more {
   position: relative;
   max-height: 600px;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
-
   &.expand {
     max-height: 100%;
   }
-
   p {
     margin: 0;
     padding: 0;
     line-height: 1.6;
   }
-
   .fade-overlay {
     position: absolute;
     bottom: 0;
@@ -172,13 +149,11 @@
     background: linear-gradient(to bottom, transparent, white);
     pointer-events: none;
     transition: opacity 0.3s ease;
-
     &.hidden {
       opacity: 0;
     }
   }
 }
-
 .read-more-link {
   position: absolute;
   bottom: 0;
@@ -194,7 +169,6 @@
   background-image: linear-gradient(to bottom, transparent, white);
   cursor: pointer;
 }
-
 .read-more-link.expand {
   position: relative;
   background-image: none;

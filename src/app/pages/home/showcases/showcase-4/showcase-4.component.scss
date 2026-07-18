@@ -1,29 +1,26 @@
-@import "variables";
+@use 'variables' as *;
+@use "sass:color";
 
 $container-height: 411px;
 $container-height-sm: 140px;
-
 .container {
   display: flex;
   flex-direction: row;
   margin-top: 67px;
   height: $container-height;
   gap: 5px;
-
   .left {
     flex: 1;
     padding-right: 15px ;
     height: 411px;
-
     .top-categories {
       width: 285px;
       //height: 100%;
       background-color: $color-white;
-      border: 1px solid  lighten($color-black, 95%);
+      border: 1px solid  color.adjust($color-black, $lightness: 95%);
       border-radius: 5px;
       overflow: hidden;
       box-shadow: 0 2px 5px $box-shadow-black;
-
       .menu-header {
         display: flex;
         align-items: center;
@@ -38,26 +35,21 @@ $container-height-sm: 140px;
           margin-right: 10px;
           fill: $color-white;
         }
-
         .menu-title {
           font-size: calc($font-sub-title - 10px);
           font-weight: 500;
           color: $color-white;
         }
       }
-
       .categories-list {
         list-style: none;
         margin: 0;
         padding: 0 20px 20px;
-
         li {
-          border-bottom: 1px solid lighten($color-black, 85%);
-
+          border-bottom: 1px solid color.adjust($color-black, $lightness: 85%);
           &:last-child {
             border-bottom: none;
           }
-
           a {
             display: flex;
             justify-content: space-between;
@@ -68,15 +60,12 @@ $container-height-sm: 140px;
             font-weight: 500;
             font-size: calc($font-readable + 2px);
             transition: color 0.4s ease;
-
             &:hover {
               color: $color-primary;
-
               svg {
                 transform: translateX(5px);
               }
             }
-
             svg {
               width: 9px;
               height: 9px;
@@ -85,12 +74,9 @@ $container-height-sm: 140px;
             }
           }
         }
-
-
       }
     }
   }
-
   .right {
     min-height: 465px;
     max-height: 465px;
@@ -98,19 +84,16 @@ $container-height-sm: 140px;
     height: 100%;
   }
 }
-
 ::ng-deep .carousel-component .carousel-container {
   height: $container-height;
   border-radius: 8px;
 }
-
 ::ng-deep .carousel-slide{
   border-radius: 8px;
   img{
     border-radius: 8px;
   }
 }
-
 @media only screen and (min-width: 599px) and (max-width: 1020px) {
   .container {
     .left {
@@ -121,7 +104,6 @@ $container-height-sm: 140px;
     }
   }
 }
-
 @media only screen and (max-width: 599px) {
   .container {
     margin-top: 10px !important;
@@ -140,7 +122,6 @@ $container-height-sm: 140px;
       display: none;
     }
   }
-
   ::ng-deep .carousel-component .carousel-container {
     height: 31.46667vw!important;
   }

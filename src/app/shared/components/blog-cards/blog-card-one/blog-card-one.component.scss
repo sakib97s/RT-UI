@@ -1,4 +1,5 @@
-@import'variables';
+@use 'variables' as *;
+
 .view-count{
   display: flex!important;
   justify-content: space-between;
@@ -15,7 +16,6 @@
   display: block;
   overflow: hidden;
   border-radius: 8px;
-
 }
 .blog-image img{
   transition: all 0.3s linear;
@@ -67,7 +67,6 @@
   font-size: 15px;
   color: $color-primary;
 }
-
 .blog-title{
   display: block;
   margin-bottom: 20px;
@@ -137,11 +136,8 @@
   left: 0;
 }
 .read-more a:hover i{
-
   left: 5px;
 }
-
-
 @media(max-width:599px){
   .blog-card{
     background: white;

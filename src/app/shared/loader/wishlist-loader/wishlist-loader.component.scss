@@ -1,10 +1,9 @@
-@import "variables";
+@use 'variables' as *;
 
 .list-container{
   display: flex;
   width: 100%;
 }
-
 .left-skeleton{
   display: flex;
   align-items: center;
@@ -32,5 +31,4 @@
   .right-skeleton {
     display: none;
   }
-
 }

@@ -11,7 +11,6 @@ import {ImageLoadErrorDirective} from "../../../directives/image-load-error.dire
     styleUrl: './blog-card-one.component.scss',
     imports: [
         RouterLink,
-        SafeHtmlCustomPipe,
         DatePipe,
         MatIcon,
         ImageLoadErrorDirective

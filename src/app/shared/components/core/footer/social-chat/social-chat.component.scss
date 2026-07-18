@@ -1,5 +1,6 @@
-@import "exports/chat";
-@import "variables";
+@use 'exports/chat' as *;
+@use 'variables' as *;
+
 .svg-bg{
   fill: $color-primary;
 }

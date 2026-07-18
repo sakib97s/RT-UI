@@ -1,4 +1,5 @@
-@import 'variables';
+@use 'variables' as *;
+
 .side-bar {
   width: 300px;
   background: #fff;
@@ -40,6 +41,4 @@ ul li{
       width: 100%;
     }
   }
-      
-        
       

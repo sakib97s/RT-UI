@@ -1,4 +1,7 @@
-@import "variables";
+@use 'variables' as *;
+@use 'exports/tooltip' as *;
+@use 'exports/add-to-cart-varient' as *;
+@use "sass:color";
 
 /* Modal quantity control */
 .product-modal {
@@ -9,7 +12,6 @@
     gap: 12px;
     width: 100%;
   }
-
   .quantity-btn {
     display: inline-flex;
     align-items: center;
@@ -18,7 +20,6 @@
     border-radius: 6px;
     overflow: hidden;
     background: #fff;
-
     .minus,
     .plus {
       width: 36px;
@@ -30,15 +31,12 @@
       border: none;
       cursor: pointer;
       outline: none;
-
       svg { display: block; fill: #111; }
     }
-
     .q-input-box {
       height: 100%;
       display: flex;
       align-items: center;
-
       input {
         width: 64px;
         height: 100%;
@@ -50,7 +48,6 @@
       }
     }
   }
-
   /* Right button aligned look */
   .add-to-cart-btn {
     flex: 1;
@@ -69,16 +66,11 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     &:hover {
       filter: brightness(90%);
     }
   }
 }
-@import "variables";
-@import "exports/tooltip";
-@import "exports/add-to-cart-varient";
-
 .color-variant {
   button {
     display: flex;
@@ -98,7 +90,6 @@
     transition: all 0.3s linear;
     position: relative;
     cursor: pointer;
-
     &::after {
       content: "";
       width: 0;
@@ -110,18 +101,15 @@
       position: absolute;
       display: none;
     }
-
     picture {
       display: flex;
       align-items: center;
-
       img {
         height: 1.5rem;
         width: 1.5rem;
         object-fit: contain;
       }
     }
-
     span {
       color: #fff;
       font-size: 15px;
@@ -131,57 +119,47 @@
       display: none;
       z-index: 1;
     }
-
     img {
       width: 25px;
       height: 25px;
     }
-
     &:hover {
       border-color: $color-primary;
     }
-
     &.active {
       border-color: $color-primary;
-
       &::after {
         display: block;
       }
-
       span {
         display: block;
       }
     }
   }
 }
-
 .card-container {
   width: 100%;
   position: relative;
   cursor: pointer;
   transition: all 0.5s ease;
-  border: 1px solid darken($color-white, 8%);
+  border: 1px solid color.adjust($color-white, $lightness: -8%);
   border-radius: 15px;
   text-decoration: none;
   display: inline-block;
   background-color: $color-white;
-
   &:hover {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid $color-primary;
     transition: all 0.5s ease;
   }
 }
-
 .card-parent {
   position: relative;
-
   .product-tag {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 9;
-
     span {
       display: inline-block;
       font-size: 12px;
@@ -190,19 +168,16 @@
       color: $color-white;
       padding: 7px 14px 5px 14px;
     }
-
     .tag {
       background-color: $color-secondary;
     }
   }
-
   .img-compare {
     cursor: pointer;
     position: absolute;
     right: 70px;
     top: 10px;
     color: $color-white;
-
     .test {
       position: relative;
       background-color: transparent;
@@ -212,13 +187,11 @@
       overflow: visible;
       cursor: pointer;
     }
-
     &:hover .tooltiptext {
       visibility: visible;
       opacity: 1;
     }
   }
-
   .img-wishlist {
     position: absolute;
     right: 30px;
@@ -227,7 +200,6 @@
     background: none;
     border: none;
     cursor: pointer;
-
     .test {
       position: relative;
       background-color: transparent;
@@ -236,48 +208,38 @@
       outline: 0;
       overflow: visible;
     }
-
     &:hover .tooltiptext {
       visibility: visible;
       opacity: 1;
     }
   }
-
   .active-wish-list {
     fill: $color-secondary !important;
-
   }
-
   .high-stock {
     stroke: $color-secondary !important;
   }
-
-
   .inactive {
     fill: none;
   }
 }
-
 .card-box {
   max-width: 320px;
   width: 100%;
   padding: 17px;
 }
-
 .image-area {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 3px 0 5px 0;
 }
-
 .image-area1 {
   display: flex;
   align-items: center;
   padding: 3px 0 5px 0;
   gap: 13px;
 }
-
 .card-image-box {
   height: 189px;
   width: 189px;
@@ -285,7 +247,6 @@
   display: inline-flex;
   justify-content: center;
   overflow: hidden;
-
   img {
     height: 100%;
     width: 100%;
@@ -295,17 +256,14 @@
     object-fit: contain;
   }
 }
-
 .product-category {
   margin-bottom: 5px;
-
   a {
-    color: darken($color-white, 8%);
+    color: color.adjust($color-white, $lightness: -8%);
     ;
     font-size: 12px;
   }
 }
-
 .product-title {
   p {
     font-size: $font-readable;
@@ -319,20 +277,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-
     a {
       color: #253d4e;
       text-decoration: none;
     }
   }
 }
-
 .ratings {
   display: flex;
   align-items: center;
   gap: 4px;
   margin-bottom: 3px;
-
   p {
     font-family: $font-en-primary;
     color: $color-black;
@@ -340,49 +295,40 @@
     font-weight: 400;
   }
 }
-
 .product-card-bottom {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
-
   .product-price {
     padding-top: 5px;
-
     .currency {
       font-size: 16px;
     }
-
     span {
       line-height: 25px;
       font-size: 18px;
       font-weight: bold;
       color: $color-primary;
     }
-
     .old-price {
       font-size: 12px;
-      color: darken($color-white, 50%);
+      color: color.adjust($color-white, $lightness: -50%);
       font-weight: 500;
       margin: 0 0 0 6px;
       text-decoration: line-through;
     }
-
     .wholesale-unit {
       font-size: 1vw !important;
       padding-left: 5px;
-
       .currency {
         font-size: 12px;
       }
     }
   }
-
   .add-cart {
     cursor: pointer;
     background: none;
     border: none;
-
     .add {
       position: relative;
       display: flex;
@@ -394,16 +340,13 @@
       font-weight: 600;
       color: $color-white;
       transition: background-color 300ms ease;
-
       svg {
         fill: $color-white;
       }
-
       &:hover {
         background-color: $color-primary;
         color: $color-white;
         filter: brightness(115%);
-
         svg {
           fill: $color-white;
         }
@@ -411,14 +354,12 @@
     }
   }
 }
-
 .checkout-btn-flex {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 10px;
 }
-
 .add-cart-circle {
   width: 38px;
   height: 38px;
@@ -431,18 +372,15 @@
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-
   svg {
     fill: #fff;
     display: block;
   }
-
   &:hover {
     background-color: $color-primary;
     filter: brightness(90%);
   }
 }
-
 .buy-now-btn {
   flex: 1;
   padding: 0 18px;
@@ -458,7 +396,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   text-align: center;
 }
-
 .stock-out {
   color: $color-black;
   background-color: #e7e7e7;
@@ -473,46 +410,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   &:hover {
     background-color: $color-secondary;
     filter: brightness(90%);
   }
 }
-
-
 @media only screen and (max-width: 599px) {
   .product-card-bottom .product-price {
     .currency {
       font-size: 3.5vw !important;
     }
-
     .old-price {
       font-size: 2.5vw !important;
     }
-
     .pre-price {
       font-size: 4vw !important;
     }
-
     .wholesale-unit {
       font-size: 1vw !important;
       padding-left: 5px;
     }
   }
-
-
   .card-box {
     padding: 10px;
   }
-
   .add-text {
     display: none;
   }
-
   .product-title {
     p {
-      color: darken($color-white, 93%);
+      color: color.adjust($color-white, $lightness: -93%);
       font-size: 3.46667vw;
       line-height: 4vw;
       word-break: break-all;
@@ -523,18 +450,15 @@
       height: 8vw;
     }
   }
-
   .ratings {
     p {
       font-size: 2.93333vw;
       line-height: 3.46667vw;
     }
   }
-
   .add {
     padding: 6px 6px 5px 7px !important;
   }
-
   .card-container {
     border-radius: 8px;
     height: auto;
@@ -543,7 +467,6 @@
     width: 44.8vw;
     //width: 45vw;
   }
-
   .card-parent {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -554,7 +477,6 @@
     -moz-user-select: none;
     user-select: none;
   }
-
   .card-image-box {
     height: 39.8vw;
     width: 39.8vw;
@@ -562,7 +484,6 @@
     display: inline-flex;
     justify-content: center;
     overflow: hidden;
-
     img {
       height: 100%;
       width: 100%;
@@ -572,8 +493,6 @@
     }
   }
 }
-
-
 @media only screen and (max-width: 400px) {
   .card-box {
     padding: 5px 8px;

@@ -1,5 +1,6 @@
-@import 'variables';
-@import "exports/custom-button";
+@use 'variables' as *;
+@use 'exports/custom-button' as *;
+@use "sass:color";
 
 .container {
   display: flex;
@@ -8,7 +9,6 @@
   padding-top: calc($header-height - 45px);
   position: relative;
 }
-
 .sidebar {
   width: 450px;
   position: sticky;
@@ -16,19 +16,16 @@
   height: calc(100vh - $header-height);
   overflow-y: auto;
 }
-
 .all-containers{
   width: 100%;
   display: grid;
   gap: 25px;
   margin-bottom: 80px;
 }
-
 .order-head{
   h3{
     font-size: calc($font-sub-title-sm - 2px);
   }
-
   p{
     width: 95px;
     background-color: $color-secondary;
@@ -42,7 +39,6 @@
     align-items: center;
     gap: 5px;
   }
-
   span{
     display: block;
     background-color: $color-white;
@@ -51,13 +47,11 @@
     border-radius: 50%;
   }
 }
-
 .btn-primary{
   width: 100%;
   height: 45px;
   font-size: calc($font-readable + 2px);
 }
-
 .modal {
   display: flex;
   justify-content: center;
@@ -70,12 +64,10 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
   transition: opacity 0.3s ease;
-
   &.fade {
     opacity: 0;
   }
 }
-
 .modal-content {
   background-color: #fff;
   padding: 20px;
@@ -84,7 +76,6 @@
   position: relative;
   width: 400px;
   animation: fadeIn 0.3s;
-
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -95,53 +86,45 @@
       transform: translateY(0);
     }
   }
-
   h2 {
     margin-bottom: 15px;
     color: #333;
   }
-
   label {
     font-weight: bold;
     margin-bottom: 8px;
     display: block;
     color: #555;
   }
-
   textarea {
     width: 100%;
-    border: 1px solid lighten($color-black, 25%)-light;
+    border: 1px solid color.adjust($color-black, $lightness: 25%)-light;
     border-radius: 4px;
     padding: 10px;
     resize: none;
     font-size: $font-readable;
     color: #333;
     outline: none;
-
     &:focus {
       border-color: $color-primary;
     }
   }
-
   .close {
     cursor: pointer;
     position: absolute;
     top: 10px;
     right: 15px;
-
     svg{
       height: 20px;
       width: 20px;
     }
   }
 }
-
 .button-group-order {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
-
   .btn-cancel {
     align-items: center;
     display: flex;
@@ -157,7 +140,6 @@
     outline: none;
     cursor: pointer;
   }
-
   .btn-invoice {
     align-items: center;
     display: flex;
@@ -174,37 +156,28 @@
     cursor: pointer;
   }
 }
-
-
 @media only screen and (max-width:599px){
   .sidebar{
     display: none;
   }
-
   .order-head{
     background-color: $color-white;
     padding: 10px;
     border-radius: 10px;
   }
-
   .container{
     padding-top: 15px;
   }
-
   .all-containers{
     gap: 15px;
   }
-
   .button-group-order .btn-invoice {
     padding: 9px 9px;
   }
-
   .button-group-order .btn-cancel {
     padding: 9px 9px;
   }
-
   .button-group-order{
     justify-content: center;
   }
-
 }

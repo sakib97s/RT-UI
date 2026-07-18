@@ -21,8 +21,6 @@ import {ImgCtrlPipe} from "../../../shared/pipes/img-ctrl.pipe";
     LightgalleryModule,
     ImageLoadErrorDirective,
     DatePipe,
-    ImgCtrlPipe,
-    NgOptimizedImage
 ]
 })
 export class AllCommentsComponent implements OnInit, OnDestroy {
