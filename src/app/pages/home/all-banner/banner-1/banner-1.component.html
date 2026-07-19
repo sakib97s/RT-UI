@@ -1,17 +1,17 @@
 @if(banners[0]?.showHome && banners[0]?.images?.length){
-  <section class="container">
-    <div class="content">
-      @defer (when !isLoading) {
-        <a class="img-thumb" routerLink="/">
-          <img [src]="isMobile < 600 && this.banners[0]?.images?.[1] ? this.banners[0]?.images[1] : this.banners[0]?.images[0]" alt="Slide" />
-        </a>
-      } @placeholder(minimum 50ms)  {
-        @for (data of [1]; track data) {
-          <app-banner-loader-one />
-        }
-      }
-    </div>
-  </section>
+  @defer (when !isLoading) {
+    <section class="hero-section" [style.background-image]="'url(' + (isMobile < 600 && banners[0]?.images?.[1] ? banners[0].images[1] : banners[0].images[0]) + ')'">
+      <div class="hero-overlay">
+        <div class="container hero-content-wrapper">
+          <h1 class="hero-headline">{{ banners[0].name || 'From St.Peter\'s Square to the wonders of the Eternal City' }}</h1>
+        </div>
+      </div>
+    </section>
+  } @placeholder(minimum 50ms) {
+    @for (data of [1]; track data) {
+      <app-banner-loader-one />
+    }
+  }
 }
 
 

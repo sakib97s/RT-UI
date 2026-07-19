@@ -50,7 +50,7 @@ export class Banner1Component implements OnInit, OnDestroy {
    */
   private getAllBanner(): void {
     const filterData: FilterData = {
-      filter: {status: 'publish'},
+      filter: {status: 'publish', type: 'Home Page Top Banner'},
       pagination: null,
       select: {
         name: 1,

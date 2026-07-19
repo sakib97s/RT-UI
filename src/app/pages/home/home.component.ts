@@ -51,7 +51,8 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.component.scss',
   imports: [
     RouterModule,
-    TagProductsComponent
+    TagProductsComponent,
+    Banner1Component
   ]
 })
 export class HomeComponent implements OnInit, OnDestroy {

@@ -1,12 +1,13 @@
 <div class="home-page-container">
   <!-- Hero Section with Rome Colosseum sunset photo -->
-  <section class="hero-section" style="background-image: url('/hero_colosseum.png')">
+  <app-banner-1></app-banner-1>
+  <!-- <section class="hero-section" style="background-image: url('/hero_colosseum.png')">
     <div class="hero-overlay">
       <div class="container hero-content-wrapper">
         <h1 class="hero-headline">From St.Peter's Square to the wonders of the Eternal City</h1>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Intro/Welcome Text Section -->
   <section class="intro-section container text-center">
@@ -18,14 +19,11 @@
   </section>
 
   @if (isTagProduct) {
-    @for (tag of tags; track tag._id; let i = $index) {
-      <app-tag-products 
-        [tag]="tag" 
-        [index]="i" 
-        [isEnableCheckoutOrderModal]="isEnableCheckoutOrderModal" 
-        [isEnableHomeRecentOrder]="isEnableHomeRecentOrder">
-      </app-tag-products>
-    }
+  @for (tag of tags; track tag._id; let i = $index) {
+  <app-tag-products [tag]="tag" [index]="i" [isEnableCheckoutOrderModal]="isEnableCheckoutOrderModal"
+    [isEnableHomeRecentOrder]="isEnableHomeRecentOrder">
+  </app-tag-products>
+  }
   }
 
   <!-- Our Priority Entrance Tours Section -->
