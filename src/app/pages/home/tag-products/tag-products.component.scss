@@ -6,20 +6,38 @@
 .products-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 24px 0 14px;
-  .flash-title-counter {
+  align-items: flex-end;
+  margin: 24px 0 20px;
+
+  .title-desc-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-family: $font-en-primary;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .tag-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .more-container {
+    display: flex;
     align-items: center;
     gap: 15px;
   }
-  h2 {
-    font-size: calc($font-title - 12px);
-    font-family: $font-en-primary;
-    font-weight: 500;
-    color: color.adjust($color-white, $lightness: -74%);
-  }
+
   .more {
     a {
       font-size: $font-title-desc;
@@ -30,18 +48,22 @@
       color: color.adjust($color-black, $lightness: 20%);
       cursor: pointer;
       text-decoration: none;
+
       svg {
         transition: all 0.5s ease;
       }
     }
+
     .arrow-icon {
       margin-left: 8px;
       transition: transform 0.3s ease-in-out;
     }
+
     &:hover {
       a {
         color: $color-primary;
       }
+
       .arrow-icon {
         transform: translateX(5px);
         fill: $color-primary;
@@ -49,16 +71,19 @@
     }
   }
 }
+
 .products-cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-bottom: 30px;
 }
+
 .products-more {
   width: 100%;
   text-align: center;
   margin: 10px 0;
+
   button {
     width: 350px;
     height: 35px;
@@ -73,6 +98,7 @@
     transition: all 0.5s ease;
     text-align: center;
     text-transform: uppercase;
+
     &:hover {
       background-color: $color-primary;
       color: $color-white;
@@ -81,66 +107,89 @@
     }
   }
 }
+
 @media only screen and (max-width: 1080px) {
-  .products-cards {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media only screen and (max-width: 850px) {
   .products-cards {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media only screen and (max-width: 650px) {
+
+@media only screen and (max-width: 850px) {
   .products-cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media only screen and (max-width: 650px) {
+  .products-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 //for mobile
 @media only screen and (max-width: 599px) {
   .products-header {
-    align-items: inherit;
-    .flash-title-counter {
-      gap: 7px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0 10px;
+
+    .title-desc-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
     }
+
+    h2 {
+      color: color.adjust($color-white, $lightness: -93%) !important;
+      font-size: 4.8vw;
+      font-weight: 800;
+      line-height: 1.2;
+      overflow: visible;
+      text-overflow: clip;
+      white-space: normal;
+    }
+
+    .tag-desc {
+      font-size: 3.5vw;
+      line-height: 1.3;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .more-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .more {
       a {
         font-size: 3.46667vw;
         line-height: 4vw;
         color: $color-black;
-        .arrow-icon{
+
+        .arrow-icon {
           margin-left: 0;
         }
       }
-      p {
-        font-size: $font-title-desc-sm;
-      }
     }
   }
+
   .products-cards {
     grid-template-columns: repeat(2, 1fr);
     gap: 7px;
   }
-  .recent-order{
+
+  .recent-order {
     margin-bottom: 6px;
   }
-  .flash-title-counter {
-    display: flex;
-    flex-direction: column;
-    align-items: inherit !important;
-    h2 {
-      color: color.adjust($color-white, $lightness: -93%);
-      font-size: 4.26667vw;
-      font-weight: 700;
-      line-height: 4.8vw;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
-  .container{
+
+  .container {
     width: 100%;
-    margin: 0!important;
+    margin: 0 !important;
     padding: 0 4vw 0 4vw;
   }
 }

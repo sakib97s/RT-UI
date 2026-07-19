@@ -1,10 +1,38 @@
-@if(banners[0]?.showHome && banners[0]?.images?.length){
+@if(banners[0]?.showHome && (banners[0]?.images?.length || banners[0]?.videoUrl)){
   @defer (when !isLoading) {
-    <section class="hero-section" [style.background-image]="'url(' + (isMobile < 600 && banners[0]?.images?.[1] ? banners[0].images[1] : banners[0].images[0]) + ')'">
+    <section class="hero-section" [style.background-image]="(!banners[0]?.videoUrl && banners[0]?.images?.length) ? 'url(' + (isMobile < 600 && banners[0]?.images?.[1] ? banners[0].images[1] : banners[0].images[0]) + ')' : 'none'">
+      
+      @if (banners[0]?.videoUrl) {
+        @if (banners[0]?.videoUrl?.includes('youtube') || banners[0]?.videoUrl?.includes('vimeo') || banners[0]?.videoUrl?.includes('embed')) {
+          <iframe #iframeElement class="hero-video" [src]="getFormattedVideoUrl(banners[0].videoUrl) | safeUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        } @else {
+          <video #videoElement class="hero-video" autoplay muted loop playsinline>
+            <source [src]="banners[0].videoUrl" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        }
+      }
+
       <div class="hero-overlay">
         <div class="container hero-content-wrapper">
-          <h1 class="hero-headline">{{ banners[0].name || 'From St.Peter\'s Square to the wonders of the Eternal City' }}</h1>
+          <h1 class="hero-headline">{{ banners[0].title || banners[0].name || 'From St.Peter\'s Square to the wonders of the Eternal City' }}</h1>
         </div>
+
+        @if (banners[0]?.videoUrl) {
+          <button class="video-control-btn" type="button" (click)="togglePlayPause()" [title]="isPlaying ? 'Pause Video' : 'Play Video'">
+            @if (isPlaying) {
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>
+              </svg>
+              <span>Pause</span>
+            } @else {
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+              </svg>
+              <span>Play</span>
+            }
+          </button>
+        }
       </div>
     </section>
   } @placeholder(minimum 50ms) {

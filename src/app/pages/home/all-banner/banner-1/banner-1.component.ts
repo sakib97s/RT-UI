@@ -1,4 +1,4 @@
-import {Component, HostListener, inject, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, ElementRef, HostListener, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {Banner} from "../../../../interfaces/common/banner.interface";
 import {BannerService} from "../../../../services/common/banner.service";
@@ -6,21 +6,27 @@ import {Subscription} from "rxjs";
 import {FilterData} from "../../../../interfaces/core/filter-data";
 import {isPlatformBrowser, isPlatformServer} from "@angular/common";
 import {BannerLoaderOneComponent} from "../../../../shared/loader/banner-loader-one/banner-loader-one.component";
+import {SafeUrlPipe} from "../../../../shared/pipes/safe-url.pipe";
 
 @Component({
     selector: 'app-banner-1',
     imports: [
         RouterLink,
-        BannerLoaderOneComponent
+        BannerLoaderOneComponent,
+        SafeUrlPipe
     ],
     templateUrl: './banner-1.component.html',
     styleUrl: './banner-1.component.scss'
 })
 export class Banner1Component implements OnInit, OnDestroy {
 
+  @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
+  @ViewChild('iframeElement') iframeElement!: ElementRef<HTMLIFrameElement>;
+
   // Store Data
-  banners: Banner[] = [];
+  banners: any[] = []; // Changed to any[] to support 'title' property from backend
   isLoading: boolean = true;
+  isPlaying: boolean = true;
   isMobile: number;
   isBrowser: boolean;
   isServer: boolean;
@@ -39,23 +45,22 @@ export class Banner1Component implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // Base Data
     this.getAllBanner();
   }
 
-
-  /**
-   * HTTP Request Handle
-   * getAllBanner()
-   */
   private getAllBanner(): void {
     const filterData: FilterData = {
-      filter: {status: 'publish', type: 'Home Page Top Banner'},
+      filter: {
+        status: 'publish',
+        type: { $in: ['Home Page Top Banner', 'banner-one'] }
+      },
       pagination: null,
       select: {
+        title: 1,
         name: 1,
         type: 1,
         images: 1,
+        videoUrl: 1,
         showHome: 1,
       },
       sort: {priority: -1}
@@ -74,16 +79,38 @@ export class Banner1Component implements OnInit, OnDestroy {
     this.subscriptions?.push(subscription);
   }
 
-  // Window Resize Event Handler
+  getFormattedVideoUrl(url: string): string {
+    if (!url) return '';
+    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+      const separator = url.includes('?') ? '&' : '?';
+      return `${url}${separator}autoplay=1&mute=1&enablejsapi=1&loop=1`;
+    }
+    return url;
+  }
+
+  togglePlayPause(): void {
+    if (this.videoElement?.nativeElement) {
+      const video = this.videoElement.nativeElement;
+      if (this.isPlaying) {
+        video.pause();
+        this.isPlaying = false;
+      } else {
+        video.play();
+        this.isPlaying = true;
+      }
+    } else if (this.iframeElement?.nativeElement) {
+      const iframe = this.iframeElement.nativeElement;
+      const action = this.isPlaying ? 'pauseVideo' : 'playVideo';
+      iframe.contentWindow?.postMessage(`{"event":"command","func":"${action}","args":""}`, '*');
+      this.isPlaying = !this.isPlaying;
+    }
+  }
+
   @HostListener('window:resize')
   onGetInnerWidth(): void {
     this.isMobile = window.innerWidth;
   }
 
-
-  /**
-   * ON Destroy
-   */
   ngOnDestroy() {
     this.subscriptions?.forEach(sub => sub?.unsubscribe());
   }

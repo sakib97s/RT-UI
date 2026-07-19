@@ -1,21 +1,36 @@
 @if (product && !isLoading) {
-  <div class="fade-in">
+  <div class="fade-in product-details-page">
 
-    <!-- Gallery Section -->
-    <div class="gallery-section">
-      <div class="main-img">
-        <img [src]="selectedImage || product.image || 'images/colosseum.png'" [alt]="product.name">
-        <div class="img-badge"><i class="fa-solid fa-camera"></i> {{product.images?.length || 1}} Photos</div>
-        <a routerLink="/products" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
-      </div>
-      @if (product.images && product.images.length > 1) {
-        <div class="thumb-strip">
-          @for (img of product.images; let i = $index; track img) {
-            <img [src]="img" [class.active]="img === selectedImage"
-                 (click)="selectedImage = img" [alt]="'Photo ' + (i+1)">
-          }
+    <!-- Page Title Header (Full Width) -->
+    <div class="container page-header">
+      <h1 class="page-title">{{product.name}}</h1>
+    </div>
+
+    <!-- Gallery Section (Mockup 5-Image Grid) -->
+    <div class="container gallery-container">
+      <div class="gallery-grid">
+        <div class="gallery-main" (click)="openLightbox(0)">
+          <img [src]="product.images?.[0] || 'images/colosseum.png'" [alt]="product.name">
         </div>
-      }
+        <div class="gallery-sub-grid">
+          <div class="sub-img" (click)="openLightbox(1)">
+            <img [src]="product.images?.[1] || product.images?.[0]" [alt]="product.name + ' 1'">
+          </div>
+          <div class="sub-img" (click)="openLightbox(2)">
+            <img [src]="product.images?.[2] || product.images?.[0]" [alt]="product.name + ' 2'">
+            <div class="view-photos-overlay">
+              <i class="fa-solid fa-camera"></i>
+              <span>View Photos</span>
+            </div>
+          </div>
+          <div class="sub-img" (click)="openLightbox(3)">
+            <img [src]="product.images?.[3] || product.images?.[0]" [alt]="product.name + ' 3'">
+          </div>
+          <div class="sub-img" (click)="openLightbox(4)">
+            <img [src]="product.images?.[4] || product.images?.[0]" [alt]="product.name + ' 4'">
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Main Content Layout -->
@@ -27,121 +42,388 @@
           <a routerLink="/">Home</a> / <a routerLink="/products">Tours</a> / <span>{{product.name}}</span>
         </nav>
 
-        <h1 class="title">{{product.name}}</h1>
+        <h2 class="section-title">{{product.name}}</h2>
 
+        <!-- Meta info & Rating -->
         <div class="meta-row">
-          <span class="stars"><i class="fa-solid fa-star"></i> {{product.ratingAvr || 4.8}} ({{reviewsCount}} reviews)</span>
-          <span><i class="fa-solid fa-clock"></i> 3 Hours</span>
-          <span><i class="fa-solid fa-user-group"></i> Max 20</span>
-          <span><i class="fa-solid fa-language"></i> English</span>
-        </div>
-
-        @if (product.specifications && product.specifications.length > 0) {
-          <div class="highlights-box">
-            @for (spec of product.specifications; track spec.name) {
-              <div class="hl-item">
-                <i class="fa-solid fa-circle-check"></i> {{spec.name}}: {{spec.value}}
-              </div>
-            }
+          <div class="meta-item duration">
+            <i class="fa-solid fa-clock"></i>
+            <span>3 hours</span>
           </div>
-        }
-
-        <div class="desc-section">
-          <h2>About This Tour</h2>
-          <div [innerHTML]="product.description"></div>
-        </div>
-
-        <div class="itinerary-section">
-          <h2>What to Expect</h2>
-          <div class="timeline">
-            @for (step of steps; let i = $index; track step.time) {
-              <div class="tl-item">
-                <div class="tl-dot">{{i+1}}</div>
-                <div class="tl-body"><strong>{{step.time}}</strong><p>{{step.desc}}</p></div>
-              </div>
-            }
+          <div class="meta-item difficulty">
+            <i class="fa-solid fa-gauge-simple"></i>
+            <span>Easy</span>
+          </div>
+          <div class="meta-item type">
+            <i class="fa-solid fa-user-group"></i>
+            <span>Private</span>
           </div>
         </div>
+
+        <div class="rating-row">
+          <div class="green-dots">
+            <span class="dot active"></span>
+            <span class="dot active"></span>
+            <span class="dot active"></span>
+            <span class="dot active"></span>
+            <span class="dot active"></span>
+          </div>
+          <span class="rating-val">38</span>
+        </div>
+
+        <p class="short-desc">
+          {{ product.shortDescription || 'Visit the Vatican Museums with a guide, explore priceless art from antiquity to the Renaissance, admire the stunning frescoes of the Sistine Chapel and visit St Peter Basilica.' }}
+        </p>
+
+        <!-- Tabbed Navigation -->
+        <div class="tabs-nav">
+          <button class="tab-btn" [class.active]="currentTab === 'description'" (click)="toggleTab('description')">Description</button>
+          <button class="tab-btn" [class.active]="currentTab === 'itinerary'" (click)="toggleTab('itinerary')">Itinerary</button>
+          <button class="tab-btn" [class.active]="currentTab === 'meeting'" (click)="toggleTab('meeting')">Meeting points</button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-content">
+          
+          <!-- Description Tab -->
+          @if (currentTab === 'description') {
+            <div class="tab-pane fade-in">
+              <div class="desc-rich-text" [innerHTML]="product.description"></div>
+
+              @if (product.highlights && product.highlights.length) {
+                <div class="highlights-list">
+                  <h3>Highlights</h3>
+                  <ul>
+                    @for (hl of product.highlights; track hl) {
+                      <li><i class="fa-solid fa-circle-check"></i> {{hl}}</li>
+                    }
+                  </ul>
+                </div>
+              } @else {
+                <div class="highlights-list">
+                  <h3>Highlights</h3>
+                  <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> Skip the line entry to save time</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Expert commentary from a licensed guide</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Explore the Vatican Museums and Sistine Chapel</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Priority access to St. Peter's Basilica</li>
+                  </ul>
+                </div>
+              }
+
+              <!-- Includes & Exclusions -->
+              <div class="inc-exc-grid">
+                <div class="inc-box">
+                  <h3>What's included?</h3>
+                  <ul>
+                    @if (product.includes && product.includes.length) {
+                      @for (inc of product.includes; track inc) {
+                        <li><i class="fa-solid fa-check"></i> {{inc}}</li>
+                      }
+                    } @else {
+                      <li><i class="fa-solid fa-check"></i> Expert local guide with 10+ years of experience</li>
+                      <li><i class="fa-solid fa-check"></i> Guaranteed skip-the-line access</li>
+                      <li><i class="fa-solid fa-check"></i> Admission tickets included to the Vatican Museums</li>
+                    }
+                  </ul>
+                </div>
+                <div class="exc-box">
+                  <h3>Exclusions</h3>
+                  <ul>
+                    @if (product.excludes && product.excludes.length) {
+                      @for (exc of product.excludes; track exc) {
+                        <li><i class="fa-solid fa-xmark"></i> {{exc}}</li>
+                      }
+                    } @else {
+                      <li><i class="fa-solid fa-xmark"></i> Food & drinks</li>
+                      <li><i class="fa-solid fa-xmark"></i> St. Peter Basilica dome entry is optional</li>
+                    }
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Please Note Section -->
+              <div class="please-note-section">
+                <h3>Please note</h3>
+                <ul>
+                  <li><i class="fa-solid fa-circle"></i> Stroller / pram accessible</li>
+                  <li><i class="fa-solid fa-circle"></i> Public transportation nearby</li>
+                  <li><i class="fa-solid fa-circle"></i> Not wheelchair accessible</li>
+                  <li><i class="fa-solid fa-circle"></i> Infants must not sit on laps</li>
+                  <li><i class="fa-solid fa-circle"></i> Please arrive at the meeting point at least 30 minutes before</li>
+                </ul>
+              </div>
+
+              <!-- Cancellation policy -->
+              <div class="policy-section">
+                <h3>Cancellation policy</h3>
+                <ul>
+                  <li><i class="fa-solid fa-circle"></i> We will charge a cancellation fee of 100% if booking is cancelled 1 day or less before the event</li>
+                  <li><i class="fa-solid fa-circle"></i> We will charge a cancellation fee of 0% if booking is cancelled 1000 days or less before the event</li>
+                </ul>
+              </div>
+            </div>
+          }
+
+          <!-- Itinerary Tab -->
+          @if (currentTab === 'itinerary') {
+            <div class="tab-pane fade-in">
+              <div class="timeline-container">
+                <h3>What to Expect</h3>
+                <div class="timeline">
+                  @if (product.itineraryStops && product.itineraryStops.length) {
+                    @for (stop of product.itineraryStops; let i = $index; track stop.title) {
+                      <div class="tl-item">
+                        <div class="tl-dot">{{i+1}}</div>
+                        <div class="tl-body">
+                          <strong>{{stop.title}}</strong>
+                          <p>{{stop.desc}}</p>
+                        </div>
+                      </div>
+                    }
+                  } @else {
+                    @for (step of steps; let i = $index; track step.time) {
+                      <div class="tl-item">
+                        <div class="tl-dot">{{i+1}}</div>
+                        <div class="tl-body">
+                          <strong>{{step.time}}</strong>
+                          <p>{{step.desc}}</p>
+                        </div>
+                      </div>
+                    }
+                  }
+                </div>
+              </div>
+            </div>
+          }
+
+          <!-- Meeting points Tab -->
+          @if (currentTab === 'meeting') {
+            <div class="tab-pane fade-in">
+              <div class="meeting-points-section">
+                <h3>Meeting Point</h3>
+                <p>Meet your guide directly outside the main entrance of the attraction. Look for the guide holding a board with the RomeVentures logo.</p>
+                <div class="map-placeholder">
+                  <div class="map-inner">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Map View (Meeting Point coordinates loaded dynamically)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+
+        </div>
+
+        <!-- More Info Section Grid -->
+        <div class="more-info-section">
+          <h3>More Info</h3>
+          <div class="info-grid">
+            <div class="info-cell">
+              <span class="info-label">Experience type</span>
+              <span class="info-value">Day tour / activity <span class="badge">Private</span></span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Booking in advance</span>
+              <span class="info-value">Cut off: 1 hour</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Duration</span>
+              <span class="info-value">3 hours</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Difficulty</span>
+              <span class="info-value">Easy</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Supported accessibility</span>
+              <span class="info-value">Stroller Or Pram</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Know before you go</span>
+              <span class="info-value">Minimum age of participants: 6</span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Categories</span>
+              <span class="info-value-tags">
+                <span class="tag">Walking Tour</span>
+                <span class="tag">Cultural Tour</span>
+                <span class="tag">Private Experience</span>
+              </span>
+            </div>
+            <div class="info-cell">
+              <span class="info-label">Live tour guide</span>
+              <span class="info-value">English</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- RIGHT: Booking Widget -->
+      <!-- RIGHT: Booking Widget Sidebar -->
       <div class="summary-col">
-        <div class="booking-widget sticky-box">
-
-          <div class="widget-header">
-            <div class="header-top">
-              <div>
-                <span class="widget-label">From</span>
-                <div class="widget-price">{{currencyService.format(product.salePrice)}} <span>/person</span></div>
+        <div class="booking-sidebar sticky-box">
+          
+          <!-- Participants Selector -->
+          <div class="sidebar-section">
+            <h3 class="sb-section-title">Participants</h3>
+            
+            <div class="participant-row">
+              <div class="p-info">
+                <span class="p-title">Adult</span>
+                <span class="p-sub">Age 18 - 99</span>
               </div>
-              <div class="header-rating">
-                <i class="fa-solid fa-star"></i> {{product.ratingAvr || 4.8}} <span>({{reviewsCount}})</span>
+              <div class="p-controls">
+                <button class="ctrl-btn" (click)="updateCount('adults', -1)" [disabled]="adultsCount() <= 1">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <span class="p-value">{{adultsCount()}}</span>
+                <button class="ctrl-btn" (click)="updateCount('adults', 1)">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
               </div>
             </div>
-          </div>
 
-          <div class="widget-body">
-            <div class="widget-section">
-              <div class="ws-label"><i class="fa-solid fa-calendar"></i> Date</div>
-              <input type="date" class="date-picker" [value]="selectedDate()" (change)="selectedDate.set($any($event.target).value)">
-            </div>
-
-            <div class="widget-section">
-              <div class="ws-label"><i class="fa-solid fa-users"></i> Participants</div>
-              
-              <div class="participant-row">
-                <div class="p-info">
-                  <span class="p-label">Adults</span>
-                  <span class="p-age">Age 18-99</span>
-                </div>
-                <div class="p-controls">
-                  <button class="ctrl-btn" (click)="updateCount('adults', -1)" [class.disabled]="adultsCount() === 1" [disabled]="adultsCount() === 1"><i class="fa-solid fa-minus"></i></button>
-                  <span class="p-count">{{adultsCount()}}</span>
-                  <button class="ctrl-btn active" (click)="updateCount('adults', 1)"><i class="fa-solid fa-plus"></i></button>
-                </div>
+            <div class="participant-row">
+              <div class="p-info">
+                <span class="p-title">BAMBINO</span>
+                <span class="p-sub">Age 6 - 17</span>
               </div>
-
-              <div class="participant-row">
-                <div class="p-info">
-                  <span class="p-label">Children</span>
-                  <span class="p-age">Age 6-17 (30% Off)</span>
-                </div>
-                <div class="p-controls">
-                  <button class="ctrl-btn" (click)="updateCount('children', -1)" [class.disabled]="childrenCount() === 0" [disabled]="childrenCount() === 0"><i class="fa-solid fa-minus"></i></button>
-                  <span class="p-count">{{childrenCount()}}</span>
-                  <button class="ctrl-btn active" (click)="updateCount('children', 1)"><i class="fa-solid fa-plus"></i></button>
-                </div>
-              </div>
-
-              <div class="participant-row">
-                <div class="p-info">
-                  <span class="p-label">Infants</span>
-                  <span class="p-age">Age 0-5 (Free)</span>
-                </div>
-                <div class="p-controls">
-                  <button class="ctrl-btn" (click)="updateCount('infants', -1)" [class.disabled]="infantsCount() === 0" [disabled]="infantsCount() === 0"><i class="fa-solid fa-minus"></i></button>
-                  <span class="p-count">{{infantsCount()}}</span>
-                  <button class="ctrl-btn active" (click)="updateCount('infants', 1)"><i class="fa-solid fa-plus"></i></button>
-                </div>
+              <div class="p-controls">
+                <button class="ctrl-btn" (click)="updateCount('children', -1)" [disabled]="childrenCount() <= 0">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <span class="p-value">{{childrenCount()}}</span>
+                <button class="ctrl-btn" (click)="updateCount('children', 1)">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
               </div>
             </div>
           </div>
 
-          <div class="widget-footer">
-            <div class="total-row">
-              <span>Total Price</span>
-              <strong>{{currencyService.format(totalPrice())}}</strong>
+          <!-- Calendar Date Picker -->
+          <div class="sidebar-section">
+            <h3 class="sb-section-title">Choose a date</h3>
+            <div class="calendar-widget">
+              <div class="calendar-header">
+                <button class="cal-nav-btn" (click)="changeMonth(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <span class="month-name">{{currentMonthName}}</span>
+                <button class="cal-nav-btn" (click)="changeMonth(1)"><i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+              <div class="weekdays-grid">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+              </div>
+              <div class="days-grid">
+                @for (day of calendarDays; track $index) {
+                  @if (day.isCurrentMonth) {
+                    <div class="day-cell" [class.selected]="selectedDate() === day.dateString" (click)="selectCalendarDate(day.dateString)">
+                      <span class="num">{{day.dayNumber}}</span>
+                      <span class="price">{{currencyService.format(day.price)}}</span>
+                    </div>
+                  } @else {
+                    <div class="day-cell empty"></div>
+                  }
+                }
+              </div>
             </div>
-            <div class="action-buttons">
-              <button class="btn btn-outline" (click)="onAddToCart('addToCart')">Add to Cart</button>
-              <button class="btn btn-primary" (click)="onAddToCart('buyNow')">Book Now</button>
+          </div>
+
+          <!-- Booking Summary Ticket (Real ticket design) -->
+          <div class="sidebar-section">
+            <h3 class="sb-section-title">Booking Summary</h3>
+            <div class="ticket-box">
+              <div class="ticket-top">
+                <h4 class="ticket-title">{{product.name}}</h4>
+              </div>
+              <div class="ticket-divider">
+                <span class="notch left"></span>
+                <span class="dotted-line"></span>
+                <span class="notch right"></span>
+              </div>
+              <div class="ticket-bottom">
+                <div class="summary-details">
+                  <div class="detail-item">
+                    <span>Date:</span>
+                    <strong>{{selectedDate() | date:'mediumDate'}}</strong>
+                  </div>
+                  <div class="detail-item">
+                    <span>Quantity:</span>
+                    <strong>Adult {{adultsCount()}} @if (childrenCount() > 0) { , Child {{childrenCount()}} }</strong>
+                  </div>
+                </div>
+                <div class="ticket-price-row">
+                  <span>Total</span>
+                  <strong class="ticket-total">{{currencyService.format(totalPrice())}}</strong>
+                </div>
+              </div>
             </div>
-            <div class="guarantee"><i class="fa-solid fa-circle-check"></i> Free cancellation up to 24h before</div>
+          </div>
+
+          <!-- Footer Checkout Button -->
+          <div class="sidebar-footer">
+            <button class="btn-checkout" (click)="onAddToCart('buyNow')">
+              Checkout <i class="fa-solid fa-lock"></i>
+            </button>
+            <button class="btn-cart" (click)="onAddToCart('addToCart')">
+              Add to Cart <i class="fa-solid fa-cart-plus"></i>
+            </button>
+            <div class="powered-by">
+              <span>Powered by</span>
+              <strong>RomeVentures</strong>
+            </div>
           </div>
 
         </div>
       </div>
 
     </div>
+
+    <!-- Lightbox Modal -->
+    @if (isLightboxOpen) {
+      <div class="lightbox-overlay" (click)="closeLightbox()">
+        <div class="lightbox-content" (click)="$event.stopPropagation()">
+          
+          <!-- Lightbox Header -->
+          <div class="lightbox-header">
+            <div class="header-actions">
+              <div class="action-dropdown select-lang">
+                <i class="fa-solid fa-earth-americas"></i>
+                <span>English</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="action-dropdown select-curr">
+                <span>€ EUR</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+              <button class="close-btn" (click)="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+          </div>
+
+          <!-- Lightbox Image and Navigation -->
+          <div class="lightbox-body">
+            <button class="nav-arrow prev" (click)="prevLightboxImage($event)" [disabled]="(product.images?.length || 0) <= 1">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            
+            <div class="image-wrapper">
+              <img [src]="product.images?.[lightboxIndex] || 'images/colosseum.png'" [alt]="product.name">
+            </div>
+
+            <button class="nav-arrow next" (click)="nextLightboxImage($event)" [disabled]="(product.images?.length || 0) <= 1">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    }
+
   </div>
 }

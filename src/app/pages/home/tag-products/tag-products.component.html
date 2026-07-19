@@ -1,20 +1,23 @@
 <div class="container">
   @if (products?.length) {
     <div class="products-header">
-      <div class="flash-title-counter">
+      <div class="title-desc-wrapper">
         <h2>{{ tag?.name }}</h2>
+        <p class="tag-desc">{{ tag?.shortDescription || 'Book with us and discover Rome the smart way.' }}</p>
+      </div>
+      <div class="more-container">
         @if (tag?.startDate) {
           <app-time-counter [endDate]="tag?.startDate"></app-time-counter>
         }
-      </div>
-      <div class="more">
-        <a [routerLink]="'/products'" [queryParams]="{ tag: tag?.name }">
-          View All
-          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="black">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-          </svg>
-        </a>
+        <div class="more">
+          <a [routerLink]="'/products'" [queryParams]="{ tag: tag?.name }">
+            View All
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="black">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   }

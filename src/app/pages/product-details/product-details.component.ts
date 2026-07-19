@@ -1,5 +1,5 @@
-import {isPlatformBrowser, NgClass, NgIf, NgStyle, NgTemplateOutlet} from '@angular/common';
-import {Component, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild, ElementRef, signal, computed} from '@angular/core';
+import {isPlatformBrowser, NgClass, NgIf, NgStyle, NgTemplateOutlet, DatePipe} from '@angular/common';
+import {Component, inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild, ElementRef, signal, computed, HostListener} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {Meta, Title} from '@angular/platform-browser';
@@ -38,7 +38,7 @@ import {ShopInformation} from '../../interfaces/common/shop-information.interfac
   styleUrl: './product-details.component.scss',
   standalone: true,
   imports: [
-      FormsModule, ReactiveFormsModule, RouterLink,
+      FormsModule, ReactiveFormsModule, RouterLink, DatePipe
   ],
   providers: [PricePipe, ProductPricePipe]
 })
@@ -65,6 +65,104 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     { time: '11:00 AM', desc: 'Guided walk through the Roman Forum.' },
     { time: '12:00 PM', desc: 'Tour ends at Palatine Hill.' },
   ];
+  
+  calendarDays: any[] = [];
+  currentMonthName: string = '';
+  currentMonthDate: Date = new Date();
+
+  generateCalendar() {
+    const year = this.currentMonthDate.getFullYear();
+    const month = this.currentMonthDate.getMonth();
+
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+
+    let startDayOfWeek = firstDay.getDay();
+    if (startDayOfWeek === 0) startDayOfWeek = 7;
+    startDayOfWeek -= 1; // 0 = Mon, 1 = Tue, etc.
+
+    const daysInMonth = lastDay.getDate();
+
+    const days = [];
+    for (let i = 0; i < startDayOfWeek; i++) {
+      days.push({ dayNumber: null, dateString: null, isCurrentMonth: false });
+    }
+
+    for (let i = 1; i <= daysInMonth; i++) {
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+      days.push({
+        dayNumber: i,
+        dateString: dateStr,
+        isCurrentMonth: true,
+        price: this.product?.salePrice || 0,
+      });
+    }
+
+    this.calendarDays = days;
+    this.currentMonthName = this.currentMonthDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+  }
+
+  changeMonth(delta: number) {
+    this.currentMonthDate = new Date(this.currentMonthDate.getFullYear(), this.currentMonthDate.getMonth() + delta, 1);
+    this.generateCalendar();
+  }
+
+  selectCalendarDate(dateStr: string) {
+    if (dateStr) {
+      this.selectedDate.set(dateStr);
+    }
+  }
+
+  isLightboxOpen = false;
+  lightboxIndex = 0;
+
+  openLightbox(index: number) {
+    const len = this.product?.images?.length || 0;
+    if (index >= len) {
+      this.lightboxIndex = 0;
+    } else {
+      this.lightboxIndex = index;
+    }
+    this.isLightboxOpen = true;
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  closeLightbox() {
+    this.isLightboxOpen = false;
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  prevLightboxImage(event?: Event) {
+    if (event) event.stopPropagation();
+    const len = this.product?.images?.length || 0;
+    if (len > 0) {
+      this.lightboxIndex = (this.lightboxIndex - 1 + len) % len;
+    }
+  }
+
+  nextLightboxImage(event?: Event) {
+    if (event) event.stopPropagation();
+    const len = this.product?.images?.length || 0;
+    if (len > 0) {
+      this.lightboxIndex = (this.lightboxIndex + 1) % len;
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (!this.isLightboxOpen) return;
+    if (event.key === 'ArrowLeft') {
+      this.prevLightboxImage();
+    } else if (event.key === 'ArrowRight') {
+      this.nextLightboxImage();
+    } else if (event.key === 'Escape') {
+      this.closeLightbox();
+    }
+  }
   totalPrice = computed(() => {
     const basePrice = this.product ? this.product.salePrice : 0;
     return (this.adultsCount() * basePrice) + (this.childrenCount() * basePrice * 0.7);
@@ -173,6 +271,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
             this.setDefaultVariation();
           }
           this.loadReviewData();
+          this.generateCalendar();
           if (isPlatformBrowser(this.platformId)) {
             this.updateMetaData();
           }
